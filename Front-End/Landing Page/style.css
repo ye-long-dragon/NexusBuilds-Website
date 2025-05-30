@@ -64,16 +64,20 @@ body {
     width: 100%;
 
     justify-content: center;
-    margin: 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 .input-wrapper {
     margin: 100px;
+    display: flex;
+    flex-flow: column;
+
+    align-items: center;
+    justify-content: center;
 }
 
 .input-icon {
     background-color: #252D3F;
-
     border-radius: 5px 0px 0px 5px;
 }
 
@@ -98,7 +102,6 @@ body {
 .login-inputs:focus {
     outline: none;
     box-shadow: none;
-    border: none;
 }
 
 .rem-forg-pass {
@@ -125,15 +128,11 @@ body {
     height: 100%;
 }
 
-/* .forg-pass-p {
-    cursor: pointer
-} */
-
 .password-frame {
     display: flex;
     width: 100%;
 
-    margin: 10px 10px 0px 0px;
+    margin: 10px 0px 0px 0px;
 
     justify-content: center;
 }
@@ -210,14 +209,21 @@ input:checked+.slider:before {
     background-color: #882EFF;
     color: white;
     font-size: 25px;
+
+    transition: background-color 0.25s;
 }
 
+.login-btn:hover {
+    background-color: #751fe6;
+}
 
 .or {
     display: flex;
     align-self: center;
 
     margin: 50px 0px;
+    width: 100%;
+
 }
 
 .or p {
@@ -250,16 +256,18 @@ input:checked+.slider:before {
     padding: 5px;
 
     font-size: 15px;
-
-    align-items: center;
-
     margin: 10px 0px;
+
+    transition: border-color 0.25s;
+}
+
+.login-via:hover {
+    border-color: #7519ed;
 }
 
 .login-via p {
-    position: relative;
     width: 100%;
-    ;
+    align-self: center;
 
     z-index: 0;
 }
@@ -273,6 +281,7 @@ input:checked+.slider:before {
 .sign-up {
     display: flex;
     justify-content: center;
+    align-items: center;
 
     color: #A8A8A8;
 }
@@ -290,4 +299,88 @@ button,
 .sign-up span,
 .rem-forg-pass> :last-child {
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #A8A8A8;
+}
+
+.sign-up-inputs {
+    background-color: #252D3F;
+
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+
+    color: white;
+    font-size: 20px;
+
+    margin: 5px 0px;
+}
+
+.uname-email-wrapper {
+    display: flex;
+    flex-flow: column;
+
+    
+    width: 100%;
+}
+
+.sign-up-inputs::placeholder {
+    position: absolute;
+    color: #A8A8A8;
+    font-size: 20px;
+    text-align: start;
+    
+    transform: translateY(0%);
+}
+
+.sign-up-inputs:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.sign-up-title {
+    color: #A8A8A8;
+    margin: 0px;
+}
+
+.sign-up-text {
+    font-weight: 400;
+    margin-top: -40px;
+}
+
+.sign-up-title > span {
+    font-weight: bold;
+    text-decoration: none;
+    color: #A8A8A8;
+
+    cursor: pointer;
+}
+
+.sign-up-pword-frame {
+    display: flex;
+    flex-direction: row-reverse;
+    
+    z-index: 0;
+
+    width: 100%;
+}
+
+.sign-up-pword-frame img {
+    position: absolute;
+    z-index: 1;
+
+    transform: translate(-5px, 25%);
+}
+
+.sign-up-pword-frame img:hover {
+    border-radius: 100%;
+    background-color: #3d4962;
+    cursor: pointer;
+}
+
+.sign-up-pword {
+    width: 100%;
 }
