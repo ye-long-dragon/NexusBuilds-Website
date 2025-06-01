@@ -1,6 +1,33 @@
 /*ANIMATIONS*/
+@keyframes headerBtnHover {
+    
+    100%{
+        background-color: #6d7891
+    }
+}
 
+@keyframes itemHover{
+    
+    100%{
+        transform: translateY(.5);
+        scale: 1.25;
+    }
+}
 
+@keyframes btnBuild{
+    
+    100%{
+         background: transparent;
+    }
+}
+
+ 
+@keyframes btnComponent{
+    
+    100%{
+         background: linear-gradient(90deg,#4C2FC0,#AD1212);
+    }
+}
 
 
 
@@ -11,6 +38,7 @@
         padding: 0;
         margin: 0;
     }
+    
 
     header {
     position: sticky;
@@ -45,6 +73,7 @@
         flex-direction: row; 
         align-items: center;
         justify-content: center;
+        padding-left: 20px;
     }
 
     .logoName> *{
@@ -60,10 +89,46 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+
+    .sectionR .bot .btn{
+        padding: 20px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+
+    .btn.component::before{
+        border-radius: 20px;
+    }
+
+    .build:hover{
+        animation: btnBuild;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+
+    .component::before:hover{
+        animation: btnBuild;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+
+    .component:hover{
+        animation: btnComponent;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
     
     .headerBtn{
-        padding: 5px;
+        padding: 15px;
+        border-radius: 10px;
         margin: 5px;
+    }
+
+    .headerBtn:hover{
+        animation: headerBtnHover;
+        animation-duration: .25s;
+        animation-fill-mode: forwards;
+        
     }
 
     .headerBtn>h2{
@@ -79,6 +144,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        padding: 50px;
     }
     
     .sectionL{
@@ -155,7 +221,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        padding: 4px; /* border thickness */
+        padding: 6px; /* border thickness */
         background: linear-gradient(90deg,#4C2FC0,#AD1212);
         -webkit-mask:
             linear-gradient(#fff 0 0) content-box, 
@@ -170,7 +236,7 @@
     .block2{
         background-color:#0B1222 ;
         top: 0;
-        padding: 20px;
+        padding: 50px;
         padding-top: 50px;
 
     }
@@ -182,6 +248,21 @@
         justify-content: start;
         color: white;
         padding: 2.5px;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin:2.5px;
+    }
+    
+    
+    .block3>div.descripText{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        color: white;
+        padding: 2.5px;
+        padding-left: 100px;
+        padding-right: 100px;
         margin:2.5px;
     }
 
@@ -210,6 +291,12 @@
         padding: 10px;
         margin: 20px;
         border-radius: 20px;
+    }
+
+    .item:hover{
+        animation: itemHover;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
     }
 
     .item>div.pic{
@@ -303,6 +390,12 @@
         border-radius: 10px;        
     }
 
+    .descrip .btn:hover{        
+        animation: itemHover;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+    }
+
     .descrip .btn>p{
         font-family: inter;
         font-style: bold;  
@@ -319,6 +412,12 @@
         margin: 20px;
     }
 
+    .itemMenu .view:hover{
+        animation: itemHover;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+    }
+
     .itemMenu .view>p{
         font-size: 24px;
         color: #8A1DFF;
@@ -332,7 +431,7 @@
     .block3{
         background-color:#0B1222 ;
         top: 0;
-        padding: 20px;
+        padding: 50px;
         padding-top: 50px;
         color: white;
     
@@ -341,18 +440,18 @@
     .block4{
         background-color:#0B1222 ;
         top: 0;
-        padding: 20px;
+        padding: 100px;
         padding-top: 50px;
         color:white;
 
     }
 
-    .container{
+    section.block4 .container{
         background: linear-gradient(90deg,#212936,#1A202E);
         display: flex;
         flex-direction: row;
         border-radius: 20px;
-        margin: 50px;
+        margin: 10px;
     }
 
     .container .descrip{
