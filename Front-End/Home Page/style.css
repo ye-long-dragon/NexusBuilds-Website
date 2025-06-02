@@ -1,0 +1,550 @@
+/*ANIMATIONS*/
+@keyframes headerBtnHover {
+    
+    100%{
+        background-color: #6d7891
+    }
+}
+
+@keyframes itemHover{
+    
+    100%{
+        transform: translateY(.5);
+        scale: 1.25;
+    }
+}
+
+@keyframes btnBuild{
+    
+    100%{
+         background: transparent;
+    }
+}
+
+ 
+@keyframes btnComponent{
+    
+    100%{
+         background: linear-gradient(90deg,#4C2FC0,#AD1212);
+    }
+}
+
+
+
+
+/*DESKTOP VIEW*/
+@media screen and (min-width:992px){
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    
+
+    header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    background-color: #121826;
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+    }
+
+    .headRight{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    .headLeft{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logoName{        
+        display: flex;
+        flex-direction: row; 
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+    }
+
+    .logoName> *{
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .logoName>h1{
+        font-family: inter;
+        font-style: normal;
+        font-size: 24px;
+        background: linear-gradient(90deg,#B949FF,#8A1DFF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .sectionR .bot .btn{
+        padding: 20px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+
+    .btn.component::before{
+        border-radius: 20px;
+    }
+
+    .build:hover{
+        animation: btnBuild;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+
+    .component::before:hover{
+        animation: btnBuild;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+
+    .component:hover{
+        animation: btnComponent;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    
+    .headerBtn{
+        padding: 15px;
+        border-radius: 10px;
+        margin: 5px;
+    }
+
+    .headerBtn:hover{
+        animation: headerBtnHover;
+        animation-duration: .25s;
+        animation-fill-mode: forwards;
+        
+    }
+
+    .headerBtn>h2{
+        font-family: inter;
+        font-style: normal;
+        font-size: 18px;
+    }
+
+    .block1{
+        height: 500px;
+        background: linear-gradient(90deg,#000C28,#001850);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+    }
+    
+    .sectionL{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        margin: 50px;        
+        padding: 10px;
+    }
+
+    .top{
+        font-family: inter;
+        font-size: 64px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        color: white;
+        margin: 5px;
+        
+    }
+
+    .top>h6{
+        font-family: inter;
+        font-size: 64px;
+        background: linear-gradient(90deg,#4C2FC0,#AD1212);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .mid {
+        font-family: inter;
+        font-style: normal;
+        font-size: 18px;
+        color: white;
+        margin: 5px;
+    }
+    .bot{
+        display: flex;
+        margin: 5px;
+        flex-direction: row;
+    }
+
+     
+
+    .bot>div.btn{
+        padding: 10px;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        margin: 10px;
+        margin-left: 0;
+        margin-right: 20px;
+        border-radius: 10px;
+        font-family: inter;
+        font-style: normal;
+        font-size: 18px;
+        color: white;
+    }
+
+    .build{
+        background: linear-gradient(90deg,#4C2FC0,#AD1212);
+    }
+
+    .component {
+        position: relative;
+        padding: 10px;
+        background-color: transparent;
+        color: inherit;
+        z-index: 0;
+        }
+
+        .component::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 6px; /* border thickness */
+        background: linear-gradient(90deg,#4C2FC0,#AD1212);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        border-radius: 10px;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .block2{
+        background-color:#0B1222 ;
+        top: 0;
+        padding: 50px;
+        padding-top: 50px;
+
+    }
+
+    .block2>div.descripText{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        color: white;
+        padding: 2.5px;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin:2.5px;
+    }
+    
+    
+    .block3>div.descripText{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        color: white;
+        padding: 2.5px;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin:2.5px;
+    }
+
+    .descripText>h3{
+        font-family: inter;
+        font-style: bold;
+        font-size: 24px;
+    }
+
+    .descripText>p{
+        font-family: inter;
+        font-style: bold;
+        font-size: 16px;
+    }
+
+    .itemMenu{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;        
+    }
+
+    .item{
+        background-color: #313131;
+        width: 300px;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 20px;
+    }
+
+    .item:hover{
+        animation: itemHover;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+    }
+
+    .item>div.pic{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 10px;
+    }
+    .mainDescrip>div{
+        padding: 5px;
+    }
+
+    .mainDescrip .top .left>p{
+        color: gray;
+        font-family: inter;
+        font-size:14px;
+        font-style: normal;
+    }
+
+    .mainDescrip .top .left>h5{
+        color: white;
+        font-family: inter;
+        font-size:18px;
+        font-style: normal;
+    }
+
+    .mainDescrip .top .right{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    .mainDescrip .top .right>p{
+        color: white;
+        font-family: inter;
+        font-size:18px;
+        font-style: normal;
+    }
+
+    .mainDescrip .bot>div{    
+        flex-direction: row;
+        display: flex;
+    }
+    
+    .mainDescrip .bot .right{    
+        flex-direction: row;
+        display: flex;
+        margin-left: auto;
+        color:green
+        
+    }
+
+    .mainDescrip .bot .right>p{    
+        font-style: normal;
+         font-family: inter;
+         font-size: 16px;
+        
+    }
+
+    
+
+    .mainDescrip .bot .left{
+        color: gray;
+        font-family: inter;
+        font-style: normal;
+    }
+
+    .mainDescrip .bot .left>span>h6{
+        font-size: 20px;
+        font-style: bold;
+    }
+
+    .mainDescrip .bot .left>span>p{
+        font-size: 12px;
+        justify-content: baseline;
+        text-decoration: line-through;
+        margin: 5px;
+        position: relative;
+    }
+
+    .descrip .btn{
+        background: linear-gradient(90deg,#912FAE,#6C008C);
+        color:white;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        display: flex;
+        border-radius: 10px;        
+    }
+
+    .descrip .btn:hover{        
+        animation: itemHover;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+    }
+
+    .descrip .btn>p{
+        font-family: inter;
+        font-style: bold;  
+        font-size: 20px;
+    }
+
+    .itemMenu .view{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+         width: 300px;
+        padding: 10px;
+        margin: 20px;
+    }
+
+    .itemMenu .view:hover{
+        animation: itemHover;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+    }
+
+    .itemMenu .view>p{
+        font-size: 24px;
+        color: #8A1DFF;
+        font-style: bold;
+        font-family: inter;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-radius: 20px;
+    }
+
+    .block3{
+        background-color:#0B1222 ;
+        top: 0;
+        padding: 50px;
+        padding-top: 50px;
+        color: white;
+    
+    }
+    
+    .block4{
+        background-color:#0B1222 ;
+        top: 0;
+        padding: 100px;
+        padding-top: 50px;
+        color:white;
+
+    }
+
+    section.block4 .container{
+        background: linear-gradient(90deg,#212936,#1A202E);
+        display: flex;
+        flex-direction: row;
+        border-radius: 20px;
+        margin: 10px;
+    }
+
+    .container .descrip{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        padding-top: 120px;
+    }
+
+     .container .descrip>h4{
+        font-family: inter;
+        font-style: bold;
+        font-size: 24px;
+        padding: 5px;
+        margin: 2.5px;
+     }
+
+     .container .descrip>p{
+        font-family: inter;
+        font-style: bold;
+        font-size: 16px;
+        padding: 5px;
+        margin: 2.5px;
+     }
+
+    .container .btn{
+        margin: 10px;
+    }
+
+    .container .btn>img{
+        margin: 20px;
+    }
+
+   .container .pic{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+   }
+
+   footer{
+    top: 0;
+    padding: 20px;
+    background-color:#0B1222 ;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+   }
+
+   hr{
+    color: grey;
+    margin: 30px;
+    width: 100%;
+   }
+
+   .main{
+        display: flex;
+        flex-direction: row;
+        color: grey;
+        justify-content: space-between; /* Space out children */
+        align-items: center; /* Center items vertically */
+        padding: 10px; /* Optional padding */
+   }
+
+   .main .left .top>p{
+    color: gray;
+    font-size: 24px;
+   }
+
+   .main .left .bot>p{
+    font-family: inter;
+
+   }
+
+   .main .mid>p{
+    color: grey;
+   }
+
+   .main .right{
+    display: flex;
+    flex-direction: row;
+   }
+
+   .main .right>p{
+        padding: 5px;
+        margin: 5px;
+   }
+
+
+
+
+   
+
+
+
+}
