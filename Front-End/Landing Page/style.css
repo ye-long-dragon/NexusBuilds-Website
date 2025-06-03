@@ -320,6 +320,10 @@ a {
     margin: 5px 0px;
 }
 
+.sign-up-inputs.sign-up {
+    /* width: 100%; */
+}
+
 .uname-email-wrapper {
     display: flex;
     flex-flow: column;
@@ -386,6 +390,78 @@ a {
     width: 100%;
 }
 
+.forgot-pass {
+    color: #717171;
+}
+
+h1.forgot-pass {
+    margin: 0px;
+}
+
+p.forgot-pass {
+    text-align: center;
+    font-size: 20px;
+    margin: 0px;
+}
+
+p.forgot-pass.return {
+    font-size: 17px;
+}
+
+p.forgot-pass > span {
+    font-weight: bold;
+}
+
+input[type=email] {
+    
+    background-color: #252D3F;
+    border: none;
+    border-radius: 5px;
+    padding: 25px 0px 25px 20px;
+
+    /* width: 100%; */
+
+    font-size: 18px;
+}
+
+input[type=email].forgot-pass::placeholder {
+    font-size: 18px;
+}
+
+input[type=email].forgot-pass:focus {
+    /* font-size: 20px; */
+    outline: none;
+}
+
+img.input-icon.forg-pass-icon {
+    padding-left: 10px;
+}
+
+.username-frame.forg-pass-frame {
+    margin: 20px 0px;
+
+}
+
+.forgot-pass.btn {
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+
+    border: none;
+    border-radius: 2.5px;
+
+    background-color: #882EFF;
+    color: white;
+}
+
+#forgpass-input {
+    width: 200%;
+}
+
+p.forgot-pass {
+    margin: 10px
+}
+
 @media only screen and (max-width: 1536px) {
     .logo {
         height: 70px;
@@ -408,4 +484,20 @@ a {
     .or {
         margin: 0px 50px
     }
+}
+
+@media only screen and (max-width: 1281px) {
+
+    .title {
+        font-size: 35px;
+    }
+
+    .login-inputs {
+        font-size: 15px;
+    }
+
+    .login-inputs::placeholder {
+        font-size: 15px;
+    }
+
 }
