@@ -3,16 +3,16 @@ import express from "express";
 const app = express();
 const PORT = 8000;
 
-//set EJS templating engine
-app.set('view engine', 'ejs');
+app.set('view engine','ejs');
 
+app.use(express.static('public'));
 
-app.get('index',(res,req)=>{
-    res.render('index',index.ejs);
-});
+app.use(express.static('assets'));
 
-
-app.listen(PORT, ()=>{
-    console.log(`Listening to port ${PORT}`);
+app.get('/',(req,res)=>{
+    res.render('Landing-Page/index');
 })
 
+app.listen(PORT,()=>{
+    console.log(`Listening to port ${PORT}`);
+})

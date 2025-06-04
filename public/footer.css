@@ -1,0 +1,53 @@
+*{
+     padding: 0;
+     margin: 0;
+}
+
+footer{
+    top: 0;
+    padding: 20px;
+    background-color:#0B1222 ;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+   }
+
+   hr{
+    color: grey;
+    margin: 30px;
+    width: 100%;
+   }
+
+   .main{
+        display: flex;
+        flex-direction: row;
+        color: grey;
+        justify-content: space-between; /* Space out children */
+        align-items: center; /* Center items vertically */
+        padding: 10px; /* Optional padding */
+   }
+
+   .main .left .top>p{
+    color: gray;
+    font-size: 24px;
+   }
+
+   .main .left .bot>p{
+    font-family: inter;
+
+   }
+
+   .main .mid>p{
+    color: grey;
+   }
+
+   .main .right{
+    display: flex;
+    flex-direction: row;
+   }
+
+   .main .right>p{
+        padding: 5px;
+        margin: 5px;
+   }

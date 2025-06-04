@@ -38,6 +38,7 @@
   },
   "homepage": "https://github.com/ye-long-dragon/NexusBuilds-Website#readme",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^5.1.0"
   },
   "devDependencies": {
