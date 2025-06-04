@@ -149,6 +149,12 @@ main {
     border-radius: 100%;
 
     padding: 10px;
+    transition: background-color 0.5s;
+}
+
+.hand-wrapper:hover {
+    background-color: #e0e0e0c8;
+    cursor: pointer;
 }
 
 .order-wrapper {
