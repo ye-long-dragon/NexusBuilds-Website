@@ -1,0 +1,46 @@
+{
+  "name": "nexusbuilds-website",
+  "version": "1.0.0",
+  "description": "This package is used for the final project of Collab.inc for their CPE143L Final Project",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ye-long-dragon/NexusBuilds-Website.git"
+  },
+  "keywords": [
+    "computer",
+    "parts",
+    "shop",
+    "computer",
+    "shop",
+    "computer",
+    "parts",
+    "motherboard",
+    "cooling",
+    "system",
+    "processor",
+    "RAM",
+    "computer",
+    "storage",
+    "storage",
+    "case",
+    "power",
+    "supply"
+  ],
+  "author": "Baraclan, Daga-ang, Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ye-long-dragon/NexusBuilds-Website/issues"
+  },
+  "homepage": "https://github.com/ye-long-dragon/NexusBuilds-Website#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
