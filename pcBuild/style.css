@@ -200,6 +200,17 @@ main {
     margin-right: 1rem;
 }
 
+.thumbnail p {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.thumbnail a {
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
 .extras > .item-detail {
     width: 47.5%;
     margin: 0.5rem;
