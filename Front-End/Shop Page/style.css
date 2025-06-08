@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 @media screen and (min-width:992px) {
     
 
@@ -123,7 +116,67 @@ header {
         margin: 5px;
    }
 
+   .mainDescription{
+     background-color:#0B1222 ;
+        top: 0;
+        padding: 20px;
+        padding-top: 50px;
+        color: white;
+        font-family: inter;
+   }
+
+   .top .left{
+    display: flex;
+    margin-right: auto;
+   }
+
+   .top .right{
+    display: flex;
+    margin-left: auto;
+   }
+
+   .filterItem{
+    background-color: #171D2B;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;               /* Activate flex layout */
+  align-items: center;         /* Vertically center children */
+  justify-content: center;            
+ 
+   }
+
+
+
+   .filterPart{
+     background-color: inherit;
+  border-radius: 12px;
+  color: white;
+  border: none;                /* Simplify border style */
+  position: relative;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;               /* Flex for button content alignment */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+   }
+
    
+
+
+
+
+     .block{
+        background-color:#0B1222 ;
+        top: 0;
+        padding: 20px;
+        padding-top: 50px;
+        color: white;
+        font-family: inter;
+    }
     .itemMenu{
         display: flex;
         flex-direction: row;
@@ -146,45 +199,70 @@ header {
         background-color: white;
         border-radius: 10px;
     }
-    .mainDescrip>div{
+    .mainDescription>div{
         padding: 5px;
     }
 
-    .mainDescrip .top .left>p{
+    .mainDescription .descrip .top{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .mainDescription .top .left{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mainDescription .top .left>p{
         color: gray;
         font-family: inter;
         font-size:14px;
         font-style: normal;
     }
 
-    .mainDescrip .top .left>h5{
+    .mainDescription .top .left>h5{
         color: white;
         font-family: inter;
         font-size:18px;
         font-style: normal;
     }
 
-    .mainDescrip .top .right{
+    .mainDescription .top .right{
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        padding: 10px;
         margin-left: auto;
+        margin-right: 50px;
     }
 
-    .mainDescrip .top .right>p{
+    .mainDescription .descrip{
+        padding: 20px;
+        margin: 30px;
+    }
+
+    .mainDescription .top .right>input{
+        height: 36px;
+        border-radius: 12px;
+        width: 240px;
+        background-color: inherit;
+        border-color: #989898;
+    }
+
+    .mainDescription .top .right>p{
         color: white;
         font-family: inter;
         font-size:18px;
         font-style: normal;
     }
 
-    .mainDescrip .bot>div{    
+    .mainDescription .bot>div{    
         flex-direction: row;
         display: flex;
     }
     
-    .mainDescrip .bot .right{    
+    .mainDescription .bot .right{    
         flex-direction: row;
         display: flex;
         margin-left: auto;
@@ -192,7 +270,7 @@ header {
         
     }
 
-    .mainDescrip .bot .right>p{    
+    .mainDescription .bot .right>p{    
         font-style: normal;
          font-family: inter;
          font-size: 16px;
@@ -201,24 +279,33 @@ header {
 
     
 
-    .mainDescrip .bot .left{
+    .mainDescription .bot .left{
         color: gray;
         font-family: inter;
         font-style: normal;
     }
 
-    .mainDescrip .bot .left>span>h6{
+    .mainDescription .bot .left>span>h6{
         font-size: 20px;
         font-style: bold;
     }
 
-    .mainDescrip .bot .left>span>p{
+    .mainDescription .bot .left>span>p{
         font-size: 12px;
         justify-content: baseline;
         text-decoration: line-through;
         margin: 5px;
         position: relative;
     }
+
+    .mainDescription .filters{
+        padding: 10px;
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
 
     .descrip .btn{
         background: linear-gradient(90deg,#912FAE,#6C008C);
