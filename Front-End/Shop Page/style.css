@@ -146,6 +146,10 @@ header {
  
    }
 
+   .filterItem:hover{
+    background-color: #883AE2;
+   }
+
 
 
    .filterPart{
