@@ -1,4 +1,5 @@
 /*ANIMATIONS*/
+
 @keyframes headerBtnHover {
     
     100%{
@@ -32,13 +33,14 @@
 
 
 
+
 /*DESKTOP VIEW*/
 @media screen and (min-width:992px){
     *{
         padding: 0;
         margin: 0;
     }
-    
+
 
     header {
     position: sticky;
@@ -73,7 +75,9 @@
         flex-direction: row; 
         align-items: center;
         justify-content: center;
+
         padding-left: 20px;
+
     }
 
     .logoName> *{
@@ -89,6 +93,14 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+
+    
+    .headerBtn{
+        padding: 5px;
+        margin: 5px;
+    }
+
+
 
     .sectionR .bot .btn{
         padding: 20px;
@@ -144,7 +156,9 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+
         padding: 50px;
+
     }
     
     .sectionL{
@@ -221,7 +235,9 @@
         content: '';
         position: absolute;
         inset: 0;
+
         padding: 6px; /* border thickness */
+
         background: linear-gradient(90deg,#4C2FC0,#AD1212);
         -webkit-mask:
             linear-gradient(#fff 0 0) content-box, 
@@ -236,7 +252,9 @@
     .block2{
         background-color:#0B1222 ;
         top: 0;
-        padding: 50px;
+
+        padding: 20px;
+
         padding-top: 50px;
 
     }
@@ -248,6 +266,7 @@
         justify-content: start;
         color: white;
         padding: 2.5px;
+
         padding-left: 100px;
         padding-right: 100px;
         margin:2.5px;
@@ -263,7 +282,7 @@
         padding: 2.5px;
         padding-left: 100px;
         padding-right: 100px;
-        margin:2.5px;
+
     }
 
     .descripText>h3{
@@ -277,6 +296,7 @@
         font-style: bold;
         font-size: 16px;
     }
+
 
     .itemMenu{
         display: flex;
@@ -402,6 +422,7 @@
         font-size: 20px;
     }
 
+
     .itemMenu .view{
         align-items: center;
         justify-content: center;
@@ -412,11 +433,13 @@
         margin: 20px;
     }
 
+
     .itemMenu .view:hover{
         animation: itemHover;
         animation-duration: .4s;
         animation-fill-mode: forwards;
     }
+
 
     .itemMenu .view>p{
         font-size: 24px;
@@ -431,7 +454,9 @@
     .block3{
         background-color:#0B1222 ;
         top: 0;
-        padding: 50px;
+
+        padding: 20px;
+
         padding-top: 50px;
         color: white;
     
@@ -440,18 +465,24 @@
     .block4{
         background-color:#0B1222 ;
         top: 0;
-        padding: 100px;
+
+        padding: 20px;
+
         padding-top: 50px;
         color:white;
 
     }
 
-    section.block4 .container{
+    .container{
+
+
         background: linear-gradient(90deg,#212936,#1A202E);
         display: flex;
         flex-direction: row;
         border-radius: 20px;
-        margin: 10px;
+
+        margin: 50px;
+
     }
 
     .container .descrip{

@@ -12,7 +12,7 @@ body {
 
 .login-bg {
     width: 100%;
-    height: 100vh;
+    height: inherit;
 
     background-image: url(assets/bg.jpg);
     background-size: cover;
@@ -33,6 +33,7 @@ body {
     display: flex;
     flex-flow: column;
     background-color: #121826;
+    padding: 20px;
 
     width: 48%;
     height: 100vh;
@@ -390,6 +391,7 @@ a {
     width: 100%;
 }
 
+<<<<<<< HEAD
 .forgot-pass {
     color: #717171;
 }
@@ -463,6 +465,9 @@ p.forgot-pass {
 }
 
 @media only screen and (max-width: 1536px) {
+=======
+@media only screen and (min-width: 1280px) {
+>>>>>>> 9fa4675 (Added Shop Incomplete)
     .logo {
         height: 70px;
     }
@@ -476,7 +481,7 @@ p.forgot-pass {
     }
 }
 
-@media only screen and (max-width: 1367px) {
+@media only screen and (min-width: 601) and (max-width:1279px) {
     .logo {
         margin-top: 15px;
     }
