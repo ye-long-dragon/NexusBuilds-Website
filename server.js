@@ -1,24 +1,25 @@
 import express from "express";
-import router from"./routes/index.js";
-import path from "path";
-import { fileURLToPath } from 'url';
+import homePage from"./routes/Home-Page/index.js";
+import auth from "./routes/auth/index.js";
+import shopPage from "./routes/Shop-Page/index.js";
+import pcBuilder from "./routes/PcBuilder/index.js";
+import pcProfile from "./routes/PcProfile/index.js";
+import userProfile from "./routes/UserProfile/index.js";
 const app = express();
-const PORT = 8000;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const PORT = 3000;
 
 //initializing EJS and Statics
-//DO NOT DELETE
-//If you have problems, please direct your attention VinSupport
 app.set('view engine','ejs');
 app.use(express.static('styles'));
 app.use(express.static('assets'));
 app.use(express.static('scripts'));
 
-app.use("/", router);
-
-
-
+app.use("/", homePage);
+app.use("/auth",auth);
+app.use("/shop",shopPage)
+app.use("/PcBuilder",pcBuilder);
+app.use("/PcProfile",pcProfile);
+app.use("/Profile",userProfile);
 
 
 app.listen(PORT,()=>{
