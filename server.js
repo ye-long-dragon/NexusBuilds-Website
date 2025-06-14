@@ -13,13 +13,14 @@ app.set('view engine','ejs');
 app.use(express.static('styles'));
 app.use(express.static('assets'));
 app.use(express.static('scripts'));
+app.use(express.static('views'));
 
 app.use("/", homePage);
 app.use("/auth",auth);
 app.use("/shop",shopPage)
-app.use("/PcBuilder",pcBuilder);
-app.use("/PcProfile",pcProfile);
-app.use("/Profile",userProfile);
+app.use("/pcbuilder",pcBuilder);
+app.use("/pcprofile",pcProfile);
+app.use("/profile",userProfile);
 
 
 app.listen(PORT,()=>{
