@@ -6,12 +6,12 @@
             </div>
         </div>
         <div class="headRight">
-            <div class="headerBtn"id="home"><h2>Home</h2></div>
-            <div class="headerBtn"id="shop" ><h2>Shop</h2></div>
-            <div class="headerBtn"id="pcBuild"><h2>PC Builder</h2></div>
+            <a href="<%= '/' %>"><div class="headerBtn"id="home"><h2>Home</h2></div></a>
+            <a href="<%= '/shop' %>"><div class="headerBtn"id="shop" ><h2>Shop</h2></div></a>
+            <a href="<%= '/pcBuilder' %>"><div class="headerBtn"id="pcBuild"><h2>PC Builder</h2></div></a>
             <div class="headerBtn"id="darkMode"><img src="/sun-o.svg" alt=""height="32px"></div>
             <div class="headerBtn"id="cart"><img src="/cart.svg" alt=""height="32px"></div>
-            <div class="headerBtn"id="user"><img src="/user.svg" alt=""height="32px"></div>
+            <a href="<%= '/profile' %>"><div class="headerBtn"id="user"><img src="/user.svg" alt=""height="32px"></div></a>
         </div>
     </header>
     <link rel="stylesheet" href="/header.css">
