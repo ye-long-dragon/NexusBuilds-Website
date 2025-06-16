@@ -1,4 +1,5 @@
 import { Schema,model } from "mongoose";
+import Payment from "./paymentOptions.js";  
 
 const userSchema = new Schema({
     username:{
@@ -26,6 +27,7 @@ const userSchema = new Schema({
         type:Date,
         required:true
     },
+    
 });
 
 const User = model('User',userSchema);
