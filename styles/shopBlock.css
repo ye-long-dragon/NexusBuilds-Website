@@ -1,0 +1,67 @@
+.shopBlock{
+        background-color:#0B1222 ;
+        top: 0;
+        padding: 50px;
+        padding-top: 50px;
+
+    }
+
+    .shopBlock>div.descripText{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        color: white;
+        padding: 2.5px;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin:2.5px;
+    }
+    
+    
+
+    .descripText>h3{
+        font-family: inter;
+        font-style: bold;
+        font-size: 24px;
+    }
+
+    .descripText>p{
+        font-family: inter;
+        font-style: bold;
+        font-size: 16px;
+    }
+
+    .itemMenu{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;        
+    }
+
+    
+    .itemMenu .view{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+         width: 300px;
+        padding: 10px;
+        margin: 20px;
+    }
+
+    .itemMenu .view:hover{
+        animation: itemHover;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+    }
+
+    .itemMenu .view>p{
+        font-size: 24px;
+        color: #8A1DFF;
+        font-style: bold;
+        font-family: inter;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-radius: 20px;
+    }
