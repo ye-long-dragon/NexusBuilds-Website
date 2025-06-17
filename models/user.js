@@ -27,6 +27,10 @@ const userSchema = new Schema({
         type:Date,
         required:true
     },
+    userAuth:{
+        type:String,
+        required:true
+    }
     
 });
 

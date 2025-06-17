@@ -7,6 +7,7 @@ import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
 import usersRouter from "./routes/api/user.js";
 import connect from "./database/mongodb-connect.js";
+import shopAdmin from "./routes/pages/shopAdmin.js";
 
 const app = express();
 const PORT = 8000;
@@ -33,6 +34,7 @@ app.use("/pcbuilder",pcBuilder);
 app.use("/pcprofile",pcProfile);
 app.use("/profile",userProfile);
 app.use("/api", usersRouter);
+app.use("/shopadmin",shopAdmin);
 
 connect();
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/sign.css">
+</head>
+<body>
+    <img src="/bg.jpg" alt="" class="login-bg">
+    <div class="login-frame">
+        <img src="/logo.svg" class="logo">
+        <h2 class="title">NexusBuilds</h2>
+
+        <div class="input-wrapper">
+            
+           <div class="username-frame">
+                    <img src="/userLg.svg" class="input-icon">
+                    <input type="text" placeholder="Username" class="login-inputs">
+                </div>
+
+                <div class="password-frame">
+                    <img src="/lock.svg" class="input-icon">
+                    <input type="password" placeholder="Password" class="login-inputs pass">
+                </div>
+
+                <div class="rem-forg-pass">
+                    <div class="rem-me">
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                        <p>Remember me</p>
+                    </div>
+                    <p><a href="<%= "/auth/forgotpassword" %>">Forgot Password</a></p>
+                </div>
+
+                <button class="login-btn">Login</button>
+
+                <div class="or">
+                    <hr>
+                    <p>or</p>
+                    <hr>
+                </div>
+
+                <button class="login-via">
+                    <img src="/googleLg.svg">
+                    <p>Login via Gmail</p>
+                </button>
+
+                <button class="login-via">
+                    <img src="/facebookLg.svg" class="fb-icon">
+                    <p>Login via Facebook</p>
+                </button>
+
+                <p class="sign-up">Don't have an account? <span><a href="<%= "/auth/signup" %>">Sign Up</a></span></p>
+            
+
+        </div>
+
+    </div>
+</body>
+<link rel="stylesheet" href="/sign.css">
+</html>
