@@ -1,4 +1,5 @@
 import { Schema,model } from "mongoose";
+import Image from "./image.js"
 import Payment from "./paymentOptions.js";  
 
 const userSchema = new Schema({
@@ -30,6 +31,9 @@ const userSchema = new Schema({
     userAuth:{
         type:String,
         required:true
+    },
+    profileImage:{
+        type:Image
     }
     
 });
