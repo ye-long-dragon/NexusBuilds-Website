@@ -55,7 +55,11 @@ h2 {
 
 .cart-card {
     background-color: #212936;
+<<<<<<< HEAD
     width: 50%;
+=======
+    width: 60%;
+>>>>>>> d24eca2dc0e88c37f0490d2a00a320b4e200764f
     height: fit-content;
     margin-left: 40px;
 
