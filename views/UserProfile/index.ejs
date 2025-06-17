@@ -1,22 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="/userprofile.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="/navbar.css">
     <title>Document</title>
-    <link rel="stylesheet" href="UserProfile.css">
 </head>
+
 <body>
-    
-    <%- include('../GeneralPartials/header') %>
-    <main id="main">
-        <%- include('partials/UserProfile.ejs') %>
-        
-       
 
+    <%- include('../partials/navbar.ejs') %>
+
+    <main>
+        <p class="page-label">My Profile</p>
+        <div class="profile-wrapper">
+
+            <div class="c1">
+                <img src="/assets/profile.svg" alt="profile" id="preview">
+                <!-- <button>Select Image</button> -->
+                <input type="file" value="Select Image" accept=".jpg, .jpeg, .png" id="imgInput">
+                <p>
+                    File Size: Maximum 1 MB <br>
+                    File Extension: .JPEG, .PNG
+                </p>
+            </div>
+
+            <div class="c2">
+                <!-- TOP SECTION -->
+                <div class="c2-1">
+
+                    <div class="input-wrapper">
+                        <label for="l-name">Last Name</label>
+                        <input type="text" id="l-name">
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="uname">Username</label>
+                        <input type="text" id="uname">
+                    </div>
+
+                </div>
+
+                <!-- BOTTOM SECTION -->
+                <div class="c2-2">
+                    <div class="input-wrapper">
+                        <label for="address">Complete Address</label>
+                        <input type="text" id="address">
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone">
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="email">Email</label>
+                        <input type="email" id="email">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="c3">
+                <span>Gender</span>
+                <div class="radio-wrapper">
+
+                    <div class="radio-group">
+                        <label for="male">Male</label>
+                        <input type="radio" name="gender" id="male" value="male">
+                    </div>
+
+
+                    <div class="radio-group">
+                        <label for="female">Female</label>
+                        <input type="radio" name="gender" id="Female">
+                    </div>
+
+
+                    <div class="radio-group">
+                        <label for="pns">Other</label>
+                        <input type="radio" name="gender" id="pns">
+                    </div>
+                </div>
+
+                <div class="input-wrapper">
+                    <p for="date-of-birth" class="c3-lbl">Date of Birth</p>
+                    <input type="date" id="date-of-birth">
+                </div>
+
+                <div class="input-wrapper">
+
+                    <p for="country" class="c3-lbl">Country</p>
+                    <input type="text" id="country">
+                </div>
+            </div>
+
+        </div>
+
+        <button class="save-btn">Save</button>
     </main>
-    <%- include('../GeneralPartials/footer') %>
 
-    
+    <%- include('../partials/footer.ejs') %>
+
 </body>
+
+<script>
+
+    const imageInput = document.getElementById('imgInput');
+    const message = document.getElementById('message');
+
+    imageInput.addEventListener('change', () => {
+        const file = imageInput.files[0];
+        const maxSizeMB = 1;
+
+        if (file && file.size > maxSizeMB * 1024 * 1024) {
+            alert("File is too large. Maximum size is 1MB.");
+            imageInput.value = ''; // clear the input
+        } else {
+            // message.textContent = '';
+            console.log("File Bigger Than 1mb")
+            preview.src = URL.createObjectURL(file);
+            // proceed with the file (preview/upload)
+        }
+    });
+
+</script>
+
 </html>

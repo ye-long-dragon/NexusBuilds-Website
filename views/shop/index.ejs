@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/shop.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    
+    <%- include('../partials/navbar.ejs') %>
+
+    <main>
+        <div class="mainDescription">
+            <div class="descrip">
+                <div class="top">
+                    <div class="left">
+                        <h2>PC Components</h2>
+                        <p>Gear up for peak performance! Find powerful CPUs, high-end GPUs, fast memory, and top-tier
+                            storage to build your dream gaming rig. These components are made for serious players.</p>
+                    </div>
+                    <div class="right search-bar">
+                        <input type="text" placeholder="Search Components">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                    </div>
+                </div>
+                <div class="filters">
+                    <div class="filterItem allcomps" id="allComponents">
+                        <input type="button" value="All Components" class="filterPart all">
+                    </div>
+                    <div class="filterItem" id="Processor">
+                        <img src="/assets/processor-svgrepo-com 1.svg" alt="">
+                        <p>Processor</p>
+                    </div>
+                    <div class="filterItem" id="GraphicsCard">
+                        <img src="/assets/gpu-mining 2.svg" alt="">
+                        Graphics Card
+                    </div>
+                    <div class="filterItem" id="Motherboard">
+                        <img src="/assets/motherboard 2.svg" alt="">
+                        Motherboard
+                    </div>
+                    <div class="filterItem" id="storage">
+                        <img src="/assets/disk 2.svg" alt="">
+                        Storage
+                    </div>
+                    <div class="filterItem" id="RAM">
+                        <img src="/assets/memory 2.svg" alt="">
+                        RAM
+                    </div>
+                    <div class="filterItem" id="Case">
+                        <img src="/assets/cube 2.svg" alt="">
+                        Case
+                    </div>
+                    <div class="filterItem" id="PowerSupply">
+                        <img src="/assets/thunderbolt 2.svg" alt="">
+                        Power Supply
+                    </div>
+                    <div class="filterItem" id="Cooling">
+                        <img src="/assets/fan 2.svg" alt="">
+                        Cooling
+                    </div>
+                </div>
+            </div>
+            <div class="block Cooling">
+                <div class="itemMenu">
+                    <div class="item">
+                        <div class="pic">
+                            <img src="/assets/ryzen-removebg-preview 1.svg" alt="" height="256px">
+                        </div>
+                        <div class="descrip">
+                            <div class="mainDescrip">
+                                <div class="top">
+                                    <div class="left">
+                                        <p>Processor</p>
+                                        <h5>AMD ryzen 3200g</h5>
+                                    </div>
+                                    <div class="right">
+                                        <img src="/assets/star.svg" alt="" height="14px">
+                                        <p>4.9</p>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="left">
+                                        <span>
+                                            <h6>$15,000.00</h6>
+                                        </span>
+                                        <span>
+                                            <p>$18,000.00</p>
+                                        </span>
+                                    </div>
+                                    <div class="right">
+                                        <p>15 in stock</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn">
+                                <p>Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="pic">
+                            <img src="/assets/ryzen-removebg-preview 1.svg" alt="" height="256px">
+                        </div>
+                        <div class="descrip">
+                            <div class="mainDescrip">
+                                <div class="top">
+                                    <div class="left">
+                                        <p>Processor</p>
+                                        <h5>AMD ryzen 3200g</h5>
+                                    </div>
+                                    <div class="right">
+                                        <img src="/assets/star.svg" alt="" height="14px">
+                                        <p>4.9</p>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="left">
+                                        <span>
+                                            <h6>$15,000.00</h6>
+                                        </span>
+                                        <span>
+                                            <p>$18,000.00</p>
+                                        </span>
+                                    </div>
+                                    <div class="right">
+                                        <p>15 in stock</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn">
+                                <p>Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+</body>
+<script src="script.js"></script>
+
+</html>
