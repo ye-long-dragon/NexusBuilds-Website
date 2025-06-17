@@ -506,3 +506,111 @@ p.forgot-pass {
     }
 
 }
+
+
+@media only screen and (max-width: 1024px ) {
+    .main-frame {
+        flex-direction: column;
+    }
+
+    .login-frame {
+        width: 100%;
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .logo {
+        height: 60px;
+        margin-top: 20px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .input-wrapper {
+        margin: 30px 10px;
+        width: 100%;
+    }
+
+    .login-inputs {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .login-inputs::placeholder {
+        font-size: 16px;
+    }
+
+    .rem-forg-pass {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .login-btn {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .or {
+        margin: 30px 0;
+    }
+
+    .or p {
+        font-size: 16px;
+    }
+
+    .login-via {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .sign-up {
+        font-size: 14px;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .sign-up-inputs {
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .sign-up-pword-frame {
+        flex-direction: column;
+        position: relative;
+    }
+
+    .sign-up-pword-frame img {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        transform: none;
+    }
+
+    .forgot-pass.btn {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    input[type=email] {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .username-frame.forg-pass-frame {
+        margin: 15px 0;
+    }
+
+    .title,
+    .sign-up-title,
+    .sign-up-text {
+        text-align: center;
+    }
+
+    #forgpass-input {
+        width: 100%;
+    }
+}
