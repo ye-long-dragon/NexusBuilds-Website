@@ -32,9 +32,15 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
-    profileImage:{
-        type:Image
+    pfp:{
+        type:Schema.Types.ObjectId,
+        ref:Image
+    } ,
+    paymentOption:{
+        type:Array,
+        ref:Payment
     }
+    
     
 });
 
