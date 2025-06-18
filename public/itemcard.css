@@ -1,0 +1,68 @@
+.item {
+    background-color: #313131;
+    width: fit-content;
+    padding: 10px;
+    margin-right: 0.8rem;
+    border-radius: 20px;
+}
+
+.item>div.pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.mainDescription .top .left>p {
+    color: gray;
+    font-family: inter;
+    font-size: 1rem;
+    font-style: normal;
+    width: 80%;
+}
+
+.mainDescription .top .left>h5 {
+    color: white;
+    font-family: inter;
+    font-size: 18px;
+    font-style: normal;
+}
+
+.right img {
+    width: 20px;
+    height: auto;
+    margin-right: 2px;
+}
+
+.mainDescription .top .left {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainDescription .top .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.mainDescription .bot .right>p {
+    font-style: normal;
+    font-family: inter;
+    font-size: 16px;
+    color: #01c201;
+}
+
+.mainDescription .bot .left>span>h6 {
+    font-size: 20px;
+    font-style: bold;
+}
+
+.mainDescription .bot .left {
+    color: gray;
+    font-family: inter;
+    font-style: normal;
+}

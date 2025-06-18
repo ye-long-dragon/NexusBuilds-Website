@@ -2,7 +2,7 @@ import express from 'express';
 const shopPage = express.Router();
 
 shopPage.get('/',(req,res)=>{
-    res.render("Shop-Page/index");
+    res.render("shop/index");
 })
 
 shopPage.get('/product/payment',(req,res)=>{

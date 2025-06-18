@@ -1,0 +1,429 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+
+:root {
+    ---padding-default: 2rem 10rem;
+}
+
+body {
+    font-family: "Montserrat";
+    background-color: #0B1222;
+}
+
+@media screen and (min-width:992px) {
+
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        background-color: #0B1222;
+        height: 100vh;
+        
+    }
+
+    main {
+        margin: var(---padding-default);
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+
+        margin: 0;
+        padding: 0;
+        color: white;
+        box-sizing: border-box;
+    }
+
+    .headRight {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    .headLeft {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logoName {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logoName>* {
+        padding: 5px;
+    }
+
+    .logoName>h1 {
+        font-family: inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        background: linear-gradient(90deg, #B949FF, #8A1DFF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .top .search-bar {
+        border: solid #989898 2px;
+        border-radius: 20px;
+
+        padding-right: 10px;
+        height: fit-content;
+    }
+
+    .search-icon {
+        color: #989898;
+    }
+
+    input[type=text] {
+        border-style: none;
+        border-width: 2px;
+        border-color: #989898;
+        padding: 0px 10px;
+
+        font-size: 0.9rem;
+        color: #b1b0b0;
+
+        background-color: pink;
+    }
+
+    input[type=text]::placeholder {
+        color: #b1b0b0;
+    }
+
+    input[type=text]:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .headerBtn {
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .headerBtn>h2 {
+        font-family: inter;
+        font-style: normal;
+        font-size: 18px;
+    }
+
+    footer {
+        top: 0;
+        padding: 20px;
+        background-color: #0B1222;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    hr {
+        color: grey;
+        margin: 30px;
+        width: 100%;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: row;
+        color: grey;
+        justify-content: space-between;
+        /* Space out children */
+        align-items: center;
+        /* Center items vertically */
+        padding: 10px;
+        /* Optional padding */
+    }
+
+    .left h2 {
+        font-size: 2.5rem;
+    }
+
+    .main .left .top>p {
+        color: gray;
+        font-size: 24px;
+    }
+
+    .main .left .bot>p {
+        font-family: inter;
+
+    }
+
+    .main .mid>p {
+        color: grey;
+    }
+
+    .right img {
+        width: 20px;
+        height: auto;
+        margin-right: 2px;
+    }
+
+    .main .right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .main .right>p {
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .mainDescription {
+        background-color: #0B1222;
+        top: 0;
+        color: white;
+        font-family: inter;
+
+        height: 100vh;
+    }
+
+    .top .left {
+        display: flex;
+        margin-right: auto;
+    }
+
+    .top .right {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .filterItem {
+        background-color: #171D2B;
+        padding: 7px 25px;
+        margin: 1rem 5px;
+        border-radius: 50px;
+        display: flex;
+        /* Activate flex layout */
+        align-items: center;
+        /* Vertically center children */
+        justify-content: center;
+
+        /* flex: 1; */
+    }
+
+    .allcomps {
+        flex: 1;
+    }
+
+    .filterItem img {
+        width: 30px;
+        height: auto;
+        margin-right: 0.5rem;
+    }
+
+    .filterItem {
+        transition: 0.25s;
+    }
+
+    .filterItem:hover {
+        background-color: #883AE2;
+        cursor: pointer;
+    }
+
+    .filterPart {
+        background-color: inherit;
+        color: white;
+        border: none;
+        /* Simplify border style */
+        position: relative;
+        font-weight: 525;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        /* Flex for button content alignment */
+        transition: 0.25s;
+    }
+
+
+    .block {
+        background-color: #0B1222;
+        top: 0;
+        padding: 20px;
+        padding-top: 50px;
+        color: white;
+        font-family: inter;
+    }
+
+    .itemMenu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .item {
+        background-color: #313131;
+        width: fit-content;
+        padding: 10px;
+        margin-right: 0.8rem;
+        border-radius: 20px;
+    }
+
+    .item>div.pic {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1rem;
+    }
+
+    .mainDescrip .bot .right>p {
+        font-style: normal;
+        font-family: inter;
+        font-size: 1.25rem;
+    }
+
+    .mainDescrip .top {
+        display: flex;
+        margin-bottom: 1.75rem;
+    }
+
+    .mainDescrip>div {
+        padding: 5px;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+    }
+
+    .mainDescrip>div span {
+        display: flex;
+        align-self: center;
+    }
+
+    .mainDescription .descrip .top {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .mainDescription .top .left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mainDescription .top .left>p {
+        color: gray;
+        font-family: inter;
+        font-size: 1rem;
+        font-style: normal;
+        width: 80%;
+    }
+
+    .mainDescription .top .left>h5 {
+        color: white;
+        font-family: inter;
+        font-size: 18px;
+        font-style: normal;
+    }
+
+    .mainDescription .top .right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    .mainDescription .top .right>input {
+        height: 36px;
+        border-radius: 12px;
+        width: 240px;
+        background-color: inherit;
+        border-color: #989898;
+    }
+
+    .mainDescription .top .right>p {
+        color: white;
+        font-family: inter;
+        font-size: 15px;
+        font-style: normal;
+        align-self: center;
+    }
+
+    .mainDescription .bot>div {
+        flex-direction: row;
+        display: flex;
+    }
+
+    .mainDescription .bot .right {
+        flex-direction: row;
+        display: flex;
+        margin-left: auto;
+        color: #01c201;
+    }
+
+    .mainDescription .bot .right>p {
+        font-style: normal;
+        font-family: inter;
+        font-size: 16px;
+
+    }
+
+
+
+    .mainDescription .bot .left {
+        color: gray;
+        font-family: inter;
+        font-style: normal;
+    }
+
+    .mainDescription .bot .left>span>h6 {
+        font-size: 20px;
+        font-style: bold;
+    }
+
+    .mainDescription .bot .left>span>p {
+        font-size: 12px;
+        justify-content: baseline;
+        text-decoration: line-through;
+        margin: 5px;
+        position: relative;
+    }
+
+    .mainDescription .filters {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .descrip .btn {
+        background-color: #8A1DFF;
+        background: linear-gradient(90deg, #c506ffad, #c302fe7e);
+        color: white;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        display: flex;
+        border-radius: 10px;
+
+        transition: 0.25s;
+    }
+
+    .btn:hover {
+        background-color: #8A1DFF;
+        cursor: pointer;
+    }
+
+    .descrip .btn>p {
+        font-family: inter;
+        font-style: bold;
+        font-size: 20px;
+    }
+
+
+}
