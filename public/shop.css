@@ -348,10 +348,8 @@ body {
 
     .mainDescription .top .right>p {
         color: white;
-        font-family: inter;
+        font-family: "Montserrat";
         font-size: 15px;
-        font-style: normal;
-        align-self: center;
     }
 
     .mainDescription .bot>div {

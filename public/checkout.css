@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    ---margin-default: 2rem 10rem;
+    ---item-gradient: linear-gradient(-84.23deg,
+            rgba(115, 115, 115, 0.041) 0%,
+            rgba(217, 217, 217, 0.074) 99.98999834060669%);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Montserrat";
+    background-color: #0B1222;
+    height: 125vh;
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    /* overflow-y: auto; */
+
+
+    margin: var(---margin-default);
+}
+
+.items-wrapper {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 3rem;
+}
+
+.item-wrapper {
+    display: flex;
+    align-items: center;
+    background: var(---item-gradient);
+    border-radius: 22px;
+    height: fit-content;
+    margin-top: 2rem;
+
+
+    padding: 1.5rem 5rem;
+}
+
+.product-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    width: 10rem;
+    padding: 1rem;
+
+    margin: 1rem;
+    border: none;
+    border-radius: 22px;
+
+    text-align: center;
+
+    background-color: grey;
+    color: white;
+}
+
+.details-wrapper {
+    color: white;
+    display: flex;
+    flex-flow: column;
+
+    justify-content: center;
+    align-items: start;
+    flex: 1;
+}
+
+.comp-type {
+    font-size: 1.25rem;
+    margin: 0px;
+}
+
+.product-name {
+    font-size: 1.5rem;
+    font-weight: 650;
+
+    margin: 1.25rem 0px;
+}
+
+.price-details {
+    flex: 1;
+    color: #24c78e;
+    font-size: 1.5rem;
+    font-weight: 650;
+}
+
+.price-details span {
+    text-decoration: line-through;
+    color: grey;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.qty {
+    flex: 1;
+    color: white;
+    font-size: 1.25rem;
+    margin-right: 5px;
+}
+
+input[type=number] {
+    border: solid 1px #ffffff;
+    border-radius: 11px;
+    padding: 0.5rem;
+    color: white;
+    background-color: transparent;
+}
+
+input[type=number]:focus {
+    outline: none;
+}
+
+.checkbox-wrapper *,
+.checkbox-wrapper *::before,
+.checkbox-wrapper *::after {
+    box-sizing: border-box;
+}
+
+.checkbox-wrapper label {
+    display: block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.checkbox-wrapper input {
+    visibility: hidden;
+    display: none;
+}
+
+.trash {
+    font-size: 3rem;
+    color: #c20404;
+    transition: 0.25s;
+}
+
+.trash:hover {
+    cursor: pointer;
+    color: #ff0000;
+}
+
+.checkbox-wrapper input:checked~.checkbox {
+    transform: rotate(45deg);
+    width: 14px;
+    margin-left: 12px;
+    border-color: #24c78e;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+}
+
+.checkbox-wrapper .checkbox {
+    display: block;
+    width: inherit;
+    height: inherit;
+    border: 3px solid #434343;
+    border-radius: 6px;
+    transition: all 0.375s;
+}
+
+.checkout-wrapper {
+    background: var(---item-gradient);
+    display: flex;
+    align-items: center;
+
+    margin: auto 10rem 2rem 10rem;
+    padding: 6rem 5rem;
+    border-radius: 22px;
+}
+
+p.select {
+    flex: 1;
+    color: white;
+    margin-left: 1rem;
+    font-size: 1.25rem;
+}
+
+p.select>span {
+    color: #ff0000;
+    margin-left: 1.25rem;
+}
+
+p.select>span:hover {
+    cursor: pointer;
+}
+
+button.checkout-btn {
+    padding: 1.5rem 7rem;
+    font-size: 1.5rem;
+    font-weight: 650;
+    color: white;
+    background-color: #782AFF;
+    border-radius: 11px;
+    border: none;
+
+    transition: 0.25s;
+}
+
+button.checkout-btn:hover {
+    background-color: #8640ff;
+    cursor: pointer;
+}
+
+p.total {
+    font-size: 1.5rem;
+    font-weight: 550;
+    color: white;
+    margin-right: 1rem;
+}
+
+p.total span {
+    color: #ff0000;
+}
+
+p.total span {
+    color: #00FF2B;
+}
