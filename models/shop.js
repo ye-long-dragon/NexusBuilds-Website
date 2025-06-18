@@ -11,8 +11,14 @@ const shopSchema= new Schema({
         type:String,
         required:true
     },
-    products:[Product],
-    shopImages:[Image],
+    products:{
+        type:Array,
+        ref:Product
+    } ,
+    shopImages:{
+        type:Array,
+        ref:Image
+    } ,
     shopDescription:{
         type:String
     },

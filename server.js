@@ -32,6 +32,7 @@ app.use(express.static('scripts'));
 app.use(express.static('views'));
 
 //using routers
+app.use(express.json());
 app.use("/", homePage);
 app.use("/auth",auth);
 app.use("/shop",shopPage)

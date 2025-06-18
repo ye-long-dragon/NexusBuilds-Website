@@ -20,7 +20,11 @@ const pcBuildSchema = new Schema({
     },
     tutorialLink:{
         type:String
-    }
+    },
+    pcImage:{
+        type:Schema.Types.ObjectId,
+        ref:Image
+    } ,
 });
 
 const pcBuild = model("pcBuild", pcBuildSchema);

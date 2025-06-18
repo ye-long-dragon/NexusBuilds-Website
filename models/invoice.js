@@ -15,7 +15,10 @@ const invoiceSchema = new Schema({
         type:String,
         required:true
     },
-    items:[Product],
+    items:{
+        type:Array,
+        ref:Product
+    } ,
     totalPrice:{
         type:Number,
         required:true

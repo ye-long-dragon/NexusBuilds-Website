@@ -39,7 +39,8 @@ const userSchema = new Schema({
     paymentOption:{
         type:Array,
         ref:Payment
-    }
+    },
+    
     
     
 });

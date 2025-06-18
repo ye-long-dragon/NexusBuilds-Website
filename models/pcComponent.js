@@ -7,7 +7,10 @@ const componentSchema = new Schema({
         type:String,
         required:true
     },
-    images:[Image],
+    images:{
+        type:Array,
+        ref:Image
+    } ,
     price:{
         type:Number,
         required:true

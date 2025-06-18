@@ -3,7 +3,25 @@ import User from "../../models/user.js";
 
 const router = express.Router();
 
+// NOOOOOOOOOOTTTT WORKING
+//get specific acc
+router.get("/users/:username", async (req, res) => {
+  try {
+    const username = req.params.username;
+    console.log("Looking for user:", username);
+    const user = await User.findOne({ username: username });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    return res.status(200).json({ user });
+  } catch (error) {
+    console.error("Error fetching user:", error.message);
+    return res.status(500).json({ error: "Failed to fetch user" });
+  }
+});
+
 // Create a new user
+//WORKING
 router.post("/users", async (req, res) => {
   try {
     const userData = req.body;
@@ -15,6 +33,7 @@ router.post("/users", async (req, res) => {
   }
 });
 //specific update
+//WORKING
 router.put("/users/:id", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -33,6 +52,9 @@ router.put("/users/:id", async (req, res) => {
   }
 });
 
+
+
+//WORKING
 // Get all users
 router.get("/users", async (req, res) => {
   try {
@@ -43,23 +65,11 @@ router.get("/users", async (req, res) => {
     return res.status(500).json({ error: "Failed to fetch users" });
   }
 });
-//get specific acc
-router.get("/users/:id", async (req, res) => {
-  try {
-    const userId = req.params.id;
-    if (!userId.match(/^[0-9a-fA-F]{24}$/)) {
-      return res.status(400).json({ error: "Invalid user ID format" });
-    }
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-    return res.status(200).json({ user });
-  } catch (error) {
-    console.error("Error fetching user:", error);
-    return res.status(500).json({ error: "Failed to fetch user" });
-  }
-});
+
+
+
+
+//WORKING
 //delete specific
 router.delete("/users/:id", async (req, res) => {
   try {

@@ -15,21 +15,23 @@ router.post("/product", async (req, res) => {
   }
 });
 
-// Update a specific product by ID
-router.put("/product/:id", async (req, res) => {
+router.put("/users/:id", async (req, res) => {
   try {
-    const productId = req.params.id;
-    if (!productId.match(/^[0-9a-fA-F]{24}$/)) {
-      return res.status(400).json({ error: "Invalid product ID format" });
+    const userId = req.params.id;
+    const updatedUser = await User.findOneAndUpdate(
+      { id: userId },        // custom field
+      req.body,
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
     }
-    const updatedProduct = await Product.findByIdAndUpdate(productId, req.body, { new: true });
-    if (!updatedProduct) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-    return res.status(200).json({ product: updatedProduct });
+
+    return res.status(200).json({ user: updatedUser });
   } catch (error) {
-    console.error("Error updating product:", error);
-    return res.status(500).json({ error: "Failed to update product" });
+    console.error("Error updating user:", error);
+    return res.status(500).json({ error: "Failed to update user" });
   }
 });
 

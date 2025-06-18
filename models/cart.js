@@ -6,7 +6,10 @@ const cartSchema = new Schema({
         type:String,
         required:true
     },
-    products: [Product],
+    products:{
+        type:Array,
+        ref:Product
+    } ,
     totalPrice:{
         type:Number,
         required:true
