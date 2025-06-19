@@ -1,18 +1,16 @@
-import express from 'express';
+import express from "express";
 const auth = express.Router();
 
-     auth.get('/login', (req, res) => {
-       res.render("login");
-     });
+auth.get("/login", (req, res) => {
+  res.render("auth/login");
+});
 
-     auth.get("/signup", (req, res) => {
-       res.render("signin");
-     });
+auth.get("/signup", (req, res) => {
+  res.render("auth/signup");
+});
 
-     auth.get("/forgotpassword", (req, res) => {
-       res.render("forgotPass");
-     });
-     
-     
+auth.get("/forgotpassword", (req, res) => {
+  res.render("auth/forgotpass");
+});
 
 export default auth;

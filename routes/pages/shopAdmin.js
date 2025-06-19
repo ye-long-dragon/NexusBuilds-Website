@@ -6,11 +6,11 @@ shopAdmin.get('/',(req,res)=>{
 });
 
 shopAdmin.get('/shiporders',(req,res)=>{
-    res.render('shipOrders');
+    res.render('shipOrders/index');
 });
 
 shopAdmin.get('/addproduct',(req,res)=>{
-    res.render('addProduct');
+    res.render('addProduct/index');
 });
 
 export default shopAdmin;

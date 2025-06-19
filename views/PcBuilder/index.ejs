@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="/pcbuilder.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/footer.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <%- include('../partials/navbar.ejs') %>
+
+    <main>
+        <div class="page-label">
+            <h2>Custom PC Builder</h2>
+            <p>Select components for your dream gaming rig</p>
+        </div>
+
+        <div class="components-wrapper">
+
+            <div class="components-card">
+                <h2 style="margin: 20px 0px;">Select Components</h2>
+
+                <div class="item-card-container">
+                    <img src="/assets/processor_builder.svg" alt="processor">
+                    <p><span>Processor</span><br>Not Selected</p>
+                    <button>Select</button>
+                </div>
+                <div class="item-card-container">
+                    <img src="/assets/gpu.svg" alt="processor">
+                    <p><span>Graphics Card</span><br>Not Selected</p>
+                    <button>Select</button>
+                </div>
+                <div class="item-card-container">
+                    <img src="/assets/motherboard.svg" alt="processor">
+                    <p><span>Motherboard</span><br>Not Selected</p>
+                    <button>Select</button>
+                </div>
+                <div class="item-card-container">
+                    <img src="/assets/storage.svg" alt="processor">
+                    <p><span>Storage</span><br>Not Selected</p>
+                    <button>Select</button>
+                </div>
+                <div class="item-card-container">
+                    <img src="/assets/ram.svg" alt="processor">
+                    <p><span>RAM</span><br>Not Selected</p>
+                    <button>Select</button>
+                </div>
+                <div class="item-card-container">
+                    <img src="/assets/case.svg" alt="processor">
+                    <p><span>Case</span><br>Not Selected</p>
+                    <button>Select</button>
+                </div>
+                <div class="item-card-container">
+                    <img src="/assets/power.svg" alt="processor">
+                    <p><span>Power Supply</span><br>Not Selected</p>
+                    <button>Select</button>
+                </div>
+                <div class="item-card-container">
+                    <img src="/assets/cooler.svg" alt="processor">
+                    <p><span>Cooler</span><br>Not Selected</p>
+                    <button>Select</button>
+                </div>
+
+                <div class="add-extras">
+
+                    <hr>
+                    <p>Add Extras</p>
+                    <button>Add</button>
+
+                </div>
+
+            </div>
+
+            <div class="cart-card">
+                <p class="cart-card-label">
+                    <span>Your Custom Build</span> <br>
+                    Start adding components to build your dream pc
+                </p>
+
+                <div class="item-card-cart">
+                    <img src="/assets/processor-cart-icon.svg" alt="processor">
+                    <p>
+                        <span>Processor</span> <br>
+                        Not Selected
+                    </p>
+                    <!-- <p style="margin-left: auto; margin-right: 10px;">₱ Price</p> -->
+                </div>
+                <div class="item-card-cart">
+                    <img src="/assets/gpu-cart-icon.svg" alt="Graphics Card">
+                    <p>
+                        <span>Graphics Card</span> <br>
+                        Not Selected
+                    </p>
+
+                    <!-- <p style="margin-left: auto; margin-right: 10px;">₱ Price</p> -->
+                </div>
+                <div class="item-card-cart">
+                    <img src="/assets/motherboard-cart-icon.svg" alt="Motherboard">
+                    <p>
+                        <span>Motherboard</span> <br>
+                        Not Selected
+                    </p>
+
+                    <!-- <p style="margin-left: auto; margin-right: 10px;">₱ Price</p> -->
+                </div>
+                <div class="item-card-cart">
+                    <img src="/assets/storage-cart-icon.svg" alt="Storage">
+                    <p>
+                        <span>Storage</span> <br>
+                        Not Selected
+                    </p>
+
+                    <!-- <p style="margin-left: auto; margin-right: 10px;">₱ Price</p> -->
+                </div>
+                <div class="item-card-cart">
+                    <img src="/assets/ram-cart-icon.svg" alt="RAM">
+                    <p>
+                        <span>RAM</span> <br>
+                        Not Selected
+                    </p>
+
+                    <!-- <p style="margin-left: auto; margin-right: 10px;">₱ Price</p> -->
+                </div>
+                <div class="item-card-cart">
+                    <img src="/assets/case-cart-icon.svg" alt="Case">
+                    <p>
+                        <span>Case</span> <br>
+                        Not Selected
+                    </p>
+
+                    <!-- <p style="margin-left: auto; margin-right: 10px;">₱ Price</p> -->
+                </div>
+                <div class="item-card-cart">
+                    <img src="/assets/power-cart-icon.svg" alt="power supply">
+                    <p>
+                        <span>Power Supply</span> <br>
+                        Not Selected
+                    </p>
+
+                    <!-- <p style="margin-left: auto; margin-right: 10px;">₱ Price</p> -->
+                </div>
+                <div class="item-card-cart">
+                    <img src="/assets/cooler-cart-icon.svg" alt="coooler">
+                    <p>
+                        <span>Cooler</span> <br>
+                        Not Selected
+                    </p>
+
+                    <!-- <p style="margin-left: auto; margin-right: 10px;">₱ Price</p> -->
+                </div>
+
+                <hr>
+                <div class="charges-wrapper">
+                    <p>Total</p>
+                    <p style="text-align: end;">₱0.00</p>
+                    <div class="img-wrapper">
+                        <img src="/assets/save.svg" alt="save">
+                    </div>
+                    <button>Check Out</button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>

@@ -1,47 +1,92 @@
-*{
-    padding: 0;
-    margin: 0;
-}
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body{
-    
-    background: #0b1222;
-}
+        body {
+            background: #0b1222;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            min-height: 100vh;
+        }
 
-.contain{
-    display: flex;
-    flex-direction: row;
-    
-}
+        nav {
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            width: 400px;
+            padding: 20px 15px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
 
-nav{
-    background: linear-gradient(to bottom,#0f172a,#1e293b);
-    width: 25%;
-    height: 100%;
-    color: white;
-    padding-bottom: 500px;
-}
+        .navBtn {
+            background-color: #1e293b;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
 
-.top{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
+        .navBtn:hover {
+            background-color: #334155;
+            border-left: 3px solid #60a5fa;
+        }
 
-.top>p{
-    padding-right: 40px;
-    margin-right: 40px;
-}
+        .navBtn .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.top>img{
-    padding: 10px;
-    margin: 5px;
-}
+        .navBtn .top p {
+            flex-grow: 1;
+            margin: 0 10px;
+            font-weight: 500;
+        }
 
-.text{
-     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
+        .navBtn .text {
+            padding: 8px 0 0 34px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        main {
+            flex: 1;
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            
+            nav {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+            
+            main {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .order-item {
+                flex-direction: column;
+            }
+            
+            .status {
+                margin-top: 15px;
+                align-self: flex-end;
+            }
+        }
