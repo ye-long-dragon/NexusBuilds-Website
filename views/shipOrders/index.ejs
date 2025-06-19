@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/shipOrders.css">
+    <link rel="stylesheet" href="/shopAdminNav.css">
 </head>
 <body>
-    <div class="container">
+    <div class="contain">
+        <%- include('../GeneralPartials/shopAdminNavBar') %>
+        <div class="container">
         <div class="top">
             <p>My Products</p>
         </div>
@@ -19,10 +22,11 @@
                 <p>Address address address</p>
             </div>
             <div class="btns">
-                <img src="assets/check.svg" alt="" height="50px">
-                <img src="assets/close.svg" alt="" height="50px">
+                <img src="/check.svg" alt="" height="50px">
+                <img src="/close.svg" alt="" height="50px">
             </div>
         </section>
+        </div>
     </div>
 </body>
 </html>

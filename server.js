@@ -1,13 +1,27 @@
 import express from "express";
+<<<<<<< HEAD
+
+//views
+import homePage from"./routes/pages/homePage.js";
+=======
 import homePage from "./routes/pages/homePage.js";
+>>>>>>> main
 import auth from "./routes/pages/auth.js";
 import shopPage from "./routes/pages/shopPage.js";
 import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
+<<<<<<< HEAD
+=======
 import usersRouter from "./routes/api/user.js";
 import payment from "./routes/pages/payment.js";
+>>>>>>> main
 import connect from "./database/mongodb-connect.js";
+import shopAdmin from "./routes/pages/shopAdmin.js";
+
+//api
+import usersRouter from "./routes/api/user.js";
+import productRouter from "./routes/api/product.js";
 
 const app = express();
 const PORT = 8000;
@@ -28,14 +42,27 @@ app.use(express.static("views"));
 
 
 //using routers
+app.use(express.json());
 app.use("/", homePage);
+<<<<<<< HEAD
+app.use("/auth",auth);
+app.use("/shop",shopPage)
+app.use("/pcbuilder",pcBuilder);
+app.use("/pcprofile",pcProfile);
+app.use("/profile",userProfile);
+app.use("/shopadmin",shopAdmin);
+
+//api
+=======
 app.use("/auth", auth);
 app.use("/shop", shopPage);
 app.use("/pcbuilder", pcBuilder);
 app.use("/pcprofile", pcProfile);
 app.use("/userProfile", userProfile);
 app.use("/payment", payment);
+>>>>>>> main
 app.use("/api", usersRouter);
+app.use("/api",productRouter);
 
 connect();
 

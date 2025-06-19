@@ -9,4 +9,9 @@ shopPage.get('/product/payment',(req,res)=>{
     res.render("payment/index");
 })
 
+
+shopPage.get('/product',(req,res)=>{
+    res.render("productPage/index");
+})
+
 export default shopPage;

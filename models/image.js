@@ -6,4 +6,5 @@ const imageSchema = new Schema({
 });
 
 const Image = model('image',imageSchema);
+
 export default Image;
