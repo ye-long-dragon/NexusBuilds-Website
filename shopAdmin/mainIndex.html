@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Order Management System</title>
     <link rel="stylesheet" href="mainStyles.css">
 </head>
 <body>
     <nav>
         <section class="navBtn orders">
             <div class="top">
-                <img src="assets/calendar-user.svg" alt="" height="24px">
+                <img src="assets/calendar-user.svg" alt="Orders icon" height="24px">
                 <p>Orders</p>
-                <img src="assets/angle-down.svg" alt="" height="24px">
+                <img src="assets/angle-down.svg" alt="Dropdown icon" height="24px">
             </div>
             <div class="text">
                 <p>Ship Orders</p>
@@ -20,15 +20,41 @@
         </section>
         <section class="navBtn products">            
             <div class="top">
-                <img src="assets/mailbox.svg" alt="" height="24px">
+                <img src="assets/mailbox.svg" alt="Products icon" height="24px">
                 <p>Products</p>
-                <img src="assets/angle-down.svg" alt="" height="24px">
+                <img src="assets/angle-down.svg" alt="Dropdown icon" height="24px">
             </div>
             <div class="text">
                 <p>My Products</p>
             </div>
         </section>
     </nav>
-    <main></main>
+    <main>
+        <section class="ship-orders">
+            <h2>Ship Orders</h2>
+            <div class="order-item">
+                <div class="order-info">
+                    <p>Vince Lawrence Baraclan</p>
+                    <p>Nvidia GeForce RTX 3060</p>
+                    <p>Complete Address: 123 Main Street, Barangay San Antonio, Quezon City, Metro Manila, Philippines 1105</p>
+                </div>
+                <div class="status">
+                    <img class="status-icon" src="assets/check.svg" alt="Mark as completed">
+                    <img class="status-icon" src="assets/close.svg" alt="Cancel order">
+                </div>
+            </div>
+            <div class="order-item">
+                <div class="order-info">
+                    <p>Maria Santos</p>
+                    <p>AMD Ryzen 7 5800X</p>
+                    <p>Complete Address: 456 Oak Avenue, Barangay Poblacion, Makati City, Metro Manila, Philippines 1200</p>
+                </div>
+                <div class="status">
+                    <img class="status-icon" src="assets/check.svg" alt="Mark as completed">
+                    <img class="status-icon" src="assets/x.svg" alt="Cancel order">
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
