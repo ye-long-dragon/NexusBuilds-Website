@@ -6,6 +6,7 @@ import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
 import usersRouter from "./routes/api/user.js";
+import payment from "./routes/pages/payment.js";
 import connect from "./database/mongodb-connect.js";
 
 const app = express();
@@ -33,6 +34,7 @@ app.use("/shop", shopPage);
 app.use("/pcbuilder", pcBuilder);
 app.use("/pcprofile", pcProfile);
 app.use("/userProfile", userProfile);
+app.use("/payment", payment);
 app.use("/api", usersRouter);
 
 connect();
