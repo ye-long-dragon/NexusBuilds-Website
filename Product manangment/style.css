@@ -109,6 +109,7 @@ body {
     box-sizing: border-box;
 }
 
+
 .submit-btn {
     background-color: #A855F7;
     color: #FFFFFF;
@@ -117,14 +118,21 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    width: 100%;
+    width: 50%;
     margin-top: 10px;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .submit-btn:hover {
     background-color: #9333ea;
 }
 
+/* Style for the form group */
 .form-group {
     margin-bottom: 20px;
 }
