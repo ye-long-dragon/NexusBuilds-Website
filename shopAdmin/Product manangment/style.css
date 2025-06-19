@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #0b1222;
+}
+
+.product-form {
+    background-color: #1E1E2F;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.product-form h2 {
+    color: #FFFFFF;
+    margin-right: 50px;
+    margin-top: 0;
+}
+
+.product-form label {
+    color: #FFFFFF;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+#pname {
+    width: 30%;
+    padding: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+#productname {
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#category {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 17px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+#cat {
+    font-size: 25px;
+    margin-left: 56px;
+    color: #FFFFFF;
+}
+
+#des, #full {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+#fdescription, #bdescription {
+    font-size: 25px;
+    padding-bottom: 15px;
+    color: #FFFFFF;
+}
+
+/* Form row styles */
+.form-row:not(.specs-row) {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+/* Special grid layout for specs row */
+.specs-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.specs-row .form-group {
+    margin: 0;
+}
+
+.specs-row label {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.submit-btn {
+    background-color: #A855F7;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #9333ea;
+}
+
+#weight, #volume, #price, #stock {
+    display: flex;
+    flex-direction: row;
+    color: #FFFFFF;
+    font-size: 20px;
+
+}
