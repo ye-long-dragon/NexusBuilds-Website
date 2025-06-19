@@ -16,7 +16,7 @@
     <%- include('../partials/navbar.ejs') %>
 
     <main>
-        <p class="page-label">My Profile</p>
+        <p class="page-label"><%= username %></p>
         <div class="profile-wrapper">
 
             <div class="c1">
@@ -34,13 +34,13 @@
                 <div class="c2-1">
 
                     <div class="input-wrapper">
-                        <label for="l-name">Last Name</label>
-                        <input type="text" id="l-name">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname">
                     </div>
 
                     <div class="input-wrapper">
-                        <label for="uname">Username</label>
-                        <input type="text" id="uname">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname">
                     </div>
 
                 </div>
@@ -59,7 +59,7 @@
 
                     <div class="input-wrapper">
                         <label for="email">Email</label>
-                        <input type="email" id="email">
+                        <input type="email" id="email" value="<%= email %>">
                     </div>
                 </div>
 
@@ -108,26 +108,6 @@
 
 </body>
 
-<script>
-
-    const imageInput = document.getElementById('imgInput');
-    const message = document.getElementById('message');
-
-    imageInput.addEventListener('change', () => {
-        const file = imageInput.files[0];
-        const maxSizeMB = 1;
-
-        if (file && file.size > maxSizeMB * 1024 * 1024) {
-            alert("File is too large. Maximum size is 1MB.");
-            imageInput.value = ''; // clear the input
-        } else {
-            // message.textContent = '';
-            console.log("File Bigger Than 1mb")
-            preview.src = URL.createObjectURL(file);
-            // proceed with the file (preview/upload)
-        }
-    });
-
-</script>
+<script src="userprofile.js"></script>
 
 </html>

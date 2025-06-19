@@ -2,7 +2,20 @@ import express from 'express';
 const userProfile = express.Router();
 
 userProfile.get('/',(req,res)=>{
-    res.render('userprofile/index');
+    const user = req.session.user;
+
+    if (!user) {
+        return res.render('userprofile/index', { 
+            email: null,
+            username: null
+        });
+    } 
+
+    res.render('userprofile/index', {
+        email: user.email,
+        username: user.username,
+    })
+    
 });
 
 export default userProfile;

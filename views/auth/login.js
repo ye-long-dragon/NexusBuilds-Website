@@ -6,11 +6,11 @@ async function login() {
     const res = await fetch(`/users/${email}`);
     const data =  await res.json();
     
-    console.log(data.password);
+    // console.log(data.password);
 
     if (pword == data.password) {
-        alert(`Welcome, ${data.username}.`);
         window.location.href = "/";
+        alert(`Welcome, ${data.username}.`);
     } else {
         alert("Incorrect password or email does not exist.");
     }

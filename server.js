@@ -11,12 +11,21 @@ import checkout from "./routes/pages/checkout.js";
 import connect from "./database/mongodb-connect.js";
 import User from "./models/user.js";
 
+import session from 'express-session';
+
 const app = express();
 const PORT = 8000;
 
 // Use body-parser middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// for storing variable purposes
+app.use(session({
+  secret: '1', // should be long and secret
+  resave: false,
+  saveUninitialized: true
+}))
 
 // use the static middleware to serve static files
 app.use(express.static("public"));
@@ -39,7 +48,6 @@ app.use("/userProfile", userProfile);
 app.use("/checkout", checkout); // checkout router
 // app.use("/api/users", usersRouter);
 app.use("/api/users", router);
-app.use("../models/user", User);
 
 app.get('/users', async (req, res) => {
   try {
@@ -55,15 +63,36 @@ app.get('/users/:email', async (req, res) => {
   try {
       const email = req.params.email;
       const user = await User.findOne({email});
+
+      req.session.user = user;
+      req.session.email = email;
+
       res.status(200).json(user);
 
-      res.render('index', {
-        username: user.username
-      })
   } catch (error) {
       res.status(500).json({message: error.message});
   }
 });
+
+// post user 
+app.post("/users", async (req,res)=>{
+    const user = req.body;
+
+    const result = await User.create(user);
+    return res.status(201).json();
+})
+
+app.get('/', async (req, res) => {
+  const user = req.session.user;
+
+  if (!user) {
+    return res.render('Landing-Page/index', { username: null });
+  }
+
+  res.render('Landing-Page/index', {
+    username: user.username
+  });
+})
 
 connect();
 

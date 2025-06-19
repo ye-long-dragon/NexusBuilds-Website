@@ -54,11 +54,13 @@ header {
 .headRight {
     display: flex;
     margin-left: auto;
+    border: none;
 }
 
 .headLeft {
     display: flex;
     align-items: center;
+    border: none;
 }
 
 .logoName>h1 {

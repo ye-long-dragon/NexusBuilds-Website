@@ -607,8 +607,6 @@ body {
         justify-content: center;
         display: flex;
         flex-direction: column;
-
-        margin: 0px 10rem
     }
 
     hr {

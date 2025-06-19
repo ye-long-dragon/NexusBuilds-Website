@@ -407,10 +407,6 @@ a {
     width: 100%;
 }
 
-.forgot-pass {
-    color: #717171;
-}
-
 h1.forgot-pass {
     margin: 0px;
 }
@@ -429,14 +425,12 @@ p.forgot-pass > span {
     font-weight: bold;
 }
 
-input[type=email] {
+input[type=email].sign-up{
     
     background-color: #252D3F;
     border: none;
     border-radius: 5px;
     padding: 25px 0px 25px 20px;
-
-    /* width: 100%; */
 
     font-size: 18px;
 }
@@ -471,12 +465,31 @@ img.input-icon.forg-pass-icon {
     color: white;
 }
 
+.username-frame.forg-pass-frame {
+    display: flex;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
 #forgpass-input {
-    width: 200%;
+    width: 100%;
+    border-radius: 0px 5px 5px 0px;
+
+    background-color: #252D3F;
+    border: none;
+    padding: 25px 0px 25px 20px;
+
+    font-size: 18px;
 }
 
 p.forgot-pass {
     margin: 10px
+}
+
+.forgot-pass {
+    color: #717171;
+    flex:1;
+    border-radius: 0px 5px 5px 0px;
 }
 
 @media only screen and (max-width: 1536px) {
