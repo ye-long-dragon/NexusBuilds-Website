@@ -9,7 +9,7 @@ body {
     background-color: #1E1E2F;
     padding: 20px;
     border-radius: 8px;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -23,18 +23,6 @@ body {
     color: #FFFFFF;
     display: block;
     margin-bottom: 5px;
-}
-
-.form-input {
-    flex-direction: row;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #444;
-    background-color: #2A2A3C;
-    color: #FFFFFF;
-    box-sizing: border-box;
 }
 
 #pname {
@@ -97,29 +85,28 @@ body {
     padding: 10px;
 }
 
-/* Special grid layout for specs row */
-.specs-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 15px;
-    padding: 10px;
-}
-
-.specs-row .form-group {
-    margin: 0;
-}
-
-.specs-row label {
-    font-size: 16px;
-    color: #FFFFFF;
-    margin-bottom: 8px;
-}
-
+/* Updated form-group style for label + input side by side */
 .form-group {
     display: flex;
-    flex-direction: column;
-    flex: 1;
+    align-items: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    color: #FFFFFF;
+    width: 100px; /* adjust label width as needed */
+    margin-right: 10px;
+    margin-left: 50px;
+}
+
+.form-input {
+    width: 30%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
 }
 
 .submit-btn {
@@ -138,10 +125,27 @@ body {
     background-color: #9333ea;
 }
 
-#weight, #volume, #price, #stock {
-    display: flex;
-    flex-direction: row;
-    color: #FFFFFF;
-    font-size: 20px;
+.form-group {
+    margin-bottom: 20px;
+}
 
+
+#w{
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#v{
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#p{
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#s{
+    font-size: 25px;
+    color: #FFFFFF;
 }
