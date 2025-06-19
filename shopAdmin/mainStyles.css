@@ -1,41 +1,152 @@
-*{
-    padding: 0;
-    margin: 0;
-}
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body{
-    
-    background: #0b1222;
-}
+        body {
+            background: #0b1222;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            min-height: 100vh;
+        }
 
-nav{
-    background: linear-gradient(to bottom,#0f172a,#1e293b);
-    width: 25%;
-    height: 100%;
-    color: white;
-    padding-bottom: 500px;
-}
+        nav {
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            width: 280px;
+            padding: 20px 15px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
 
-.top{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
+        .navBtn {
+            background-color: #1e293b;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
 
-.top>p{
-    padding-right: 40px;
-    margin-right: 40px;
-}
+        .navBtn:hover {
+            background-color: #334155;
+            border-left: 3px solid #60a5fa;
+        }
 
-.top>img{
-    padding: 10px;
-    margin: 5px;
-}
+        .navBtn .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.text{
-     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
+        .navBtn .top p {
+            flex-grow: 1;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        .navBtn .text {
+            padding: 8px 0 0 34px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        main {
+            flex: 1;
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        .ship-orders {
+            background-color: #1e293b;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .ship-orders h2 {
+            margin-bottom: 20px;
+            color: #e2e8f0;
+            font-size: 22px;
+        }
+
+        .order-item {
+            background-color: #334155;
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: transform 0.2s ease;
+        }
+
+        .order-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .order-info {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .order-info p {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .order-info p:first-child {
+            font-weight: 600;
+            color: #f8fafc;
+        }
+
+        .status {
+            display: flex;
+            gap: 12px;
+        }
+
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .status-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            
+            nav {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+            
+            main {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .order-item {
+                flex-direction: column;
+            }
+            
+            .status {
+                margin-top: 15px;
+                align-self: flex-end;
+            }
+        }
