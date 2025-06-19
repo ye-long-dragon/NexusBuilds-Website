@@ -22,18 +22,22 @@
                 <p class="sign-up-title">Already have an <span><a href="<%= '/auth/login' %>">Account</a></span>?</p>
 
                 <div class="uname-email-wrapper">
-                    <input type="text" placeholder="Username" class="sign-up-inputs">
-                    <input type="email" placeholder="Email" class="sign-up-inputs sign-up">
+                    <input type="text" placeholder="Username" class="sign-up-inputs uname-input">
+                    <input type="email" placeholder="Email" class="sign-up-inputs sign-up email-input">
                 </div>
 
                 <div class="sign-up-pword-frame">
                     <img src="/assets/eye-slash.svg" alt="show">
-                    <input type="password" placeholder="Password" class="sign-up-inputs sign-up-pword">
+                    <input type="password" placeholder="Password" class="sign-up-inputs sign-up-pword pword-input">
                 </div>
                 <div class="sign-up-pword-frame">
                     <img src="/assets/eye-slash.svg" alt="show">
-                    <input type="password" placeholder="Confirm Password" class="sign-up-inputs sign-up-pword">
+                    <input type="password" placeholder="Confirm Password" class="sign-up-inputs sign-up-pword cpword-input">
                 </div>
+
+                <button class="signup-btn">
+                    Sign Up
+                </button>
 
                 <div class="or">
                     <hr>
@@ -56,5 +60,7 @@
     </div>
 
 </body>
+
+<script src="signup.js"></script>
 
 </html>

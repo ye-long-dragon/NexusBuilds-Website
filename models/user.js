@@ -2,15 +2,7 @@ import { Schema,model } from "mongoose";
 import Payment from "./paymentOptions.js";  
 
 const userSchema = new Schema({
-    username:{
-        type:String,
-        required:true
-    },
-    firstName:{
-        type:String,
-        required:true
-    },
-    lastName:{
+    username: {
         type:String,
         required:true
     },
@@ -19,15 +11,10 @@ const userSchema = new Schema({
         required:true,
         unique:true
     },
-    password:{
+    password: {
         type:String,
         required:true
-    },
-    birthDate:{
-        type:Date,
-        required:true
-    },
-    
+    }
 });
 
 const User = model('User',userSchema);

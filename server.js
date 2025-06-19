@@ -5,9 +5,11 @@ import shopPage from "./routes/pages/shopPage.js";
 import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
-import usersRouter from "./routes/api/user.js";
+// import usersRouter from "./routes/api/user.js";
+import router from "./routes/api/user.js";
 import checkout from "./routes/pages/checkout.js";
 import connect from "./database/mongodb-connect.js";
+import User from "./models/user.js";
 
 const app = express();
 const PORT = 8000;
@@ -35,7 +37,33 @@ app.use("/pcbuilder", pcBuilder);
 app.use("/pcprofile", pcProfile);
 app.use("/userProfile", userProfile);
 app.use("/checkout", checkout); // checkout router
-app.use("/api", usersRouter);
+// app.use("/api/users", usersRouter);
+app.use("/api/users", router);
+app.use("../models/user", User);
+
+app.get('/users', async (req, res) => {
+  try {
+      const users = await User.find({});
+      res.status(200).json(users);
+  } catch (error) {
+      res.status(500).json({message: error.message});
+  }
+});
+
+// get user
+app.get('/users/:email', async (req, res) => {
+  try {
+      const email = req.params.email;
+      const user = await User.findOne({email});
+      res.status(200).json(user);
+
+      res.render('index', {
+        username: user.username
+      })
+  } catch (error) {
+      res.status(500).json({message: error.message});
+  }
+});
 
 connect();
 
