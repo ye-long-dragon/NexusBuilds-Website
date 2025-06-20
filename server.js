@@ -1,27 +1,30 @@
 import express from "express";
-<<<<<<< HEAD
 
-//views
-import homePage from"./routes/pages/homePage.js";
-=======
 import homePage from "./routes/pages/homePage.js";
->>>>>>> main
+
 import auth from "./routes/pages/auth.js";
 import shopPage from "./routes/pages/shopPage.js";
 import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
-<<<<<<< HEAD
-=======
+
+// import usersRouter from "./routes/api/user.js";
+import router from "./routes/api/user.js";
+import checkout from "./routes/pages/checkout.js";
+import connect from "./database/mongodb-connect.js";
+import User from "./models/user.js";
+
+import session from 'express-session';
+
 import usersRouter from "./routes/api/user.js";
 import payment from "./routes/pages/payment.js";
->>>>>>> main
+
 import connect from "./database/mongodb-connect.js";
 import shopAdmin from "./routes/pages/shopAdmin.js";
 
-//api
-import usersRouter from "./routes/api/user.js";
+
 import productRouter from "./routes/api/product.js";
+
 
 const app = express();
 const PORT = 8000;
@@ -29,6 +32,13 @@ const PORT = 8000;
 // Use body-parser middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// for storing variable purposes
+app.use(session({
+  secret: '1', // should be long and secret
+  resave: false,
+  saveUninitialized: true
+}))
 
 // use the static middleware to serve static files
 app.use(express.static("public"));
@@ -44,7 +54,7 @@ app.use(express.static("views"));
 //using routers
 app.use(express.json());
 app.use("/", homePage);
-<<<<<<< HEAD
+
 app.use("/auth",auth);
 app.use("/shop",shopPage)
 app.use("/pcbuilder",pcBuilder);
@@ -53,16 +63,62 @@ app.use("/profile",userProfile);
 app.use("/shopadmin",shopAdmin);
 
 //api
-=======
-app.use("/auth", auth);
-app.use("/shop", shopPage);
-app.use("/pcbuilder", pcBuilder);
-app.use("/pcprofile", pcProfile);
-app.use("/userProfile", userProfile);
+
+
+app.use("/checkout", checkout); // checkout router
+// app.use("/api/users", usersRouter);
+app.use("/api/users", router);
+
+app.get('/users', async (req, res) => {
+  try {
+      const users = await User.find({});
+      res.status(200).json(users);
+  } catch (error) {
+      res.status(500).json({message: error.message});
+  }
+});
+
+// get user
+app.get('/users/:email', async (req, res) => {
+  try {
+      const email = req.params.email;
+      const user = await User.findOne({email});
+
+      req.session.user = user;
+      req.session.email = email;
+
+      res.status(200).json(user);
+
+  } catch (error) {
+      res.status(500).json({message: error.message});
+  }
+});
+
+// post user 
+app.post("/users", async (req,res)=>{
+    const user = req.body;
+
+    const result = await User.create(user);
+    return res.status(201).json();
+})
+
+app.get('/', async (req, res) => {
+  const user = req.session.user;
+
+  if (!user) {
+    return res.render('Landing-Page/index', { username: null });
+  }
+
+  res.render('Landing-Page/index', {
+    username: user.username
+  });
+})
+
 app.use("/payment", payment);
->>>>>>> main
+
 app.use("/api", usersRouter);
 app.use("/api",productRouter);
+
 
 connect();
 

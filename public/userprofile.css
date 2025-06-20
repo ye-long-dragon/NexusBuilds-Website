@@ -9,6 +9,10 @@
     padding: 0px;
 }
 
+:root {
+    ---margin-default: 2rem 10rem;
+}
+
 body {
     font-family: "Montserrat";
     background-color: #0B1222;
@@ -23,6 +27,7 @@ main {
     border-radius: 22px;
 
     padding: 2rem 10rem;
+    margin: var(---margin-default);
 }
 
 label,
