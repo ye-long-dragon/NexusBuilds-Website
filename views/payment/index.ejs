@@ -4,7 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/payment.css">
+        <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #0B1222;
+            color: #FFFFFF; /* Added white text color */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .checkout-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .items-section {
+            flex: 1;
+            border: 1px solid #2A3A57;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #141E33;
+        }
+
+        .payment-section {
+            flex: 1;
+            border: 1px solid #2A3A57;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #141E33;
+        }
+
+        h1, h2 {
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #2A3A57;
+        }
+
+        .item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .item-details {
+            flex: 1;
+            color: #E0E0E0;
+        }
+
+        .item-details h3 {
+            color: #FFFFFF;
+            margin-top: 0;
+        }
+
+        .item-price {
+            font-weight: bold;
+            color: #4CAF50; /* Changed to green for better visibility */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #2A3A57;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #1E2A47;
+            color: #FFFFFF;
+        }
+
+        input::placeholder {
+            color: #7A8FB5;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 25px;
+            object-fit: contain;
+            background: white;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .row .form-group {
+            flex: 1;
+        }
+
+        .checkout-btn {
+            background-color: #4361EE;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #3A56D4;
+        }
+
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+            color: #FFFFFF;
+        }
+
+        .total p {
+            margin: 8px 0;
+        }
+    </style>
 </head>
 <body>
     <main>

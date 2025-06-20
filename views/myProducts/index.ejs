@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/myProducts.css">
+    <link rel="stylesheet" href="/shopAdminNav.css">
 </head>
 <body>
-    <div class="container">
+    <div class="contain">
+        <%- include('../GeneralPartials/shopAdminNavBar') %>
+         <div class="container">
         <div class="top">
             <p>My Products</p>
             <div class="addBtn"><p>Add Product</p></div>
@@ -24,6 +27,7 @@
                 <img src="assets/trash.png" alt="" height="50px">
             </div>
         </section>
+    </div>
     </div>
 </body>
 </html>

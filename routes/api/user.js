@@ -1,13 +1,12 @@
 import express from 'express';
-import User from "../../models/user.js"
+import User from "../../models/user.js";
+
 const router = express.Router();
+
 
 router.post("/users", async (req,res)=>{
     const user = req.body;
 
-    const result = await User.create(user);
-    return res.status(201).json();
-})
 
 // get user
 router.get('/users/:email', async (req, res) => {
@@ -46,3 +45,5 @@ router.get('/', async (req, res) => {
 })
 
 export default router;
+
+

@@ -25,6 +25,10 @@ input{
     padding: 5px;
 }
 
+form{
+    width: 100%;
+}
+
 select{
     background-color: #0b1222;
     margin: 10px;

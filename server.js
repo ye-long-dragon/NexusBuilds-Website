@@ -1,10 +1,13 @@
 import express from "express";
+
 import homePage from "./routes/pages/homePage.js";
+
 import auth from "./routes/pages/auth.js";
 import shopPage from "./routes/pages/shopPage.js";
 import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
+
 // import usersRouter from "./routes/api/user.js";
 import router from "./routes/api/user.js";
 import checkout from "./routes/pages/checkout.js";
@@ -12,6 +15,16 @@ import connect from "./database/mongodb-connect.js";
 import User from "./models/user.js";
 
 import session from 'express-session';
+
+import usersRouter from "./routes/api/user.js";
+import payment from "./routes/pages/payment.js";
+
+import connect from "./database/mongodb-connect.js";
+import shopAdmin from "./routes/pages/shopAdmin.js";
+
+
+import productRouter from "./routes/api/product.js";
+
 
 const app = express();
 const PORT = 8000;
@@ -39,12 +52,19 @@ app.use(express.static("views"));
 
 
 //using routers
+app.use(express.json());
 app.use("/", homePage);
-app.use("/auth", auth);
-app.use("/shop", shopPage);
-app.use("/pcbuilder", pcBuilder);
-app.use("/pcprofile", pcProfile);
-app.use("/userProfile", userProfile);
+
+app.use("/auth",auth);
+app.use("/shop",shopPage)
+app.use("/pcbuilder",pcBuilder);
+app.use("/pcprofile",pcProfile);
+app.use("/profile",userProfile);
+app.use("/shopadmin",shopAdmin);
+
+//api
+
+
 app.use("/checkout", checkout); // checkout router
 // app.use("/api/users", usersRouter);
 app.use("/api/users", router);
@@ -93,6 +113,12 @@ app.get('/', async (req, res) => {
     username: user.username
   });
 })
+
+app.use("/payment", payment);
+
+app.use("/api", usersRouter);
+app.use("/api",productRouter);
+
 
 connect();
 

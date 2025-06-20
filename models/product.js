@@ -24,7 +24,10 @@ const productSchema = new Schema({
     fDescrip:{
         type:String
     },
-    images:[Image]
+    images:{
+        type:Array,
+        ref:Image
+    } ,
 });
 
 const Product = model("Product", productSchema);

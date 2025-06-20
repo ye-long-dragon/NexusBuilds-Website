@@ -1,4 +1,5 @@
 import { Schema,model } from "mongoose";
+import Image from "./image.js"
 import Payment from "./paymentOptions.js";  
 
 const userSchema = new Schema({
@@ -14,7 +15,27 @@ const userSchema = new Schema({
     password: {
         type:String,
         required:true
-    }
+
+    },
+    birthDate:{
+        type:Date,
+        required:true
+    },
+    userAuth:{
+        type:String,
+        required:true
+    },
+    pfp:{
+        type:Schema.Types.ObjectId,
+        ref:Image
+    } ,
+    paymentOption:{
+        type:Array,
+        ref:Payment
+    },
+    
+    
+
 });
 
 const User = model('User',userSchema);

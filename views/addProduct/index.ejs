@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/addProduct.css">
+    <link rel="stylesheet" href="/shopAdminNav.css">
 </head>
 <body>
-    <form action="get">
+    <div class="contain">
+        <%- include('../GeneralPartials/shopAdminNavBar') %>
+        <form action="get">
         <section class="row top">
             <div class="left">
                 
@@ -66,5 +69,6 @@
             </div>
         </section>
     </form>
+    </div>
 </body>
 </html>
