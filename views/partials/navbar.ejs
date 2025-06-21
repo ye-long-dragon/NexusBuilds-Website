@@ -16,9 +16,25 @@
             <div class="headerBtn">
                 <h2><a href=" <%= '/pcBuilder' %> ">PC Builder</a></h2>
             </div>
-            <span class="material-symbols-outlined sunny-icon">sunny</span>
             <span class="material-symbols-outlined cart-icon" onclick="window.location.href='/checkout'">shopping_cart</span>
             <span class="material-symbols-outlined person-icon" onclick="window.location.href='/userprofile'">person</span>
         </div>
     </div>
 </header>
+
+<script defer>
+    import express from 'express';
+    import checkSession from '/middleware/checkSession.js';
+
+    const app = express();
+    app.use(checkSession);
+
+    const profileButton = document.querySelector('.person-icon');
+    profileButton.addEventListener('click', () => {
+        if (profileButton.classList.contains('logged-in')) {
+            window.location.href = '/userprofile';
+        } else {
+            window.location.href = '/auth/login';
+        }
+    });
+</script>

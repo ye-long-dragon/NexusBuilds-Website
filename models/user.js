@@ -19,7 +19,7 @@ const userSchema = new Schema({
     },
     birthDate:{
         type:Date,
-        required:true
+        
     },
     userAuth:{
         type:String,

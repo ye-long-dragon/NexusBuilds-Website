@@ -1,56 +1,121 @@
 import express from 'express';
+import bcrypt from 'bcrypt';
+import session from 'express-session';
 import User from "../../models/user.js";
-import bcrypt from 'bcryptjs';
+
 
 const router = express.Router();
+
+//get all users
+router.get('/users', async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+});
+
+
+
 
 //create user
 router.post("/user",async (req, res) => {
     const {username, email, password} = req.body;
 
     try{
-        const result =await User.create({
-            username,
-            email,
-            password: bcrypt.hashSync(password, 10) // Hash the password
-        });
-
-        res.status(201).json({message: "User created successfully", user: result});
-    }
-    catch(error){
-        if(error.errorResponse.errmsg.includes("E11000 duplicate key error collection")){
-            return res.status(400).json({message: "User already exists"});
+        // Check if the user already exists
+        const existingUser  = await User.findOne({ $or: [{ username }, { email }] });
+        if (existingUser ) {
+            return res.status(400).json({ message: "User  already exists" });
         }
 
-        res.status(500).json({message: "Internal server error", error: error.message});
+        // Hash the password
+        const hashedPassword = bcrypt.hashSync(password, 10);
+        // Create the user
+        const result = await User.create({
+            username,
+            email,
+            password: hashedPassword, // Store the hashed password
+            userAuth: "user", // Default user role
+        });
+         // Respond with success
+        res.status(201).json({ message: "User  created successfully", user: result });
+    }
+    catch (error) {
+        // Handle duplicate key error
+        if (error.code === 11000) { // MongoDB duplicate key error code
+            return res.status(400).json({ message: "User  already exists" });
+        }
+        // Handle other errors
+        res.status(500).json({ message: error.message, error: error.message });
+        console.error("Error creating user:", error.message);
     }
 });
 
-//login user
-router.post("/login", async (req, res) => {
+// Get user by email
+router.get('/users/email/:email', async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.params.email });
+        if (!user) return res.status(404).json({ message: "User not found" });
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+});
 
-    const {email, password} = req.body;
+// Login route
+router.post('/auth/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        
+        const user = await User.findOne({ email });
+        if (!user) return res.status(401).json({ message: "Invalid credentials" });
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(401).json({ message: "Invalid credentials" });
+
+        // Store user details in session
+        req.session.user = {
+            id: user._id,
+            username: user.username,
+            email: user.email,
+            birthDate: user.birthDate,
+            userAuth: user.userAuth,
+            pfp: user.pfp,
+            paymentOption: user.paymentOption
+        };        
+
+        res.status(200).json({ message: "Login successful", user: req.session.user });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+//get user details
+router.get("/users/:username", async (req, res) => {
+
+    const {id} = req.params;
 
     try {
-        const user = await User.where({email}).findOne();
-
-        if(!user) {
-            return res.status(404).json({message: "User not found"});
-        }
-
-        const result = bcrypt.compareSync(password, user.password);
-        if(!result) {
-            return res.status(401).json({message: "Invalid password"});
-        }
+        const user = await User.where({_id: id}).findOne();
 
         req.session.user = {
             id: user._id,
             username: user.username,
+            email: user.email,
+            password: user.password,
+            birthDate: user.birthDate,
+            userAuth: user.userAuth,
+            pfp: user.pfp,
+            paymentOption: user.paymentOption
         }
+    }catch (error) {
+        return res.status(500).json({message: "Internal server error", error: error.message});
+    }
 
-        res.json({ message: "Login successful"});
-    }
-    catch (error) {
-        res.status(500).json({message: "Internal server error", error: error.message});
-    }
 });
+
+
+export default router;

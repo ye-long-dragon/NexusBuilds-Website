@@ -1,65 +1,82 @@
+//module imports
 import express from "express";
+import connect from "./database/mongodb-connect.js";
+import session from 'express-session';
+//import bcrypt from 'bcryptjs';
+import cors from 'cors';
+
+//import views
 import homePage from "./routes/pages/homePage.js";
 import auth from "./routes/pages/auth.js";
 import shopPage from "./routes/pages/shopPage.js";
 import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
-
-// import usersRouter from "./routes/api/user.js";
-
 import checkout from "./routes/pages/checkout.js";
-import connect from "./database/mongodb-connect.js";
-import User from "./models/user.js";
-
-import session from 'express-session';
-
-import usersRouter from "./routes/api/user.js";
 import payment from "./routes/pages/payment.js";
-
 import shopAdmin from "./routes/pages/shopAdmin.js";
 
 
+//import apis
+import usersRouter from "./routes/api/userdupe.js";
 import productRouter from "./routes/api/product.js";
 
-
+//initialization
 const app = express();
 const PORT = 8000;
+
+//initializing EJS and Statics
+app.set("view engine", "ejs");
+app.use(express.static("assets"));
+app.use(express.static("scripts"));
+app.use(express.static("views"));
+app.use(express.static("public"));
+app.use(express.static("middleware"));
+
 
 // Use body-parser middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(
+  cors({
+    credentials: true, // allow cookies to be sent
+  })
+);
 
-// for storing variable purposes
-app.use(session({
-  secret: '1', // should be long and secret
-  resave: false,
-  saveUninitialized: true
-}))
 
-// use the static middleware to serve static files
-app.use(express.static("public"));
+//creating session management for storing variable purposes
+app.use(
+  session({
+    secret:"TmV4dXNCdWlsZHNfV2Vic2l0ZV9Gb3JfQ1BFMTQzTF9GaW5hbF9Qcm9qZWN0X2J5X0RhZ2FhbmcsX0pvbl9DbHlkZSxfQmFyYWNsYW4sX1ZpbmNlX0xhd3JlbmNlLF9hbmRfQWxpLF9OYWppZXA=",
+    resave: false,// prevents resaving session if it hasn't changed
+    saveUninitialized: false,//prevents storing empty sessions
+    cookie: {
+      secure:false, // Set to true if using HTTPS
+      maxAge: 3*24 * 60 * 60 * 1000, // 3 days
+    },
+  })
+);
 
-//initializing EJS and Statics
-app.set("view engine", "ejs");
-// app.use(express.static("styles"));
-app.use(express.static("assets"));
-app.use(express.static("scripts"));
-app.use(express.static("views"));
 
 
 //using routers
 app.use(express.json());
 app.use("/", homePage);
-
 app.use("/auth",auth);
 app.use("/shop",shopPage)
 app.use("/pcbuilder",pcBuilder);
 app.use("/pcprofile",pcProfile);
 app.use("/profile",userProfile);
 app.use("/shopadmin",shopAdmin);
+app.use("/payment", payment);
 
 //api
+app.use("/api", usersRouter);
+app.use("/api",productRouter);
+
+/*
+=====TO BE IMPLEMENTED LATER=====
+
 
 
 app.use("/checkout", checkout); // checkout router
@@ -76,13 +93,7 @@ app.get('/', async (req, res) => {
     username: user.username
   });
 })
-
-
-app.use("/payment", payment);
-
-app.use("/api", usersRouter);
-app.use("/api",productRouter);
-
+  */
 
 connect();
 
