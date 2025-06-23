@@ -5,13 +5,13 @@ userProfile.get('/',(req,res)=>{
     const user = req.session.user;
 
     if (!user) {
-        return res.render('userprofile/index', { 
+        return res.render('Userprofile/index', { 
             email: null,
             username: null
         });
     } 
 
-    res.render('userprofile/index', {
+    res.render('Userprofile/index', {
         email: user.email,
         username: user.username,
     })
