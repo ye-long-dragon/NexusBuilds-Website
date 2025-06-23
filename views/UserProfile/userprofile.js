@@ -51,3 +51,9 @@ savebtn.onclick = async function() {
 
     }
 }
+
+const logoutBtn = document.querySelector(".save-btn.logout");
+logoutBtn.onclick = () => {
+    req.session.destroy();
+    window.location.href = "/";
+}

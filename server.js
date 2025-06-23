@@ -60,39 +60,19 @@ app.get('/users', async (req, res) => {
 
 // get user
 app.get('/users/:email', async (req, res) => {
-  try {
-      const email = req.params.email;
-      const user = await User.findOne({email});
+    try {
+        const email = req.params.email;
+        const user = await User.findOne({email});
 
-      req.session.user = user;
-      req.session.email = email;
+        req.session.user = user;
+        req.session.email = email;
 
-      res.status(200).json(user);
+        res.status(200).json(user);
 
-  } catch (error) {
-      res.status(500).json({message: error.message});
-  }
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
 });
-
-// post user 
-app.post("/users", async (req,res)=>{
-    const user = req.body;
-
-    const result = await User.create(user);
-    return res.status(201).json();
-})
-
-app.get('/', async (req, res) => {
-  const user = req.session.user;
-
-  if (!user) {
-    return res.render('Landing-Page/index', { username: null });
-  }
-
-  res.render('Landing-Page/index', {
-    username: user.username
-  });
-})
 
 connect();
 
