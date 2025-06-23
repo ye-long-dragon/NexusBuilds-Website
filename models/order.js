@@ -7,9 +7,9 @@ const orderSchema = new Schema({
         type:String,
         required:true
     },
-    orderId:{
-        type:String,
-        required:true
+    orderDate: {
+        type: Date,
+        default: Date.now
     },
     items:{
         type:Array,

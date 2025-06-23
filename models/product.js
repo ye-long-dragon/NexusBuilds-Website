@@ -14,10 +14,7 @@ const productSchema = new Schema({
         type:Number,
         required:true
     },
-    id:{
-        type:String,
-        required:true
-    },
+    
     bDescrip:{
         type:String
     },

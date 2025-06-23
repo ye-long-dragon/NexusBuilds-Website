@@ -117,5 +117,44 @@ router.get("/users/:username", async (req, res) => {
 
 });
 
+//update user
+router.put("/users/:id", async (req, res) => {
+    const { id } = req.params;
+    const { username, email, password, birthDate, pfp, paymentOption } = req.body;
+
+    try {
+        // Find the user by ID
+        const user = await User.findById(id);
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        // Update user details
+        user.username = username || user.username;
+        user.email = email || user.email;
+        if (password) {
+            user.password = bcrypt.hashSync(password, 10); // Hash the new password
+        }
+        user.birthDate = birthDate || user.birthDate;
+        user.pfp = pfp || user.pfp;
+        user.paymentOption = paymentOption || user.paymentOption;
+
+        // Save the updated user
+        const updatedUser = await user.save();
+        
+        res.status(200).json({ message: "User updated successfully", user: updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+//logout
+router.post("/logout",(req,res)=>{
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).send('Error logging out');
+        }
+        res.send('Logged out successfully');
+    });
+})
+
 
 export default router;

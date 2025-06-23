@@ -1,20 +1,20 @@
-import axios from 'axios';
-const checkSession = async () => {
-    try {
-        const response = await axios.get('/api/session/check'); // Endpoint to check session
-        return response.data.isLoggedIn; // Assuming the server responds with { isLoggedIn: true/false }
-    } catch (error) {
-        console.error("Error checking session:", error);
-        return false; // Assume not logged in if there's an error
-    }
-};
-// Usage
-checkSession().then(isLoggedIn => {
-    if (isLoggedIn) {
-        console.log("User  is logged in.");
+import express from 'express';
+import session from 'express-session';
+
+const app = express.Router();
+
+app.get('api/session/check', (req, res) => {
+
+    if (req.session && req.session.user) {
+        // User is logged in
+        res.status(200).json({ isLoggedIn: true, user: req.session.user });
     } else {
-        console.log("User  is not logged in.");
+        // User is not logged in
+        res.status(200).json({ isLoggedIn: false });
     }
+
 });
 
-export default checkSession;
+
+
+export default app;

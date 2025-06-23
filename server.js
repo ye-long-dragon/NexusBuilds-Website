@@ -21,9 +21,12 @@ import shopAdmin from "./routes/pages/shopAdmin.js";
 import usersRouter from "./routes/api/userdupe.js";
 import productRouter from "./routes/api/product.js";
 
+//custom middlewares
+import checkSession from "./middleware/checkSession.js";
+
 //initialization
 const app = express();
-const PORT = 8000;
+const PORT = 5000;
 
 //initializing EJS and Statics
 app.set("view engine", "ejs");
@@ -69,10 +72,14 @@ app.use("/pcprofile",pcProfile);
 app.use("/profile",userProfile);
 app.use("/shopadmin",shopAdmin);
 app.use("/payment", payment);
+app.use("/checkout", checkout);
 
 //api
 app.use("/api", usersRouter);
 app.use("/api",productRouter);
+
+//custom middleware to check session
+app.use("/api/session/check", checkSession);
 
 /*
 =====TO BE IMPLEMENTED LATER=====
