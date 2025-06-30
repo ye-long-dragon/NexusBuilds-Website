@@ -3,72 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add New Product</title>
     <link rel="stylesheet" href="/addProduct.css">
-    <link rel="stylesheet" href="/shopAdminNav.css">
+    <link rel="stylesheet" href="/adminNav.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/footer.css">
 </head>
 <body>
-    <div class="contain">
-        <%- include('../GeneralPartials/shopAdminNavBar') %>
-        <form action="get">
-        <section class="row top">
-            <div class="left">
-                
-                    <h4>Product Name</h4>
-                    <input type="text" name="" id="" placeholder="Product Name">
-                
-                    <h4>Category</h4>
-                    <select name="Category" id="">
-                        <option value="Processor">Processor</option>
-                        <option value="GraphicsCard">Graphics Card</option>
-                        <option value="Motherboard">Motherboard</option>
-                        <option value="Storage">Storage</option>
-                        <option value="RAM">RAM</option>
-                        <option value="Case">Case</option>
-                        <option value="PowerSupply">PowerSupply</option>
-                        <option value="Cooler">Cooler</option>
-                    </select>
-            
+    <%- include("../partials/navbar") %>
+    <main>
+    <%- include("../adminPartials/adminNav") %>
+    <form class="product-form">
+        <div class="form-row">
+            <label id="productname">Product Name</label>
+            <input id="pname" type="text">
+        </div>
+        
+        <div class="form-row">
+            <label id="cat">Category</label>
+            <select id="category">
+                <option>Processor</option>
+                <option>Graphics Card</option>
+                <option>Motherboard</option>
+            </select>
+        </div>
+
+        <div>
+            <label id="bdescription">Brief Description</label>
+            <textarea id="des"></textarea>
+        </div>
+        
+        <div>
+            <label id="fdescription">Full Description</label>
+            <textarea id="full"></textarea>
+        </div>
+        
+
+        
+        <div class="product-form">
+
+            <div class="form-group">
+                <label id="w">Weight:</label>
+                <input  type="text" class="form-input">
             </div>
-            <div class="right">
-                <div class="pics small">
-                    <div class="picSmall">Add Image</div>
-                    <div class="picSmall">Add Image</div>
-                    <div class="picSmall">Add Image</div>
-                    <div class="picSmall">Add Image</div>
-                </div>
-                <div class="pics large">
-                    <div class="pic">Add Image</div>
-                </div>
+            <div class="form-group">
+                <label id="v">Volume:</label>
+                <input  type="text" class="form-input">
             </div>
-        </section>
-        <section class="row textarea">
-            <h4>Brief Description</h4>
-            <textarea name="briefDescription" id="" placeholder="Add a Brief Description of Product" rows="10" ></textarea>
-            <h4>Full Description</h4>
-            <textarea name="fullDescription" id="" placeholder="Add the Full Description and Details of Product" rows="10"></textarea>
-        </section>
-        <section class="row details">
-            <div class="line">
-                <h4>Weight</h4>
-                <input type="text">
+            <div class="form-group">
+                <label id="p">Price:</label>
+                <input  type="text" class="form-input">
             </div>
-            <div class="line">
-                <h4>Volume</h4>
-                <input type="text"></div>
-            <div class="line">
-                <h4>Price</h4>
-                <input type="text"></div>
-            <div class="line">
-                <h4>Stock</h4>
-                <input type="text"></div>
-        </section>
-        <section class="row btn">
-            <div class="addProduct">
-                <h4>Add Product</h4>
+            <div class="form-group">
+                <label id="s">Stock:</label>
+                <input  type="text" class="form-input">
             </div>
-        </section>
+
+
+        </div>
+
+
+
+        <div class="submit-container">
+            <button type="submit" class="submit-btn">Add Product</button>
+        </div>
+        
     </form>
-    </div>
+    </main>
+    <%- include("../partials/footer") %>
 </body>
 </html>

@@ -5,28 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/shipOrders.css">
-    <link rel="stylesheet" href="/shopAdminNav.css">
+    <link rel="stylesheet" href="/adminNav.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/footer.css">
 </head>
 <body>
-    <div class="contain">
-        <%- include('../GeneralPartials/shopAdminNavBar') %>
-        <div class="container">
-        <div class="top">
-            <p>My Products</p>
-        </div>
-        <section class="product">
-           <div class="pic"><h4>Insert img</h4></div>
-            <div class="descrip">
-                <h2>Jon Clyde Dagaang</h2>
-                <p>Nvidia GeForce RTX 3060</p>
-                <p>Address address address</p>
-            </div>
-            <div class="btns">
-                <img src="/check.svg" alt="" height="50px">
-                <img src="/close.svg" alt="" height="50px">
-            </div>
-        </section>
-        </div>
-    </div>
+    <%- include("../partials/navbar") %>
+    
+    <main>
+        <%-include("../adminPartials/adminNav") %>
+        <div class="order-list">
+            <% orders.forEach(order => { %>
+                <div class="order-item">
+                    <h2>Order ID: <%= order._id %></h2>
+                    <p>Customer Name: <%= order.customerName %></p>
+                    <p>Address: <%= order.address %></p>
+                    <p>Total Price: $<%= order.totalPrice %></p>
+                    <p>Status: <%= order.status %></p>
+                    <% if (order.status === 'Pending') { %>
+                        <form action="/shipOrder/<%= order._id %>" method="POST">
+                            <button type="submit" class="ship-button">Ship Order</button>
+                        </form>
+                    <% } else { %>
+                        <p class="shipped">Order Shipped</p>
+                    <% } %>
+                </div>
+            <% }) %>
+    
+    </main>
+
+    <%- include("../partials/footer") %>
 </body>
 </html>
