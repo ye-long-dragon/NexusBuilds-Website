@@ -14,7 +14,28 @@ const userSchema = new Schema({
     password: {
         type:String,
         required:true
-    }
+    },
+    fname: {
+        type:String,
+    },
+    lname: {
+        type:String,
+    },
+    gender: {
+        type:String,
+    },
+    address: {
+        type:String,
+    },
+    phone: {
+        type:String,
+    },
+    country: {
+        type:String,
+    },
+    dateOfBirth: {
+        type:Date,
+    },
 });
 
 const User = model('User',userSchema);

@@ -19,22 +19,21 @@ imageInput.addEventListener('change', () => {
 const savebtn = document.querySelector(".save-btn");
 savebtn.onclick = async function() {
     const user = {
-        email,
-        // username,
-        // password,
-        // firstname,
-        // lastname,
-        // birthdate,
-        // address,
-        // phonenumber,
-        // country,
-        // genderF
+        fname: document.getElementById("firstname").value,
+        lname: document.getElementById("lastname").value,
+        // gender: document.getElementById("gender").value,
+        address: document.getElementById("address").value,
+        phone: document.getElementById("phone").value,
+        country: document.getElementById("country").value,
+        /// dateOfBirth: document.getElementById("dateOfBirth").value
     }
 
     try {
-        const res = await fetch("/users", {
-            method: "POST",
-            headers: { "Content-Type": "applcation/json" },
+        const res = await fetch("/users/:email", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(user)
         })
 
@@ -50,6 +49,8 @@ savebtn.onclick = async function() {
     } catch(e) {
         return console.log(e.message);
     }
+
+    console.log(user);
 }
 
 async function logout() {
