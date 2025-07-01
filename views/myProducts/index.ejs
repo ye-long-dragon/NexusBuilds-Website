@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/myProducts.css">
     <link rel="stylesheet" href="/navbar.css">
     <link rel="stylesheet" href="/adminNav.css">
     <link rel="stylesheet" href="/footer.css">
@@ -13,18 +14,37 @@
    <%- include("../partials/navbar") %>
    <main>
     <%- include("../adminPartials/adminNav") %>
-    <div class="product-list">
-        <% products.forEach(product => { %>
-            <div class="product-item">
-                <h2><%= product.name %></h2>
-                <p>Category: <%= product.category %></p>
-                <p>Price: $<%= product.price %></p>
-                <p>Stock: <%= product.stock %></p>
-                <a href="/editProduct/<%= product._id %>" class="edit-button">Edit</a>
-            </div>
-        <% }) %>
+    <div class="productPage">
+        <div class="productPageTop">
+            <div class="addProduct">Add Product</div>
+        </div>
+        <div class="product-list">
+                <% if (products!=null){%>
+                <% products.forEach(product => { %>
+                <div class="product-item">
+                    <h2><%= product.name %></h2>
+                    <p>Category: <%= product.category %></p>
+                    <p>Price: $<%= product.price %></p>
+                    <p>Stock: <%= product.stock %></p>
+                    <a href="/editProduct/<%= product._id %>" class="edit-button">Edit</a>
+                </div>
+            <% }) }else{%>
+            <div class="no-products">
+                <p>No products available.</p>
+                <% }%>
+
+        </div>
+    
     </div>
    </main>
    <%- include("../partials/footer") %>
 </body>
+<script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+        const addProductButton = document.querySelector('.addProduct');
+        addProductButton.addEventListener('click', function() {
+            window.location.href = '/shopadmin/addproduct';
+        });
+    });
+</script>
 </html>

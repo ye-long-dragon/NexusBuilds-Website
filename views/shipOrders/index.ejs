@@ -14,23 +14,30 @@
     
     <main>
         <%-include("../adminPartials/adminNav") %>
-        <div class="order-list">
-            <% orders.forEach(order => { %>
-                <div class="order-item">
-                    <h2>Order ID: <%= order._id %></h2>
-                    <p>Customer Name: <%= order.customerName %></p>
-                    <p>Address: <%= order.address %></p>
-                    <p>Total Price: $<%= order.totalPrice %></p>
-                    <p>Status: <%= order.status %></p>
-                    <% if (order.status === 'Pending') { %>
-                        <form action="/shipOrder/<%= order._id %>" method="POST">
-                            <button type="submit" class="ship-button">Ship Order</button>
-                        </form>
-                    <% } else { %>
-                        <p class="shipped">Order Shipped</p>
-                    <% } %>
-                </div>
-            <% }) %>
+        <div class="container">
+            <div class="order-list">
+                <% if (shipOrders!=null){%>
+                <% shipOrders.forEach(order => { %>
+                    <div class="order-item">
+                        <h2>Order ID: <%= order._id %></h2>
+                        <p>Customer Name: <%= order.customerName %></p>
+                        <p>Address: <%= order.address %></p>
+                        <p>Total Price: $<%= order.totalPrice %></p>
+                        <p>Status: <%= order.status %></p>
+                        <% if (order.status === 'Pending') { %>
+                            <form action="/shipOrder/<%= order._id %>" method="POST">
+                                <button type="submit" class="ship-button">Ship Order</button>
+                            </form>
+                        <% } else { %>
+                            <p class="shipped">Order Shipped</p>
+                        <% } %>
+                    </div>
+                <% })}else{ %>
+                    <div class="no-orders">
+                        <p>No orders available.</p>
+                <% } %>
+        </div>
+       
     
     </main>
 
