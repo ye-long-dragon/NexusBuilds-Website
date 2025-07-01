@@ -33,6 +33,20 @@ router.post("/users", async (req,res)=>{
     return res.status(201).json();
 })
 
+// logout
+router.post("/logout", async (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+        return res.status(500).json({ message: "Logout Failed" });
+        }
+
+        res.clearCookie("connect.sid"); // ✅ Optional but recommended
+        return res.json({ message: "Logout Successful" });
+    });
+
+    return res.status(201).json()
+});
+
 router.get('/', async (req, res) => {
     const user = req.session.user;
 

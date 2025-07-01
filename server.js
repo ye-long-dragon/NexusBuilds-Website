@@ -10,11 +10,15 @@ import router from "./routes/api/user.js";
 import checkout from "./routes/pages/checkout.js";
 import connect from "./database/mongodb-connect.js";
 import User from "./models/user.js";
+import dotenv from "dotenv";
+
+// establish environment variables
+dotenv.config();
 
 import session from 'express-session';
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 // Use body-parser middleware
 app.use(express.urlencoded({ extended: true }));
@@ -22,7 +26,7 @@ app.use(express.json());
 
 // for storing variable purposes
 app.use(session({
-  secret: '1', // should be long and secret
+  secret: process.env.secret, // should be long and secret
   resave: false,
   saveUninitialized: true
 }))
@@ -47,7 +51,7 @@ app.use("/pcprofile", pcProfile);
 app.use("/userProfile", userProfile);
 app.use("/checkout", checkout); // checkout router
 // app.use("/api/users", usersRouter);
-app.use("/api/users", router);
+app.use("/api", router);
 
 app.get('/users', async (req, res) => {
   try {
@@ -73,6 +77,26 @@ app.get('/users/:email', async (req, res) => {
         res.status(500).json({message: error.message});
     }
 });
+
+// post user 
+app.post("/users", async (req,res)=>{
+    const user = req.body;
+
+    const result = await User.create(user);
+    return res.status(201).json();
+})
+
+// logout user
+app.post("/logout", async (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+        return res.status(500).json({ message: "Logout Failed" });
+        }
+        
+        return res.json({ message: "Logout Successful" });
+    });
+});
+
 
 connect();
 

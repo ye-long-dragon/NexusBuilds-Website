@@ -1,7 +1,7 @@
 import express from 'express';
 const homePage = express.Router();
 
-homePage.get('/',(req,res)=>{
+homePage.get('/' , (req,res)=>{
   const user = req.session.user;
 
   if (!user) {

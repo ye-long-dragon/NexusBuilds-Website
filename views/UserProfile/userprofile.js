@@ -48,12 +48,29 @@ savebtn.onclick = async function() {
         window.location.href = "/"; // redirect to home
 
     } catch(e) {
-
+        return console.log(e.message);
     }
 }
 
-const logoutBtn = document.querySelector(".save-btn.logout");
-logoutBtn.onclick = () => {
-    req.session.destroy();
-    window.location.href = "/";
+async function logout() {
+    event.preventDefault();
+
+    try {
+        const res = await fetch("/logout", {
+            method: "POST",
+            credentials: "include"
+        })
+        const data = res.data;
+
+        if (!res.ok) {
+            const error = await res.json();
+            alert(error.message || "Logout Failed.");
+            return;
+        }
+
+        // alert(data.message);
+        window.location.href = "/"; // redirect to home
+    } catch(e) {
+        return console.log(e.message);
+    }
 }
