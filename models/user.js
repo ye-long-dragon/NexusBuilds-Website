@@ -36,6 +36,9 @@ const userSchema = new Schema({
     dateOfBirth: {
         type:Date,
     },
+    profileImgUrl: {
+        type: String
+    }
 });
 
 const User = model('User',userSchema);

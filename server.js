@@ -11,6 +11,9 @@ import checkout from "./routes/pages/checkout.js";
 import connect from "./database/mongodb-connect.js";
 import User from "./models/user.js";
 import dotenv from "dotenv";
+// image upload
+import multer from "multer";
+import { v2 as cloudinary } from "cloudinary";
 
 // establish environment variables
 dotenv.config();
@@ -53,6 +56,8 @@ app.use("/userProfile", userProfile);
 app.use("/checkout", checkout); // checkout router
 // app.use("/api/users", usersRouter);
 app.use("/api", router);
+// cloudinary router
+// app.use("/api/cloudinary", cloudinaryRouter);
 
 app.get("/users", async (req, res) => {
   try {
@@ -117,6 +122,9 @@ app.put("/users/:email", async (req, res) => {
           country: req.body.country,
           dateOfBirth: req.body.dateOfBirth,
           gender: req.body.gender,
+
+          // profile image URL
+          profileImgUrl: req.body.profileImgUrl
         },
       }
     );
