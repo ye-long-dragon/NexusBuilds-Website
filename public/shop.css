@@ -14,19 +14,57 @@ body {
 @media screen and (min-width:992px) {
 
 
+    html {
+        height: fit-content;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+
     * {
         padding: 0;
         margin: 0;
     }
 
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 200vh;
+        background-color: #0B1222;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
     body {
         background-color: #0B1222;
-        height: 100vh;
-        
+        height: fit-content;
+        box-sizing: border-box;
     }
 
     main {
         margin: var(---padding-default);
+        flex: 1;
+    }
+    
+    .prevBtn,
+    .nextBtn {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        color: white;
+        margin-top: 1rem;
+        border: none;
+        border-radius: 10px;
+        background-color: #B949FF;
+
+        transition: 0.25s;
+    }
+
+    .prevBtn:hover,
+    .nextBtn:hover {
+        background-color: #9d46fa;
+        cursor: pointer;
     }
 
     header {
@@ -121,10 +159,14 @@ body {
         font-size: 18px;
     }
 
+    .footer-wrapper {
+        background-color: #0B1222;
+    }
+
     footer {
         top: 0;
-        padding: 20px;
-        background-color: #0B1222;
+        padding: var(---padding-default);
+
         align-items: center;
         justify-content: center;
         display: flex;
@@ -254,20 +296,21 @@ body {
     .block {
         background-color: #0B1222;
         top: 0;
-        padding: 20px;
         padding-top: 50px;
         color: white;
         font-family: inter;
     }
 
     .itemMenu {
-        display: flex;
-        flex-direction: row;
+        width: 100%;
+        grid-template-columns: auto auto auto auto;
+        gap: 1rem;
+        display: grid;
     }
 
     .item {
         background-color: #313131;
-        width: fit-content;
+        /* width: fit-content; */
         padding: 10px;
         margin-right: 0.8rem;
         border-radius: 20px;
@@ -401,7 +444,7 @@ body {
 
     .descrip .btn {
         background-color: #8A1DFF;
-        background: linear-gradient(90deg, #c506ffad, #c302fe7e);
+        background: linear-gradient(90deg, #c506ffa3, #ce2cff99);
         color: white;
         align-items: center;
         justify-content: center;

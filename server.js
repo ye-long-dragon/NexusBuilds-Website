@@ -5,6 +5,12 @@ import session from "express-session";
 //import bcrypt from 'bcryptjs';
 import cors from "cors";
 
+// establish environment variables
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT;
+
 //import views
 import homePage from "./routes/pages/homePage.js";
 import auth from "./routes/pages/auth.js";
@@ -17,6 +23,11 @@ import checkout from "./routes/pages/checkout.js";
 import User from "./models/user.js";
 import dotenv from "dotenv";
 
+// builds router
+import Build from "./models/build.js";
+import buildsRouter from "./routes/api/builds.js";
+app.use("/api/builds", buildsRouter);
+
 // product model
 import Product from "./models/product.js";
 
@@ -24,18 +35,13 @@ import Product from "./models/product.js";
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
 
-// establish environment variables
-dotenv.config();
-
-const app = express();
-const PORT = process.env.PORT;
-
 import payment from "./routes/pages/payment.js";
 import shopAdmin from "./routes/pages/shopAdmin.js";
 
 //import apis
 import usersRouter from "./routes/api/userdupe.js";
 import productRouter from "./routes/api/product.js";
+import { render } from "ejs";
 
 //initializing EJS and Statics
 app.set("view engine", "ejs");
@@ -59,13 +65,16 @@ app.use(
   session({
     secret: process.env.secret,
     resave: false, // prevents resaving session if it hasn't changed
-    saveUninitialized: false, //prevents storing empty sessions
+    saveUninitialized: true, //prevents storing empty sessions
     cookie: {
       secure: false, // Set to true if using HTTPS
       maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days
     },
   })
 );
+
+// build router
+app.use("/api/builds", buildsRouter);
 
 //using routers
 app.use(express.json());
@@ -125,16 +134,16 @@ app.get("/users/:email", async (req, res) => {
   }
 });
 
-
 // get all products
 app.get("/products", async (req, res) => {
   try {
-    const products = await Product.find({});
-    res.status(200).json(products);
+    const products = await Product.find({}); // Only need to define products here
+    res.render("shop/index", { products });  // Only call this inside try
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error fetching products:", error);
+    res.status(500).send("Failed to load products");
   }
-})
+});
 
 // register product
 app.post("/products", async (req, res) => {
@@ -147,7 +156,7 @@ app.post("/products", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-})
+});
 
 // post user
 app.post("/users", async (req, res) => {
@@ -169,7 +178,33 @@ app.post("/users", async (req, res) => {
   //custom middleware to check session
   app.use("/api/session/check", checkSession);
 });
-  /*
+
+// get featured build
+app.get("/builds/:id", async (req, res) => {
+  try {
+    const featuredBuild = await Build.findById(req.params.id);
+    if (!featuredBuild)
+      return res.status(404).json({ message: "No featured build found" });
+
+    const data = featuredBuild.toObject();
+    data._id = data._id.toString(); // Convert ObjectId to string for JSON
+
+    req.session.fbuild = data; // Store the featured build in session
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// get all builds
+app.get("/builds", async (req, res) => {
+  try {
+    const builds = await Build.find({});
+    res.status(200).json(builds);
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
+});
+/*
 =====TO BE IMPLEMENTED LATER=====
 
 
@@ -237,12 +272,12 @@ app.post("/logout", async (req, res) => {
 })
   */
 
-  connect();
+connect();
 
-  app.listen(PORT, () => {
-    console.log(`Listening to port ${PORT}`);
-  });
+app.listen(PORT, () => {
+  console.log(`Listening to port ${PORT}`);
+});
 
-  app.use((req, res, next) => {
-    res.send("404 not found");
-  });
+app.use((req, res, next) => {
+  res.send("404 not found");
+});
