@@ -51,11 +51,11 @@ router.get('/', async (req, res) => {
     const user = req.session.user;
 
     if (!user) {
-        return res.render('Landing-Page/index', { username: null });
+        return res.render('Landing-Page/index', { user: null });
     }
 
     res.render('Landing-Page/index', {
-        username: user.username
+        user: user
     });
 })
 

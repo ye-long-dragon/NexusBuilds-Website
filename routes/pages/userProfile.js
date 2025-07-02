@@ -14,8 +14,7 @@ userProfile.get('/', unauthFailSafe, (req,res)=>{
     } 
 
     res.render('userprofile/index', {
-        email: user.email,
-        username: user.username,
+        user
     })
     
 });

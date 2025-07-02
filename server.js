@@ -69,8 +69,22 @@ app.get("/users/:email", async (req, res) => {
     const email = req.params.email;
     const user = await User.findOne({ email });
 
-    req.session.user = user;
-    req.session.email = email;
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    // Store only non-sensitive fields in session
+    req.session.user = {
+      id: user._id,
+      username: user.username,
+      fname: user.fname,
+      lname: user.lname,
+      email: user.email,
+      address: user.address,
+      phone: user.phone,
+      country: user.country
+    };
+
 
     res.status(200).json(user);
   } catch (error) {
