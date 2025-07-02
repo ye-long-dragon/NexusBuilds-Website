@@ -16,7 +16,7 @@ imageInput.addEventListener('change', () => {
     }
 });
 
-const savebtn = document.querySelector(".save-btn");
+const savebtn = document.getElementById("saveBtn");
 savebtn.onclick = async function() {
     const user = {
         fname: document.getElementById("firstname").value,
@@ -29,7 +29,7 @@ savebtn.onclick = async function() {
     }
 
     try {
-        const res = await fetch("/users/:email", {
+        const res = await fetch("/users/"+document.getElementById("email").value, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -51,7 +51,7 @@ savebtn.onclick = async function() {
     }
 
     console.log(user);
-}
+}   
 
 async function logout() {
     event.preventDefault();

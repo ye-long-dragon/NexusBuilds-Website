@@ -105,7 +105,7 @@ app.put("/users/:email", async (req, res) => {
   try {
     //update the user with the given email
     const result = await User.updateOne(
-      { email: req.session.email},
+      { email: req.session.user.email},
       {
         $set: {
           fname: req.body.fname,
