@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PC Components</title>
     <script src="script.js" defer></script>
 </head>
 
@@ -35,120 +35,93 @@
                         <input type="button" value="All Components" class="filterPart all">
                     </div>
                     <div class="filterItem" id="Processor">
-                        <img src="/assets/processor-svgrepo-com 1.svg" alt="">
+                        <img src="/assets/processor-svgrepo-com 1.svg" alt="Processor">
                         <p>Processor</p>
                     </div>
                     <div class="filterItem" id="GraphicsCard">
-                        <img src="/assets/gpu-mining 2.svg" alt="">
-                        Graphics Card
+                        <img src="/assets/gpu-mining 2.svg" alt="Graphics Card">
+                        <p>Graphics Card</p>
                     </div>
                     <div class="filterItem" id="Motherboard">
-                        <img src="/assets/motherboard 2.svg" alt="">
-                        Motherboard
+                        <img src="/assets/motherboard 2.svg" alt="Motherboard">
+                        <p>Motherboard</p>
                     </div>
                     <div class="filterItem" id="storage">
-                        <img src="/assets/disk 2.svg" alt="">
-                        Storage
+                        <img src="/assets/disk 2.svg" alt="Storage">
+                        <p>Storage</p>
                     </div>
                     <div class="filterItem" id="RAM">
-                        <img src="/assets/memory 2.svg" alt="">
-                        RAM
+                        <img src="/assets/memory 2.svg" alt="RAM">
+                        <p>RAM</p>
                     </div>
                     <div class="filterItem" id="Case">
-                        <img src="/assets/cube 2.svg" alt="">
-                        Case
+                        <img src="/assets/cube 2.svg" alt="Case">
+                        <p>Case</p>
                     </div>
                     <div class="filterItem" id="PowerSupply">
-                        <img src="/assets/thunderbolt 2.svg" alt="">
-                        Power Supply
+                        <img src="/assets/thunderbolt 2.svg" alt="Power Supply">
+                        <p>Power Supply</p>
                     </div>
                     <div class="filterItem" id="Cooling">
-                        <img src="/assets/fan 2.svg" alt="">
-                        Cooling
+                        <img src="/assets/fan 2.svg" alt="Cooling">
+                        <p>Cooling</p>
                     </div>
                 </div>
             </div>
             <div class="block Cooling">
                 <div class="itemMenu">
-                    <div class="item">
-                        <div class="pic">
-                            <img src="/assets/ryzen-removebg-preview 1.svg" alt="" height="256px">
-                        </div>
-                        <div class="descrip">
-                            <div class="mainDescrip">
-                                <div class="top">
-                                    <div class="left">
-                                        <p>Processor</p>
-                                        <h5>AMD ryzen 3200g</h5>
-                                    </div>
-                                    <div class="right">
-                                        <img src="/assets/star.svg" alt="" height="14px">
-                                        <p>4.9</p>
-                                    </div>
+
+                    <% if (!products || products.length === 0) { %>
+                        <p>No Products Available</p>
+                    <% } else { %>
+                        <% products.forEach(product => { %>
+                             <div class="item">
+                                <div class="pic">
+                                    <img src="/assets/ryzen-removebg-preview 1.svg" alt="Product Image" height="256px">
                                 </div>
-                                <div class="bot">
-                                    <div class="left">
-                                        <span>
-                                            <h6>$15,000.00</h6>
-                                        </span>
-                                        <span>
-                                            <p>$18,000.00</p>
-                                        </span>
+                                <div class="descrip">
+                                    <div class="mainDescrip">
+                                        <div class="top">
+                                            <div class="left">
+                                                <p><%= product.component %></p>
+                                                <h5><%= product.name %></h5>
+                                            </div>
+                                            <div class="right">
+                                                <img src="/assets/star.svg" alt="Rating" height="14px">
+                                                <p>4.9</p>
+                                            </div>
+                                        </div>
+                                        <div class="bot">
+                                            <div class="left">
+                                                <span>
+                                                    <h6><%= product.price %></h6>
+                                                </span>
+                                                <span>
+                                                    <p><%= product.price %></p>
+                                                </span>
+                                            </div>
+                                            <div class="right">
+                                                <p><%= product.stock %> in stock</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="right">
-                                        <p>15 in stock</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="btn">
-                                <p>Add to Cart</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pic">
-                            <img src="/assets/ryzen-removebg-preview 1.svg" alt="" height="256px">
-                        </div>
-                        <div class="descrip">
-                            <div class="mainDescrip">
-                                <div class="top">
-                                    <div class="left">
-                                        <p>Processor</p>
-                                        <h5>AMD ryzen 3200g</h5>
-                                    </div>
-                                    <div class="right">
-                                        <img src="/assets/star.svg" alt="" height="14px">
-                                        <p>4.9</p>
-                                    </div>
-                                </div>
-                                <div class="bot">
-                                    <div class="left">
-                                        <span>
-                                            <h6>$15,000.00</h6>
-                                        </span>
-                                        <span>
-                                            <p>$18,000.00</p>
-                                        </span>
-                                    </div>
-                                    <div class="right">
-                                        <p>15 in stock</p>
+                                    <div class="btn">
+                                        <p>Add to Cart</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="btn">
-                                <p>Add to Cart</p>
-                            </div>
-                        </div>
-                    </div>
+                        <% }) %>
+                    <% } %>
+                    
                 </div>
             </div>
         </div>
-
     </main>
 
     <%- include('../partials/footer.ejs') %>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+    <script src="/middleware/checkSession.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
-<script src="/middleware/checkSession.js"></script>
 
 </html>
