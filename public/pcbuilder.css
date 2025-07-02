@@ -316,3 +316,173 @@ main>div {
     padding: 10px;
     font-size: 30px;
 }
+
+
+/* Add these media queries to your existing CSS */
+
+@media (max-width: 1200px) {
+    main {
+        margin: 100px 50px;
+    }
+    
+    .cart-card {
+        width: 45%;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    main {
+        margin: 80px 30px;
+    }
+    
+    .components-wrapper {
+        flex-direction: column;
+    }
+    
+    .cart-card {
+        width: 100%;
+        margin: 40px 0 0 0;
+        padding: 30px;
+        margin-left: 100px;
+    }
+    
+    .item-card-container {
+        padding: 10px 15px;
+    }
+    
+    .item-card-container button {
+        width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        margin: 60px 20px;
+    }
+    
+    .page-label h2 {
+        font-size: 26px;
+    }
+    
+    .page-label p {
+        font-size: 20px;
+    }
+    
+    .components-card h2 {
+        font-size: 22px;
+    }
+    
+    .cart-card p {
+        font-size: 18px;
+    }
+    
+    .cart-card-label span {
+        font-size: 22px;
+    }
+    
+    .charges-wrapper p {
+        font-size: 26px;
+    }
+    
+    .charges-wrapper button {
+        font-size: 22px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 576px) {
+    main {
+        margin: 40px 15px;
+    }
+    
+    .page-label h2 {
+        font-size: 22px;
+    }
+    
+    .page-label p {
+        font-size: 18px;
+    }
+    
+    .components-card {
+        margin-left: 100px;
+    }
+    
+    .components-card h2 {
+        font-size: 20px;
+        margin: 15px 0;
+    }
+    
+    .item-card-container {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    
+    .item-card-container img {
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .item-card-container p {
+        font-size: 14px;
+        flex: 1;
+        min-width: 60%;
+    }
+    
+    .item-card-container button {
+        width: 100%;
+        margin-top: 10px;
+        order: 3;
+    }
+    
+    .cart-card {
+        padding: 20px;
+    }
+    
+    .cart-card p {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+    
+    .cart-card-label span {
+        font-size: 20px;
+    }
+    
+    .item-card-cart {
+        padding: 8px;
+    }
+    
+    .item-card-cart p {
+        font-size: 16px;
+    }
+    
+    .charges-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .charges-wrapper p {
+        font-size: 22px;
+    }
+    
+    .img-wrapper {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: start;
+        margin-top: 10px;
+    }
+    
+    .charges-wrapper button {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: end;
+        font-size: 18px;
+        height: 60px;
+        margin-left: 0;
+    }
+    
+    .build-name-input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

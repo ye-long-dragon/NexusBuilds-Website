@@ -14,17 +14,21 @@ const productSchema = new Schema({
         type:Number,
         required:true
     },
-    id:{
-        type:String,
-        required:true
-    },
-    bDescrip:{
+    
+    short:{
         type:String
     },
-    fDescrip:{
+    long:{
         type:String
     },
-    images:[Image]
+    images:{
+        type:Array,
+        ref:Image
+    } ,
+    stock:{
+        type:Number,
+        default:0
+    },
 });
 
 const Product = model("Product", productSchema);
