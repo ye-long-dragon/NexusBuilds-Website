@@ -13,6 +13,9 @@ import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
 import checkout from "./routes/pages/checkout.js";
+import checkSession from "./middleware/checkSession.js";
+
+import cloudinaryRouter from "./routes/api/cloudinary.js";
 
 
 import User from "./models/user.js";
@@ -73,6 +76,10 @@ app.use(
 );
 
 
+
+//custom middleware to check session
+app.use("/api/session/check", checkSession);
+
 //using routers
 app.use(express.json());
 app.use("/", homePage);
@@ -81,13 +88,32 @@ app.use("/auth", auth);
 app.use("/shop", shopPage);
 app.use("/pcbuilder", pcBuilder);
 app.use("/pcprofile", pcProfile);
-app.use("/userProfile", userProfile);
+app.use("/userprofile", userProfile);
 app.use("/checkout", checkout); // checkout router
-// app.use("/api/users", usersRouter);
-app.use("/api", router);
-// cloudinary router
-// app.use("/api/cloudinary", cloudinaryRouter);
 
+app.use("/shopadmin",shopAdmin);
+app.use("/payment", payment);
+app.use("/checkout", checkout);
+//app.use("/api", router);
+
+// cloudinary router
+app.use("/api/cloudinary", cloudinaryRouter);
+app.use("/api", usersRouter);
+app.use("/api",productRouter);
+
+connect();
+
+app.listen(PORT, () => {
+  console.log(`Listening to port ${PORT}`);
+});
+
+app.use((req, res, next) => {
+  res.send("404 not found");
+});
+
+
+
+/*
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find({});
@@ -131,22 +157,9 @@ app.get("/users/:email", async (req, res) => {
 // post user
 app.post("/users", async (req, res) => {
   const user = req.body;
+}*/
 
-app.use("/auth",auth);
-app.use("/shop",shopPage)
-app.use("/pcbuilder",pcBuilder);
-app.use("/pcprofile",pcProfile);
-app.use("/profile",userProfile);
-app.use("/shopadmin",shopAdmin);
-app.use("/payment", payment);
-app.use("/checkout", checkout);
 
-//api
-app.use("/api", usersRouter);
-app.use("/api",productRouter);
-
-//custom middleware to check session
-app.use("/api/session/check", checkSession);
 
 /*
 =====TO BE IMPLEMENTED LATER=====
@@ -217,12 +230,4 @@ app.post("/logout", async (req, res) => {
   */
 
 
-connect();
 
-app.listen(PORT, () => {
-  console.log(`Listening to port ${PORT}`);
-});
-
-app.use((req, res, next) => {
-  res.send("404 not found");
-});

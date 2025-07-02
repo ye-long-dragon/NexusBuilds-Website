@@ -25,6 +25,10 @@ const productSchema = new Schema({
         type:Array,
         ref:Image
     } ,
+    stock:{
+        type:Number,
+        default:0
+    },
 });
 
 const Product = model("Product", productSchema);
