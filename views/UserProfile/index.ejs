@@ -17,7 +17,7 @@
 
         <main>
             <p class="page-label">
-                <%= username %>
+                <%= user.username || 'Guest'%>
             </p>
             <div class="profile-wrapper">
 
@@ -37,12 +37,12 @@
 
                         <div class="input-wrapper">
                             <label for="firstname">First Name</label>
-                            <input type="text" id="firstname">
+                            <input type="text" id="firstname" value="<%= user?.fname || '' %>">
                         </div>
 
                         <div class="input-wrapper">
                             <label for="lastname">Last Name</label>
-                            <input type="text" id="lastname">
+                            <input type="text" id="lastname" value="<%= user?.lname || '' %>">
                         </div>
 
                     </div>
@@ -51,17 +51,17 @@
                     <div class="c2-2">
                         <div class="input-wrapper">
                             <label for="address">Complete Address</label>
-                            <input type="text" id="address">
+                            <input type="text" id="address" value="<%= user?.address || '' %>">
                         </div>
 
                         <div class="input-wrapper">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone">
+                            <input type="tel" id="phone" value="<%= user?.phone || '' %>">
                         </div>
 
                         <div class="input-wrapper">
                             <label for="email">Email</label>
-                            <input type="email" id="email" value="<%= email %>">
+                            <input type="email" id="email" value="<%= user?.email || '' %>">
                         </div>
                     </div>
 
@@ -72,40 +72,61 @@
                     <div class="radio-wrapper">
 
                         <div class="radio-group">
+                            <input type="radio" name="gender" id="male" value="male" <%=user.gender==='male' ? 'checked'
+                                : '' %>>
                             <label for="male">Male</label>
-                            <input type="radio" name="gender" id="male" value="male">
                         </div>
 
-
                         <div class="radio-group">
+                            <input type="radio" name="gender" id="female" value="female" <%=user.gender==='female'
+                                ? 'checked' : '' %>>
                             <label for="female">Female</label>
-                            <input type="radio" name="gender" id="Female">
                         </div>
-
 
                         <div class="radio-group">
-                            <label for="pns">Other</label>
-                            <input type="radio" name="gender" id="pns">
+                            <input type="radio" name="gender" id="other" value="other" <%=user.gender==='other'
+                                ? 'checked' : '' %>>
+                            <label for="other">Other</label>
                         </div>
+
                     </div>
 
                     <div class="input-wrapper">
                         <p for="date-of-birth" class="c3-lbl">Date of Birth</p>
-                        <input type="date" id="date-of-birth">
+                        <input type="date" id="date-of-birth" value="<%= user?.dateOfBirth || '' %>">
                     </div>
 
                     <div class="input-wrapper">
 
                         <p for="country" class="c3-lbl">Country</p>
-                        <input type="text" id="country">
+                        <input type="text" id="country" value="<%= user?.country || '' %>">
                     </div>
                 </div>
+
+
+                <div class="radio-wrapper">
+
+                    <span>Apply as Shop Admin</span>
+
+                    <div class="radio-group">
+                        <label for="Yes">Yes</label>
+                        <input type="radio" name="shop-admin" id="Apply Shop Admin">
+                    </div>
+
+                     <div class="radio-group">
+                        <label for="No">No</label>
+                        <input type="radio" name="shop-admin" id="Apply Shop Admin">
+                    </div>
+
+                </div>
+            </div>
+
 
             </div>
 
             <div class="lgn-save-wrapper">
-                <button class="save-btn">Save</button>
-                <button class="save-btn logout">Logout</button>
+                <button class="save-btn" id="saveBtn">Save</button>
+                <button class="save-btn logout" onclick="logout()">Logout</button>
             </div>
         </main>
 
@@ -114,5 +135,6 @@
 </body>
 
 <script src="userprofile.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+<script src="/middleware/checkSession.js"></script>
 </html>

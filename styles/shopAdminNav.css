@@ -1,0 +1,92 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b1222;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            width: 400px;
+            padding: 20px 15px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .navBtn {
+            background-color: #1e293b;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .navBtn:hover {
+            background-color: #334155;
+            border-left: 3px solid #60a5fa;
+        }
+
+        .navBtn .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navBtn .top p {
+            flex-grow: 1;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        .navBtn .text {
+            padding: 8px 0 0 34px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        main {
+            flex: 1;
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            
+            nav {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+            
+            main {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .order-item {
+                flex-direction: column;
+            }
+            
+            .status {
+                margin-top: 15px;
+                align-self: flex-end;
+            }
+        }
