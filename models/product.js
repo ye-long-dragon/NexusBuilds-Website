@@ -15,10 +15,10 @@ const productSchema = new Schema({
         required:true
     },
     
-    bDescrip:{
+    short:{
         type:String
     },
-    fDescrip:{
+    long:{
         type:String
     },
     images:{
