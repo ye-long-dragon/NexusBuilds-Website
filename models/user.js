@@ -17,24 +17,30 @@ const userSchema = new Schema({
         required:true
 
     },
-    birthDate:{
-        type:Date,
-        
-    },
-    userAuth:{
+    fname: {
         type:String,
-        required:true
     },
-    pfp:{
-        type:Schema.Types.ObjectId,
-        ref:Image
-    } ,
-    paymentOption:{
-        type:Array,
-        ref:Payment
+    lname: {
+        type:String,
     },
-    
-    
+    gender: {
+        type:String,
+    },
+    address: {
+        type:String,
+    },
+    phone: {
+        type:String,
+    },
+    country: {
+        type:String,
+    },
+    dateOfBirth: {
+        type:Date,
+    },
+    profileImgUrl: {
+        type: String
+    }
 
 });
 

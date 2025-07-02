@@ -13,4 +13,6 @@ auth.get("/forgotpassword", (req, res) => {
   res.render("auth/forgotpass");
 });
 
+
+
 export default auth;

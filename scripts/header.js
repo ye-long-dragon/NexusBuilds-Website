@@ -6,11 +6,4 @@ document.addEventListener('DOMContentLoaded', () => {
   const cart = document.getElementById('cart');
   const user = document.getElementById('user');
   const main = document.getElementById('main');
-
-  
-  
-
-  
-
 });
-

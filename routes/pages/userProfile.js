@@ -1,8 +1,14 @@
 import express from 'express';
+import unauthFailSafe from "../../middleware/unauthFailSafe.js";
+
 const userProfile = express.Router();
 
-userProfile.get('/',(req,res)=>{
-    const user = req.session.user;
+userProfile.get('/', unauthFailSafe, (req, res) => {
+    const user = req.session.user || {}; // ✅ fallback to empty object
+
+    /*res.render('userprofile/index', {
+        user
+    });*/
 
     if (!user) {
         return res.render('Userprofile/index', { 
@@ -15,7 +21,9 @@ userProfile.get('/',(req,res)=>{
         email: user.email,
         username: user.username,
     })
+
     
 });
+
 
 export default userProfile;

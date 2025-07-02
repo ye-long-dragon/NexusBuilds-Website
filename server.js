@@ -13,20 +13,32 @@ import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
 import checkout from "./routes/pages/checkout.js";
+
+
+import User from "./models/user.js";
+import dotenv from "dotenv";
+// image upload
+import multer from "multer";
+import { v2 as cloudinary } from "cloudinary";
+
+// establish environment variables
+dotenv.config();
+
+
+
+const app = express();
+const PORT = process.env.PORT;
+
 import payment from "./routes/pages/payment.js";
 import shopAdmin from "./routes/pages/shopAdmin.js";
+
 
 
 //import apis
 import usersRouter from "./routes/api/userdupe.js";
 import productRouter from "./routes/api/product.js";
 
-//custom middlewares
-import checkSession from "./middleware/checkSession.js";
 
-//initialization
-const app = express();
-const PORT = 5000;
 
 //initializing EJS and Statics
 app.set("view engine", "ejs");
@@ -50,7 +62,7 @@ app.use(
 //creating session management for storing variable purposes
 app.use(
   session({
-    secret:"TmV4dXNCdWlsZHNfV2Vic2l0ZV9Gb3JfQ1BFMTQzTF9GaW5hbF9Qcm9qZWN0X2J5X0RhZ2FhbmcsX0pvbl9DbHlkZSxfQmFyYWNsYW4sX1ZpbmNlX0xhd3JlbmNlLF9hbmRfQWxpLF9OYWppZXA=",
+    secret:process.env.secret,
     resave: false,// prevents resaving session if it hasn't changed
     saveUninitialized: false,//prevents storing empty sessions
     cookie: {
@@ -61,10 +73,65 @@ app.use(
 );
 
 
-
 //using routers
 app.use(express.json());
 app.use("/", homePage);
+
+app.use("/auth", auth);
+app.use("/shop", shopPage);
+app.use("/pcbuilder", pcBuilder);
+app.use("/pcprofile", pcProfile);
+app.use("/userProfile", userProfile);
+app.use("/checkout", checkout); // checkout router
+// app.use("/api/users", usersRouter);
+app.use("/api", router);
+// cloudinary router
+// app.use("/api/cloudinary", cloudinaryRouter);
+
+app.get("/users", async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// get user
+app.get("/users/:email", async (req, res) => {
+  try {
+    const email = req.params.email;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    req.session.user = {
+      id: user._id,
+      username: user.username,
+      fname: user.fname,
+      lname: user.lname,
+      email: user.email,
+      address: user.address,
+      phone: user.phone,
+      country: user.country,
+      gender: user.gender, // ✅ added gender
+      dateOfBirth: user.dateOfBirth
+        ? new Date(user.dateOfBirth).toISOString().split("T")[0]
+        : null,
+    };
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// post user
+app.post("/users", async (req, res) => {
+  const user = req.body;
+
 app.use("/auth",auth);
 app.use("/shop",shopPage)
 app.use("/pcbuilder",pcBuilder);
@@ -89,18 +156,66 @@ app.use("/api/session/check", checkSession);
 app.use("/checkout", checkout); // checkout router
 // app.use("/api/users", usersRouter);
 
-app.get('/', async (req, res) => {
-  const user = req.session.user;
 
-  if (!user) {
-    return res.render('Landing-Page/index', { username: null });
+  const result = await User.create(user);
+  return res.status(201).json();
+});
+
+// update user
+app.put("/users/:email", async (req, res) => {
+  try {
+    //update the user with the given email
+    const result = await User.updateOne(
+      { email: req.session.user.email },
+      {
+        $set: {
+          fname: req.body.fname,
+          lname: req.body.lname,
+          address: req.body.address,
+          phone: req.body.phone,
+          country: req.body.country,
+          dateOfBirth: req.body.dateOfBirth,
+          gender: req.body.gender,
+
+          // profile image URL
+          profileImgUrl: req.body.profileImgUrl
+        },
+      }
+    );
+
+    req.session.user.fname = req.body.fname;
+    req.session.user.lname = req.body.lname;
+    req.session.user.address = req.body.address;
+    req.session.user.phone = req.body.phone;
+    req.session.user.country = req.body.country;
+    req.session.user.gender = req.body.gender;
+
+    const formattedDate = new Date(req.body.dateOfBirth)
+      .toISOString()
+      .split("T")[0];
+    req.session.user.dateOfBirth = formattedDate;
+
+    return res.status(200).json({ message: "User updated successfully." });
+  } catch (e) {
+    return res.status(500).json({ message: e.message });
   }
+});
 
-  res.render('Landing-Page/index', {
-    username: user.username
+// logout user
+app.post("/logout", async (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ message: "Logout Failed" });
+    }
+
+    return res.json({ message: "Logout Successful" });
   });
+
+});
+
 })
   */
+
 
 connect();
 

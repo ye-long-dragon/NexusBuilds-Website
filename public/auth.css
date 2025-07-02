@@ -109,7 +109,12 @@ body {
     border-radius: 0px 5px 5px 0px;
     padding: 10px 200px 10px 0px;
 
-    width: 100%;
+    box-sizing: border-box;
+    width: auto;
+}
+
+.login-inputs::target-text {
+    width: auto;
 }
 
 .login-inputs::placeholder {
