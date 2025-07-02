@@ -13,6 +13,7 @@ import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
 import checkout from "./routes/pages/checkout.js";
+import checkSession from "./middleware/checkSession.js";
 
 
 import User from "./models/user.js";
@@ -84,10 +85,11 @@ app.use("/pcprofile", pcProfile);
 app.use("/userProfile", userProfile);
 app.use("/checkout", checkout); // checkout router
 // app.use("/api/users", usersRouter);
-app.use("/api", router);
+//app.use("/api", router);
 // cloudinary router
 // app.use("/api/cloudinary", cloudinaryRouter);
 
+/*
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find({});
@@ -131,6 +133,7 @@ app.get("/users/:email", async (req, res) => {
 // post user
 app.post("/users", async (req, res) => {
   const user = req.body;
+}*/
 
 app.use("/auth",auth);
 app.use("/shop",shopPage)
@@ -225,4 +228,4 @@ app.listen(PORT, () => {
 
 app.use((req, res, next) => {
   res.send("404 not found");
-});
+})
