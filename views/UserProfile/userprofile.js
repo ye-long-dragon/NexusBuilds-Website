@@ -16,6 +16,8 @@ imageInput.addEventListener('change', () => {
     }
 });
 
+
+// user info upadte function
 const savebtn = document.getElementById("saveBtn");
 savebtn.onclick = async function() {
     const user = {
@@ -25,7 +27,8 @@ savebtn.onclick = async function() {
         address: document.getElementById("address").value,
         phone: document.getElementById("phone").value,
         country: document.getElementById("country").value,
-        /// dateOfBirth: document.getElementById("dateOfBirth").value
+        dateOfBirth: document.getElementById("date-of-birth").value,
+        gender: document.querySelector('input[name="gender"]:checked')?.value || ""
     }
 
     try {

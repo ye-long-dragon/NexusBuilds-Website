@@ -73,7 +73,6 @@ app.get("/users/:email", async (req, res) => {
       return res.status(404).json({ message: "User not found." });
     }
 
-    // Store only non-sensitive fields in session
     req.session.user = {
       id: user._id,
       username: user.username,
@@ -82,9 +81,12 @@ app.get("/users/:email", async (req, res) => {
       email: user.email,
       address: user.address,
       phone: user.phone,
-      country: user.country
+      country: user.country,
+      gender: user.gender, // ✅ added gender
+      dateOfBirth: user.dateOfBirth
+        ? new Date(user.dateOfBirth).toISOString().split("T")[0]
+        : null,
     };
-
 
     res.status(200).json(user);
   } catch (error) {
@@ -105,7 +107,7 @@ app.put("/users/:email", async (req, res) => {
   try {
     //update the user with the given email
     const result = await User.updateOne(
-      { email: req.session.user.email},
+      { email: req.session.user.email },
       {
         $set: {
           fname: req.body.fname,
@@ -113,11 +115,23 @@ app.put("/users/:email", async (req, res) => {
           address: req.body.address,
           phone: req.body.phone,
           country: req.body.country,
-          // dateOfBirth: req.body.dateOfBirth,
-          // TODO: gender and dateofbirth
+          dateOfBirth: req.body.dateOfBirth,
+          gender: req.body.gender,
         },
       }
     );
+
+    req.session.user.fname = req.body.fname;
+    req.session.user.lname = req.body.lname;
+    req.session.user.address = req.body.address;
+    req.session.user.phone = req.body.phone;
+    req.session.user.country = req.body.country;
+    req.session.user.gender = req.body.gender;
+
+    const formattedDate = new Date(req.body.dateOfBirth)
+      .toISOString()
+      .split("T")[0];
+    req.session.user.dateOfBirth = formattedDate;
 
     return res.status(200).json({ message: "User updated successfully." });
   } catch (e) {

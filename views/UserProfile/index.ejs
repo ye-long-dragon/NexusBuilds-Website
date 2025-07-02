@@ -72,26 +72,28 @@
                     <div class="radio-wrapper">
 
                         <div class="radio-group">
+                            <input type="radio" name="gender" id="male" value="male" <%=user.gender==='male' ? 'checked'
+                                : '' %>>
                             <label for="male">Male</label>
-                            <input type="radio" name="gender" id="male" value="male">
                         </div>
 
-
                         <div class="radio-group">
+                            <input type="radio" name="gender" id="female" value="female" <%=user.gender==='female'
+                                ? 'checked' : '' %>>
                             <label for="female">Female</label>
-                            <input type="radio" name="gender" id="Female">
                         </div>
-
 
                         <div class="radio-group">
-                            <label for="pns">Other</label>
-                            <input type="radio" name="gender" id="pns">
+                            <input type="radio" name="gender" id="other" value="other" <%=user.gender==='other'
+                                ? 'checked' : '' %>>
+                            <label for="other">Other</label>
                         </div>
+
                     </div>
 
                     <div class="input-wrapper">
                         <p for="date-of-birth" class="c3-lbl">Date of Birth</p>
-                        <input type="date" id="date-of-birth">
+                        <input type="date" id="date-of-birth" value="<%= user.dateOfBirth %>">
                     </div>
 
                     <div class="input-wrapper">

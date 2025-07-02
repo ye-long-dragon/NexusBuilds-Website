@@ -15,9 +15,6 @@ router.get('/users/:email', async (req, res) => {
         const email = req.params.email;
         const user = await User.findOne({email});
 
-        req.session.user = user;
-        req.session.email = email;
-
         res.status(200).json(user);
 
     } catch (error) {
@@ -49,6 +46,9 @@ router.post("/logout", async (req, res) => {
 
 router.get('/', async (req, res) => {
     const user = req.session.user;
+
+    const formattedDate = new Date(req.user.dateOfBirth).toISOString().split("T")[0];
+    req.session.user.dateOfBirth = formattedDate;
 
     if (!user) {
         return res.render('Landing-Page/index', { user: null });
