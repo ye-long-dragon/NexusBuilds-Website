@@ -106,10 +106,6 @@ app.use("/api",productRouter);
 
 connect();
 
-app.listen(PORT, () => {
-  console.log(`Listening to port ${PORT}`);
-});
-
 app.use((req, res, next) => {
   res.send("404 not found");
 });
@@ -201,7 +197,7 @@ app.post("/users", async (req, res) => {
 
   //custom middleware to check session
   app.use("/api/session/check", checkSession);
-});
+
 
 // get featured build
 app.get("/builds/:id", async (req, res) => {
