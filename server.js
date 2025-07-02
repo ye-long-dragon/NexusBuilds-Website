@@ -201,7 +201,7 @@ app.post("/users", async (req, res) => {
 
   //custom middleware to check session
   app.use("/api/session/check", checkSession);
-});
+;
 
 // get featured build
 app.get("/builds/:id", async (req, res) => {
@@ -299,7 +299,4 @@ app.post("/logout", async (req, res) => {
 
 connect();
 
-app.listen(PORT, () => {
-  console.log(`Listening to port ${PORT}`);
-})
 
