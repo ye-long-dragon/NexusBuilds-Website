@@ -31,7 +31,6 @@ body {
 .login-frame {
     display: flex;
     flex-flow: column;
-    background-color: #121826;
 
     width: 48%;
     height: 100vh;
@@ -109,12 +108,7 @@ body {
     border-radius: 0px 5px 5px 0px;
     padding: 10px 200px 10px 0px;
 
-    box-sizing: border-box;
-    width: auto;
-}
-
-.login-inputs::target-text {
-    width: auto;
+    width: 100%;
 }
 
 .login-inputs::placeholder {
@@ -497,7 +491,15 @@ p.forgot-pass {
     border-radius: 0px 5px 5px 0px;
 }
 
+@media screen and (min-width:992px) {
+    .login-frame {
+        background-color: #121826;
+    }
+    
+}
+
 @media only screen and (max-width: 1536px) {
+
     .logo {
         height: 70px;
     }
@@ -512,6 +514,7 @@ p.forgot-pass {
 }
 
 @media only screen and (max-width: 1367px) {
+    
     .logo {
         margin-top: 15px;
     }
@@ -522,7 +525,6 @@ p.forgot-pass {
 }
 
 @media only screen and (max-width: 1281px) {
-
     .title {
         font-size: 35px;
     }
@@ -535,4 +537,91 @@ p.forgot-pass {
         font-size: 15px;
     }
 
+}
+
+
+@media only screen and (max-width: 767px) {
+    body {
+        background-image: url(assets/bg.jpg);
+    }
+    
+    .login-bg {
+        display: none;
+        background-image: url(assets/bg.jpg);
+    }
+    
+    .main-frame {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .login-frame {
+        width: 100%;
+        height: auto;
+        padding: 20px 0;
+        border: 1px solid #8A1DFF
+    }
+    
+    .logo {
+        height: 70px;
+        margin: 20px auto;
+    }
+    
+    .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    
+    .input-wrapper {
+        margin: 0;
+        padding: 0 20px;
+        width: calc(100% - 40px);
+    }
+    
+    .sign-up-title {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+    
+    .sign-up-text {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+    
+    .uname-email-wrapper,
+    .sign-up-pword-frame {
+        width: 100%;
+    }
+    
+    .sign-up-inputs {
+        padding: 15px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .signup-btn {
+        padding: 15px;
+        font-size: 18px;
+        margin: 20px 0;
+    }
+    
+    .or {
+        margin: 25px 0;
+    }
+    
+    .or hr {
+        border-width: 1px;
+    }
+    
+    .login-via {
+        padding: 12px;
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    
+    .login-via img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
 }
