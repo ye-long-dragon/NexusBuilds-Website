@@ -1,3 +1,4 @@
+
 import express from "express";
 import Product from '../../models/product.js'; // ✅ adjust path if needed
 

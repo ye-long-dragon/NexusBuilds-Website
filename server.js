@@ -19,6 +19,9 @@ import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
 import checkout from "./routes/pages/checkout.js";
+import checkSession from "./middleware/checkSession.js";
+
+import cloudinaryRouter from "./routes/api/cloudinary.js";
 
 import User from "./models/user.js";
 import dotenv from "dotenv";
@@ -76,6 +79,10 @@ app.use(
 // build router
 app.use("/api/builds", buildsRouter);
 
+
+//custom middleware to check session
+app.use("/api/session/check", checkSession);
+
 //using routers
 app.use(express.json());
 app.use("/", homePage);
@@ -84,16 +91,32 @@ app.use("/auth", auth);
 app.use("/shop", shopPage);
 app.use("/pcbuilder", pcBuilder);
 app.use("/pcprofile", pcProfile);
-app.use("/userProfile", userProfile);
+app.use("/userprofile", userProfile);
 app.use("/checkout", checkout); // checkout router
+
 app.use("/shopadmin", shopAdmin); // shop admin router
 // app.use("/api/users", usersRouter);
 app.use("/api/users", usersRouter);
 // use product router
 app.use("/api/products", productRouter);
 // cloudinary router
-// app.use("/api/cloudinary", cloudinaryRouter);
+app.use("/api/cloudinary", cloudinaryRouter);
+app.use("/api", usersRouter);
+app.use("/api",productRouter);
 
+connect();
+
+app.listen(PORT, () => {
+  console.log(`Listening to port ${PORT}`);
+});
+
+app.use((req, res, next) => {
+  res.send("404 not found");
+});
+
+
+
+/*
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find({});
@@ -161,6 +184,7 @@ app.post("/products", async (req, res) => {
 // post user
 app.post("/users", async (req, res) => {
   const user = req.body;
+}*/
 
   app.use("/auth", auth);
   app.use("/shop", shopPage);
@@ -194,6 +218,7 @@ app.get("/builds/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
 
 // get all builds
 app.get("/builds", async (req, res) => {
@@ -276,8 +301,5 @@ connect();
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
-});
+})
 
-app.use((req, res, next) => {
-  res.send("404 not found");
-});

@@ -249,5 +249,20 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
 <script src="/middleware/checkSession.js"></script>
+<script defer>
+    import express from 'express';
+    import checkSession from '/middleware/checkSession.js';
 
+    const app = express();
+    app.use(checkSession);
+
+    const profileButton = document.querySelector('.person-icon');
+    profileButton.addEventListener('click', () => {
+        if (profileButton.classList.contains('logged-in')) {
+            window.location.href = '/userprofile';
+        } else {
+            window.location.href = '/auth/login';
+        }
+    });
+</script>
 </html>
