@@ -5,7 +5,7 @@ const router = express.Router();
 
 //create a product
 router.post('/products', async (req, res) => {
-    const { name, component, price, id, bDescrip, fDescrip, images } = req.body;
+    const { name, component, price, bDescrip, fDescrip, images } = req.body;
 
     try {
         const newProduct = new Product({
@@ -25,7 +25,6 @@ router.post('/products', async (req, res) => {
 });
 
 //get all products
-
 router.get('/products', async (req, res) => {
     try {
         const products = await Product.find({});
@@ -62,7 +61,7 @@ router.put('/products/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-  });
+});
 
 
 //delete a product

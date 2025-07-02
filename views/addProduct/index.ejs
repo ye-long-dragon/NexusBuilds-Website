@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,72 +10,103 @@
     <link rel="stylesheet" href="/navbar.css">
     <link rel="stylesheet" href="/footer.css">
 </head>
+
 <body>
     <%- include("../partials/navbar") %>
-    <main>
-    <%- include("../adminPartials/adminNav") %>
-    <form class="product-form">
-        <div class="form-row">
-            <label id="productname">Product Name</label>
-            <input id="pname" type="text">
-        </div>
-        
-        <div class="form-row">
-            <label id="cat">Category</label>
-            <select id="category">
-                <option>Processor</option>
-                <option>Graphics Card</option>
-                <option>Motherboard</option>
-                <option>Storage</option>
-                <option>RAM</option>
-                <option>Case</option>
-                <option>Power Supply</option>
-                <option>Cooling</option>
-            </select>
-        </div>
+        <main>
+            <%- include("../adminPartials/adminNav") %>
+                <form class="product-form">
+                    <div class="form-row">
+                        <label id="productname">Product Name</label>
+                        <input id="pname" type="text">
+                    </div>
 
-        <div>
-            <label id="bdescription">Brief Description</label>
-            <textarea id="des"></textarea>
-        </div>
-        
-        <div>
-            <label id="fdescription">Full Description</label>
-            <textarea id="full"></textarea>
-        </div>
-        
+                    <div class="form-row">
+                        <label id="cat">Category</label>
+                        <select id="category">
+                            <option>Processor</option>
+                            <option>Graphics Card</option>
+                            <option>Motherboard</option>
+                            <option>Storage</option>
+                            <option>RAM</option>
+                            <option>Case</option>
+                            <option>Power Supply</option>
+                            <option>Cooling</option>
+                        </select>
+                    </div>
 
-        
-        <div class="product-form">
+                    <div>
+                        <label id="bdescription">Brief Description</label>
+                        <textarea id="des"></textarea>
+                    </div>
 
-            <div class="form-group">
-                <label id="w">Weight:</label>
-                <input  type="text" class="form-input">
-            </div>
-            <div class="form-group">
-                <label id="v">Volume:</label>
-                <input  type="text" class="form-input">
-            </div>
-            <div class="form-group">
-                <label id="p">Price:</label>
-                <input  type="text" class="form-input">
-            </div>
-            <div class="form-group">
-                <label id="s">Stock:</label>
-                <input  type="text" class="form-input">
-            </div>
-
-
-        </div>
+                    <div>
+                        <label id="fdescription">Full Description</label>
+                        <textarea id="full"></textarea>
+                    </div>
 
 
 
-        <div class="submit-container">
-            <button type="submit" class="submit-btn">Add Product</button>
-        </div>
-        
-    </form>
-    </main>
-    <%- include("../partials/footer") %>
+                    <div class="product-form">
+
+                        <div class="form-group">
+                            <label id="w">Weight:</label>
+                            <input type="text" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label id="v">Volume:</label>
+                            <input type="text" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label id="p">Price:</label>
+                            <input type="number" class="form-input" id="price">
+                        </div>
+                        <div class="form-group">
+                            <label id="s">Stock:</label>
+                            <input type="text" class="form-input">
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="submit-container">
+                        <button type="submit" class="submit-btn" onclick="addProduct()">Add Product</button>
+                    </div>
+
+                </form>
+        </main>
+        <%- include("../partials/footer") %>
 </body>
+<script>
+
+    async function addProduct() {
+        console.log("Add Product function called");
+
+        try {
+            const pname = document.getElementById("pname").value;
+            const component = document.getElementById("category").value;
+            const price = document.getElementById("price").value;;
+
+            const res = await fetch("/api/products", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: pname,
+                    component: component,
+                    price: price
+                })
+            })
+
+            alert("Product added successfully!");
+        } catch (e) {
+            console.error(e.message);
+            alert("Error registering product: " + e.message);
+        }
+    }
+</script>
+
 </html>

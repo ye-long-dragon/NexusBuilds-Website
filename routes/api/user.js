@@ -57,28 +57,28 @@ router.get('/', async (req, res) => {
 
 
 router.get('/users', async (req, res) => {
-  try {
-      const users = await User.find({});
-      res.status(200).json(users);
-  } catch (error) {
-      res.status(500).json({message: error.message});
-  }
+    try {
+        const users = await User.find({});
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
 });
 
 // get user
 router.get('/users/:email', async (req, res) => {
-  try {
-      const email = req.params.email;
-      const user = await User.findOne({email});
+    try {
+        const email = req.params.email;
+        const user = await User.findOne({email});
 
-      req.session.user = user;
-      req.session.email = email;
+        req.session.user = user;
+        req.session.email = email;
 
-      res.status(200).json(user);
+        res.status(200).json(user);
 
-  } catch (error) {
-      res.status(500).json({message: error.message});
-  }
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
 });
 
 // post user 

@@ -1,9 +1,9 @@
 //module imports
 import express from "express";
 import connect from "./database/mongodb-connect.js";
-import session from 'express-session';
+import session from "express-session";
 //import bcrypt from 'bcryptjs';
-import cors from 'cors';
+import cors from "cors";
 
 //import views
 import homePage from "./routes/pages/homePage.js";
@@ -14,9 +14,12 @@ import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
 import checkout from "./routes/pages/checkout.js";
 
-
 import User from "./models/user.js";
 import dotenv from "dotenv";
+
+// product model
+import Product from "./models/product.js";
+
 // image upload
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
@@ -24,21 +27,15 @@ import { v2 as cloudinary } from "cloudinary";
 // establish environment variables
 dotenv.config();
 
-
-
 const app = express();
 const PORT = process.env.PORT;
 
 import payment from "./routes/pages/payment.js";
 import shopAdmin from "./routes/pages/shopAdmin.js";
 
-
-
 //import apis
 import usersRouter from "./routes/api/userdupe.js";
 import productRouter from "./routes/api/product.js";
-
-
 
 //initializing EJS and Statics
 app.set("view engine", "ejs");
@@ -47,7 +44,6 @@ app.use(express.static("scripts"));
 app.use(express.static("views"));
 app.use(express.static("public"));
 app.use(express.static("middleware"));
-
 
 // Use body-parser middleware
 app.use(express.urlencoded({ extended: true }));
@@ -58,20 +54,18 @@ app.use(
   })
 );
 
-
 //creating session management for storing variable purposes
 app.use(
   session({
-    secret:process.env.secret,
-    resave: false,// prevents resaving session if it hasn't changed
-    saveUninitialized: false,//prevents storing empty sessions
+    secret: process.env.secret,
+    resave: false, // prevents resaving session if it hasn't changed
+    saveUninitialized: false, //prevents storing empty sessions
     cookie: {
-      secure:false, // Set to true if using HTTPS
-      maxAge: 3*24 * 60 * 60 * 1000, // 3 days
+      secure: false, // Set to true if using HTTPS
+      maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days
     },
   })
 );
-
 
 //using routers
 app.use(express.json());
@@ -83,8 +77,11 @@ app.use("/pcbuilder", pcBuilder);
 app.use("/pcprofile", pcProfile);
 app.use("/userProfile", userProfile);
 app.use("/checkout", checkout); // checkout router
+app.use("/shopadmin", shopAdmin); // shop admin router
 // app.use("/api/users", usersRouter);
-app.use("/api", router);
+app.use("/api/users", usersRouter);
+// use product router
+app.use("/api/products", productRouter);
 // cloudinary router
 // app.use("/api/cloudinary", cloudinaryRouter);
 
@@ -128,27 +125,51 @@ app.get("/users/:email", async (req, res) => {
   }
 });
 
+
+// get all products
+app.get("/products", async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+})
+
+// register product
+app.post("/products", async (req, res) => {
+  try {
+    const product = req.body;
+    product.price = parseFloat(product.price); // Ensure price is a number
+
+    const result = await Product.create(product);
+    res.status(201).json({ message: "Product registered successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+})
+
 // post user
 app.post("/users", async (req, res) => {
   const user = req.body;
 
-app.use("/auth",auth);
-app.use("/shop",shopPage)
-app.use("/pcbuilder",pcBuilder);
-app.use("/pcprofile",pcProfile);
-app.use("/profile",userProfile);
-app.use("/shopadmin",shopAdmin);
-app.use("/payment", payment);
-app.use("/checkout", checkout);
+  app.use("/auth", auth);
+  app.use("/shop", shopPage);
+  app.use("/pcbuilder", pcBuilder);
+  app.use("/pcprofile", pcProfile);
+  app.use("/profile", userProfile);
+  app.use("/shopadmin", shopAdmin);
+  app.use("/payment", payment);
+  app.use("/checkout", checkout);
 
-//api
-app.use("/api", usersRouter);
-app.use("/api",productRouter);
+  //api
+  app.use("/api", usersRouter);
+  app.use("/api", productRouter);
 
-//custom middleware to check session
-app.use("/api/session/check", checkSession);
-
-/*
+  //custom middleware to check session
+  app.use("/api/session/check", checkSession);
+});
+  /*
 =====TO BE IMPLEMENTED LATER=====
 
 
@@ -216,13 +237,12 @@ app.post("/logout", async (req, res) => {
 })
   */
 
+  connect();
 
-connect();
+  app.listen(PORT, () => {
+    console.log(`Listening to port ${PORT}`);
+  });
 
-app.listen(PORT, () => {
-  console.log(`Listening to port ${PORT}`);
-});
-
-app.use((req, res, next) => {
-  res.send("404 not found");
-});
+  app.use((req, res, next) => {
+    res.send("404 not found");
+  });
