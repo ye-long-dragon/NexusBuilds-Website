@@ -3,8 +3,7 @@ import Payment from "./paymentOptions.js";
 
 const buildSchema = new Schema({
     name: {
-        Type:String,
-        unique: true
+        type: String,
     },
     processor: {
         Type: String

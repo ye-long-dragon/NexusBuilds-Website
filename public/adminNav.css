@@ -1,0 +1,33 @@
+
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom,#0f172a,#1e293b);
+   
+}
+
+.dashboard-btn{
+    margin: 10px;
+    padding: 10px;
+    background: transparent;
+    border-radius: 20px;
+    color: white;
+}
+
+.dashboard-btn:hover{
+    background: linear-gradient(to bottom,#0f172a,#1e293b);
+    color: #A855F7;
+}
+
+main {
+   
+    display: flex;
+    height: 100vh; /* full height if needed */
+    width: 100%;
+
+
+}
