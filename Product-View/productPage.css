@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin: 20rem;
+    padding: 0px;
+
+    font-family: "Montserrat";
+    background-color: #0B1222;
+
+    color: white
+}
+
+.top-section {
+    display: flex;
+    flex-flow: row;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.photo-selection-wrapper {
+    display: flex;
+    flex-flow: column;
+}
+
+.photo-selection-wrapper img {
+    width: 5rem;
+    height: auto;
+}
+
+.photo-selection:hover {
+    cursor: pointer;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-flow: column;
+}
+
+.market-display {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin: 1rem 0px;
+}
+
+.market-display p {
+    margin: 0px 0.5rem;
+}
+
+.rating-display {
+    display: flex;
+    align-items: center;
+    margin: 0.25rem 0px;
+}
+
+.rating-display img {
+    width: 2rem;
+    height: auto;
+    border-radius: 100%;
+
+    transition: background-color 0.5s;
+}
+
+.rating-display img:hover {
+    cursor: pointer;
+    background-color: #9b9b9b73;
+}
+
+.rating-display p {
+    font-size: 1.2rem;
+}
+
+.description-wrapper {
+    display: flex;
+    flex-flow: column;
+}
+
+.display-img {
+    width: auto;
+    height: 35rem;
+    margin-top: 1rem;
+}
+
+.qty-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.qty-wrapper [type=number] {
+    margin: 0px 10px;
+    background-color: transparent;
+    border-style: solid;
+    border-radius: 8px;
+    padding: 0.125rem;
+
+    color: white;
+}
+
+
+.add-cart-btn {
+    background: linear-gradient(97.39deg,
+            rgba(141, 48, 169, 1) 0%,
+            rgba(83, 0, 109, 1) 100%);
+
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    padding: 0.5rem;
+    width: 225px;
+    margin: 0.5rem 0px;
+    font-size: 1.25rem;
+
+    transition: color 0.5s;
+}
+
+.add-cart-btn:hover {
+    color: rgb(210, 205, 214);
+    cursor: pointer;
+}
+
+.product-name {
+    font-size: 35px;
+}
+
+hr {
+    border-color: #858585;
+    margin: 0.5rem 0px;
+}
+
+h2 {
+    text-decoration: none;
+    font-weight: normal;
+    margin: 0.5rem 0px;
+}
+
+.price {
+    font-size: 1.8rem;
+    color: #44FF00;
+}
+
+.price span {
+    color: #9B9B9B;
+    font-size: 1.25rem;
+    margin: 0px 0.5rem;
+    text-decoration: line-through;
+}
+
+.description {
+    margin-bottom: 1rem;
+    font-weight: 350;
+}
+
+.status {
+    font-size: 1rem;
+    margin-bottom: .25rem;
+    color: #B5B5B5;
+}
+
+.status span {
+    color: #44FF00;
+}
+
+.full-description {
+    background: rgba(217, 217, 217, 0.17);
+    border-radius: 8px;
+    padding: 2rem;
+    border-radius: 10px;
+
+    font-size: 15px;
+    margin: 2rem 0px;
+}
+
+.full-description h2 {
+    font-size: 1.5rem;
+}
+
+.full-description h1 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.full-description ul {
+    margin: 1rem 2rem;
+}
+
+.product-name-descr {
+    font-size: 2rem;
+    margin: 0.75rem 0px;
+}
+
+.reviews {
+    background: rgba(217, 217, 217, 0.17);
+    border-radius: 8px;
+    padding: 3rem;
+    border-radius: 10px;
+}
+
+.ratings-wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.user-info-comment {
+    display: flex;
+}
+
+.overall-rating {
+    display: flex;
+    flex-flow: column;
+}
+
+.overall-rating img {
+    width: auto;
+    height: auto;
+}
+
+.rating-score {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    align-items: center;
+
+    width: fit-content;
+}
+
+.rating-score img {
+    width: 30px;
+    height: auto;
+}
+
+.rating-score p {
+    margin: 0px 0.25rem;
+}
+
+.ratings-wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+}
+
+.ratings-wrapper button {
+    background: linear-gradient(93.77deg,
+            rgba(158, 80, 253, 1) 0%,
+            rgba(94, 48, 151, 1) 100%);
+    border-radius: 5px;
+    border: none;
+
+    color: white;
+    font-size: 1.25rem;
+
+    height: 3.25rem;
+    transition: color 0.5s;
+}
+
+.ratings-wrapper button:hover {
+    cursor: pointer;
+    color: #e5c9ff;
+}

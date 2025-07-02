@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #0B1222;
+    color: white;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom,#0f172a,#1e293b);
+}
+
+.dashboard-btn{
+    margin: 10px;
+    padding: 10px;
+    background: transparent;
+    border-radius: 20px;
+}
+
+.dashboard-btn:hover{
+    background: linear-gradient(to bottom,#0f172a,#1e293b);
+    color: #A855F7;
+}

@@ -1,14 +1,20 @@
+//module imports
 import express from "express";
+import connect from "./database/mongodb-connect.js";
+import session from 'express-session';
+//import bcrypt from 'bcryptjs';
+import cors from 'cors';
+
+//import views
 import homePage from "./routes/pages/homePage.js";
 import auth from "./routes/pages/auth.js";
 import shopPage from "./routes/pages/shopPage.js";
 import pcBuilder from "./routes/pages/pcBuilder.js";
 import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
-// import usersRouter from "./routes/api/user.js";
-import router from "./routes/api/user.js";
 import checkout from "./routes/pages/checkout.js";
-import connect from "./database/mongodb-connect.js";
+
+
 import User from "./models/user.js";
 import dotenv from "dotenv";
 // image upload
@@ -18,36 +24,59 @@ import { v2 as cloudinary } from "cloudinary";
 // establish environment variables
 dotenv.config();
 
-import session from "express-session";
+
 
 const app = express();
 const PORT = process.env.PORT;
 
-// Use body-parser middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+import payment from "./routes/pages/payment.js";
+import shopAdmin from "./routes/pages/shopAdmin.js";
 
-// for storing variable purposes
-app.use(
-  session({
-    secret: process.env.secret, // should be long and secret
-    resave: false,
-    saveUninitialized: true,
-  })
-);
 
-// use the static middleware to serve static files
-app.use(express.static("public"));
+
+//import apis
+import usersRouter from "./routes/api/userdupe.js";
+import productRouter from "./routes/api/product.js";
+
+
 
 //initializing EJS and Statics
 app.set("view engine", "ejs");
-// app.use(express.static("styles"));
 app.use(express.static("assets"));
 app.use(express.static("scripts"));
 app.use(express.static("views"));
+app.use(express.static("public"));
+app.use(express.static("middleware"));
+
+
+// Use body-parser middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(
+  cors({
+    credentials: true, // allow cookies to be sent
+  })
+);
+
+
+//creating session management for storing variable purposes
+app.use(
+  session({
+    secret:process.env.secret,
+    resave: false,// prevents resaving session if it hasn't changed
+    saveUninitialized: false,//prevents storing empty sessions
+    cookie: {
+      secure:false, // Set to true if using HTTPS
+      maxAge: 3*24 * 60 * 60 * 1000, // 3 days
+    },
+  })
+);
+
 
 //using routers
+app.use(express.json());
 app.use("/", homePage);
+
 app.use("/auth", auth);
 app.use("/shop", shopPage);
 app.use("/pcbuilder", pcBuilder);
@@ -103,6 +132,31 @@ app.get("/users/:email", async (req, res) => {
 app.post("/users", async (req, res) => {
   const user = req.body;
 
+app.use("/auth",auth);
+app.use("/shop",shopPage)
+app.use("/pcbuilder",pcBuilder);
+app.use("/pcprofile",pcProfile);
+app.use("/profile",userProfile);
+app.use("/shopadmin",shopAdmin);
+app.use("/payment", payment);
+app.use("/checkout", checkout);
+
+//api
+app.use("/api", usersRouter);
+app.use("/api",productRouter);
+
+//custom middleware to check session
+app.use("/api/session/check", checkSession);
+
+/*
+=====TO BE IMPLEMENTED LATER=====
+
+
+
+app.use("/checkout", checkout); // checkout router
+// app.use("/api/users", usersRouter);
+
+
   const result = await User.create(user);
   return res.status(201).json();
 });
@@ -156,7 +210,12 @@ app.post("/logout", async (req, res) => {
 
     return res.json({ message: "Logout Successful" });
   });
+
 });
+
+})
+  */
+
 
 connect();
 

@@ -1,0 +1,166 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #0b1222;
+}
+
+.product-form {
+    background-color: #1E1E2F;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width:  100%;
+   
+}
+
+.product-form h2 {
+    color: #FFFFFF;
+    margin-right: 50px;
+    margin-top: 0;
+}
+
+.product-form label {
+    color: #FFFFFF;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#pname {
+    width: 30%;
+    padding: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+#productname {
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#category {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 17px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+#cat {
+    font-size: 25px;
+    margin-left: 56px;
+    color: #FFFFFF;
+}
+
+#des, #full {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+#fdescription, #bdescription {
+    font-size: 25px;
+    padding-bottom: 15px;
+    color: #FFFFFF;
+}
+
+/* Form row styles */
+.form-row:not(.specs-row) {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+/* Updated form-group style for label + input side by side */
+.form-group {
+    display: flex;
+    align-items: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    color: #FFFFFF;
+    width: 100px; /* adjust label width as needed */
+    margin-right: 10px;
+    margin-left: 50px;
+}
+
+.form-input {
+    width: 30%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+
+.submit-btn {
+    background-color: #A855F7;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 50%;
+    margin-top: 10px;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #9333ea;
+}
+
+/* Style for the form group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+#w{
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#v{
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#p{
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#s{
+    font-size: 25px;
+    color: #FFFFFF;
+}
