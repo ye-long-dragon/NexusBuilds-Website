@@ -57,3 +57,11 @@ hr {
 .right {
     display: flex;
 }
+
+
+@media screen and (max-width: 1024px) {
+    footer {
+        padding: 2rem 1rem;
+        margin-right: -250px;
+    }
+}
