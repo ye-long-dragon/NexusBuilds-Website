@@ -3,22 +3,19 @@ import unauthFailSafe from '../../middleware/unauthFailSafe.js'; // Adjust the i
 
 const userProfile = express.Router();
 
-// Use the unauthFailSafe middleware to protect the route
-userProfile.get('/', unauthFailSafe, (req, res) => {
-    // Safely extract user data with defaults
-    const user = req.session.user || {
-        _id: '',
-        email: '',
-        username: '',
-        profileImgUrl: '',
-        isAdmin: false,
-    };
+// unauthFailSafe
 
-    // Debug logging (before rendering)
+// Use the unauthFailSafe middleware to protect the route
+userProfile.get('/' ,unauthFailSafe, (req, res) => {
+    // Safely extract user data with defaults
+    const user = req.session.user || {};
+
     console.log('Current session user:', user);
     
     // Render the template with user data
-    res.render('userprofile/index', { user });
+    res.render('Userprofile/index', {
+        user
+    })
 });
 
 export default userProfile;
