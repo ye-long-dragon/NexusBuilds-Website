@@ -11,7 +11,9 @@ const buildSchema = new mongoose.Schema({
     case: { type: String },
     psu: { type: String },
     cooler: { type: String },
-    additions: { type: Array }
+    additions: { type: Array },
+    description: { type:String },
+    buildImg: { type:String }
 });
 
 // ✅ Safely export without redefining model

@@ -9,7 +9,6 @@
 
 body {
     margin: 0px;
-    padding: 200px;
 
     font-family: "Montserrat";
     background-color: #0B1222;
@@ -23,7 +22,8 @@ main {
 
     display: flex;
     flex-flow: row;
-    padding: 2rem;
+    margin: 120px;
+    padding: 5rem 5rem;
 }
 
 .build-details {

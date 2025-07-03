@@ -3,6 +3,7 @@ import homePage from "./routes/pages/homePage.js";
 import auth from "./routes/pages/auth.js";
 import shopPage from "./routes/pages/shopPage.js";
 import pcBuilder from "./routes/pages/pcBuilder.js";
+import pcProfile from "./routes/pages/pcProfile.js";
 import userProfile from "./routes/pages/userProfile.js";
 import checkout from "./routes/pages/checkout.js";
 import connect from "./database/mongodb-connect.js";
@@ -46,7 +47,6 @@ app.use(express.static("public"));
 
 //initializing EJS and Statics
 app.set("view engine", "ejs");
-// app.use(express.static("styles"));
 app.use(express.static("assets"));
 app.use(express.static("scripts"));
 app.use(express.static("views"));
@@ -56,9 +56,9 @@ app.use("/", homePage);
 app.use("/auth", auth);
 app.use("/shop", shopPage);
 app.use("/pcbuilder", pcBuilder);
-// app.use("/pcprofile", pcProfile);
+app.use("/pcprofile", pcProfile);
 app.use("/userProfile", userProfile);
-app.use("/checkout", checkout); // checkout router
+app.use("/checkout", checkout);
 
 connect();
 

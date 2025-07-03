@@ -53,13 +53,11 @@ async function updateUser() {
 
 }
 
-
-
 async function logout() {
     event.preventDefault();
 
     try {
-        const res = await fetch("/logout", {
+        const res = await fetch("/api/logout", {
             method: "POST",
             credentials: "include"
         })
