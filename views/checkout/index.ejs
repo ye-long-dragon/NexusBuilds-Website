@@ -56,7 +56,8 @@
                                         value="<%= item.quantity || 1 %>">
                                 </div>
 
-                                <span class="material-symbols-outlined trash" onclick="deleteItem('<%= item.productId %>')" >delete</span>
+                                <span class="material-symbols-outlined trash"
+                                    onclick="deleteItem('<%= item.productId %>')">delete</span>
                             </div>
                             <% }) %>
                                 <% } %>
@@ -86,9 +87,26 @@
 
         <%- include("../partials/footer") %>
 </body>
-<script>
-    function deleteItem(itemId) {
-        console.log(itemId);
+<script defer>
+    window.deleteItem = async function (itemId) {
+        try {
+            const userId = '<%= user._id %>'; // ensure this is a string
+
+            const res = await fetch(`/api/users/${userId}/cart/${itemId}`, {
+                method: "DELETE"
+            });
+
+            if (res.ok) {
+                alert("Item removed successfully");
+                window.location.reload();
+            } else {
+                const data = await res.json();
+                alert("Delete failed: " + data.message);
+            }
+        } catch (e) {
+            console.error("Delete failed:", e.message);
+            alert("An unexpected error occurred.");
+        }
     }
 
     function selectAll() {

@@ -20,7 +20,7 @@ checkout.get("/", unuathFailSafe, async (req, res) => {
         const cart = user.cart || [];
 
         // ✅ Render cart to EJS template
-        res.render("checkout/index", { cart });
+        res.render("checkout/index", { cart, user });
 
     } catch (e) {
         console.error("Checkout error:", e.message);

@@ -42,9 +42,9 @@ userRouter.post("/users/login", async (req, res) => {
             country: user.country
         };
 
-        res.status(200).json({
-        message: "Login successful",
-        username: user.username
+            res.status(200).json({
+            message: "Login successful",
+            username: user.username
         });
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -174,24 +174,29 @@ userRouter.get("/users/:id/cart", async (req, res) => {
     }
 });
 
-// delete cart with a specific id
-userRouter.delete("/users/:id/cart/:productId", async (req, res) => {
-    const userId = req.params.id;
-    const productId = req.params.productId;
+// DELETE /users/:id/cart/:itemId
+userRouter.delete("/users/:userId/cart/:productId", async (req, res) => {
+    const { userId, productId } = req.params;
 
     try {
         const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        const beforeCount = user.cart.length;
+
+        user.cart = user.cart.filter(item => item.productId.toString() !== productId.toString());
+
+        const afterCount = user.cart.length;
+
+        if (beforeCount === afterCount) {
+        return res.status(404).json({ message: "Item not found in cart" });
         }
 
-        // Filter out the product from cart
-        user.cart = user.cart.filter(item => item.productId !== productId);
         await user.save();
 
-        res.status(200).json({ message: "Item removed from cart", cart: user.cart });
-    } catch (e) {
-        console.error("Error deleting item:", e.message);
+        res.status(200).json({ message: "Item removed from cart" });
+    } catch (err) {
+        console.error(err.message);
         res.status(500).json({ message: "Server error" });
     }
 });
