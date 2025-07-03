@@ -105,9 +105,10 @@ app.post("/users", async (req, res) => {
     if (!password) {
       return res.status(400).json({ message: "Password is required." });
     }
-
+    
     // Hash the password before storing
     const hashedPassword = await bcrypt.hash(password, 10);
+
 
     const user = {
       ...rest,
@@ -163,7 +164,7 @@ connect();
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
-});
+})
 
 app.use((req, res, next) => {
   res.send("404 not found");

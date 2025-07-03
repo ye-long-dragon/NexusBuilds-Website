@@ -2,30 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <link rel="stylesheet" href="/checkout.css">
-    <link rel="stylesheet" href="/navbar.css">
-    <link rel="stylesheet" href="/footer.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/checkout.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/footer.css" />
+    <title>Cart</title>
 </head>
 
 <body>
-
     <%- include("../partials/navbar") %>
 
-        <main>
-            <div class="items-wrapper">
-                <%- include("checkout-partials/item") %>
+    <main>
+        <div class="items-wrapper">
+            <h2>Cart Items</h2>
+            <div class="items">
+                <!-- Cart items will be rendered here -->
             </div>
+        </div>
+    </main>
 
+    <%- include("checkout-partials/checkout") %>
+    <%- include("../partials/footer") %>
 
-        </main>
-        <%- include("checkout-partials/checkout") %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+    <script src="/middleware/checkSession.js"></script>
 
-        <%- include("../partials/footer") %>
+    <script>
+        // Get cart from localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || { items: [], total: 0 };
+        let cartItems = cart.items;
+        console.log("Cart items:", cartItems);
+
+        // Render cart items
+        function renderCartItems() {
+            const itemsContainer = document.querySelector(".items");
+            itemsContainer.innerHTML = ""; // Clear container
+
+            if (!cartItems || cartItems.length === 0) {
+                itemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+
+            cartItems.forEach(item => {
+                const itemElement = document.createElement("div");
+                itemElement.className = "item";
+
+                // Fallback image if none is provided
+                const imgSrc = item.image || "/img/default.jpg";
+
+                itemElement.innerHTML = `
+                    <img src="${imgSrc}" alt="${item.name}" class="item-image">
+                    <div class="item-details">
+                        <h3>${item.name}</h3>
+                        <p>Price: $${Number(item.price).toFixed(2)}</p>
+                        <p>Quantity: ${item.quantity}</p>
+                    </div>
+                `;
+                fragment.appendChild(itemElement);
+            });
+
+            itemsContainer.appendChild(fragment);
+        }
+
+        document.addEventListener("DOMContentLoaded", renderCartItems);
+    </script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
-<script src="/middleware/checkSession.js"></script>
+
 </html>
