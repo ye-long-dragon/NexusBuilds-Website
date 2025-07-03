@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>PC Components</title>
     <link rel="stylesheet" href="/shop.css">
     <link rel="stylesheet" href="/navbar.css">
     <link rel="stylesheet" href="/footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC Components</title>
-    <script src="script.js" defer></script>
+
+    <script defer src="/script.js"></script>
 </head>
 
 <body>
@@ -17,124 +18,184 @@
     <%- include('../partials/navbar.ejs') %>
 
         <main>
+
             <div class="mainDescription">
-                <div class="descrip">
-                    <div class="top">
-                        <div class="left">
-                            <h2>PC Components</h2>
-                            <p>Gear up for peak performance! Find powerful CPUs, high-end GPUs, fast memory, and
-                                top-tier
-                                storage to build your dream gaming rig. These components are made for serious players.
-                            </p>
-                        </div>
-                        <div class="right search-bar">
-                            <input type="text" placeholder="Search Components">
-                            <span class="material-symbols-outlined search-icon">search</span>
-                        </div>
+
+                <div class="top">
+                    <div class="left">
+                        <h2>PC Components</h2>
+                        <p>Gear up for peak performance! Find powerful CPUs, high-end GPUs, fast memory, and
+                            top-tier
+                            storage to build your dream gaming rig. These components are made for serious players.
+                        </p>
                     </div>
-                    <div class="filters">
-                        <div class="filterItem allcomps" id="allComponents">
-                            <input type="button" value="All Components" class="filterPart all">
-                        </div>
-                        <div class="filterItem" id="Processor">
-                            <img src="/assets/processor-svgrepo-com 1.svg" alt="">
-                            <p>Processor</p>
-                        </div>
-                        <div class="filterItem" id="GraphicsCard">
-                            <img src="/assets/gpu-mining 2.svg" alt="">
-                            Graphics Card
-                        </div>
-                        <div class="filterItem" id="Motherboard">
-                            <img src="/assets/motherboard 2.svg" alt="">
-                            Motherboard
-                        </div>
-                        <div class="filterItem" id="storage">
-                            <img src="/assets/disk 2.svg" alt="">
-                            Storage
-                        </div>
-                        <div class="filterItem" id="RAM">
-                            <img src="/assets/memory 2.svg" alt="">
-                            RAM
-                        </div>
-                        <div class="filterItem" id="Case">
-                            <img src="/assets/cube 2.svg" alt="">
-                            Case
-                        </div>
-                        <div class="filterItem" id="PowerSupply">
-                            <img src="/assets/thunderbolt 2.svg" alt="">
-                            Power Supply
-                        </div>
-                        <div class="filterItem" id="Cooling">
-                            <img src="/assets/fan 2.svg" alt="">
-                            Cooling
-                        </div>
+                    <div class="right search-bar">
+                        <input type="text" placeholder="Search Components">
+                        <span class="material-symbols-outlined search-icon">search</span>
                     </div>
                 </div>
-                <div class="block Cooling">
-                    <div class="itemMenu">
-                        
-
-                        <% products.slice(0, 10).forEach(product => { %>
-                            <div class="item">
-                                <div class="pic">
-                                    <img src="/assets/ryzen-removebg-preview 1.svg" alt="" height="256px">
-                                </div>
-                                <div class="descrip">
-                                <div class="mainDescrip">
-                                    <div class="top">
-                                        <div class="left">
-                                            <p><%= product.component%></p>
-                                            <h5><%= product.name %></h5>
-                                        </div>
-                                        <div class="right">
-                                            <img src="/assets/star.svg" alt="" height="14px">
-                                            <p>4.9</p>
-                                        </div>
-                                    </div>
-                                    <div class="bot">
-                                        <div class="left">
-                                            <span>
-                                                <h6>$<%= product.price %></h6>
-                                            </span>
-                                            <!-- <span>
-                                                <p>$18,000.00</p>
-                                            </span> -->
-                                        </div>
-                                        <div class="right">
-                                            <p>15 in stock</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="btn">
-                                    <p>Add to Cart</p>
-                                </div>
-                            </div>
-                        </div>
-                        <% }) %>
-
+                <div class="filters">
+                    <div class="filterItem allcomps" id="allComponents">
+                        <input type="button" value="All Components" class="filterPart all">
                     </div>
-
-                    <button class="prevBtn">
-                        back
-                    </button>
-                    <button class="nextBtn">
-                        next
-                    </button>
+                    <div class="filterItem" id="Processor">
+                        <img src="/assets/processor-svgrepo-com 1.svg" alt="">
+                        <p>Processor</p>
+                    </div>
+                    <div class="filterItem" id="GraphicsCard">
+                        <img src="/assets/gpu-mining 2.svg" alt="">
+                        Graphics Card
+                    </div>
+                    <div class="filterItem" id="Motherboard">
+                        <img src="/assets/motherboard 2.svg" alt="">
+                        Motherboard
+                    </div>
+                    <div class="filterItem" id="storage">
+                        <img src="/assets/disk 2.svg" alt="">
+                        Storage
+                    </div>
+                    <div class="filterItem" id="RAM">
+                        <img src="/assets/memory 2.svg" alt="">
+                        RAM
+                    </div>
+                    <div class="filterItem" id="Case">
+                        <img src="/assets/cube 2.svg" alt="">
+                        Case
+                    </div>
+                    <div class="filterItem" id="PowerSupply">
+                        <img src="/assets/thunderbolt 2.svg" alt="">
+                        Power Supply
+                    </div>
+                    <div class="filterItem" id="Cooling">
+                        <img src="/assets/fan 2.svg" alt="">
+                        Cooling
+                    </div>
                 </div>
             </div>
 
+            <div class="itemMenu">
+                <% products.slice(min, max).forEach(product=> { %>
+                    <div class="item">
+                        <div class="pic">
+                            <img src="/assets/ryzen-removebg-preview 1.svg" alt="" height="256px">
+                        </div>
+                        <div class="descrip">
+                            <div class="mainDescrip">
+                                <div class="item-descr">
+                                    <div class="left">
+                                        <p class="product-component">
+                                            <%= product.component %>
+                                        </p>
+                                        <h5 class="product-name">
+                                            <%= product.name %>
+                                        </h5>
+                                    </div>
+                                    <div class="rating-wrapper">
+                                        <img src="/assets/star.svg" alt="" height="14px" class="rating-star">
+                                        <p class="rating-numeric">4.9</p>
+                                    </div>
+                                </div>
+                                <div class="bot">
+                                    <div class="left">
+                                        <h6 class="product-price">$ <%= product.price %>
+                                        </h6>
+                                    </div>
+                                    <div class="stock">
+                                        <p>15 in stock</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="btn"
+                                onclick="addToCart('<%= product._id %>', '<%= product.name %>', '<%= product.price %>', '<%= product.component %>')">
+                                <p>Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <!-- Pagination Buttons -->
+            <button class="prevBtn" onclick="productsControl(-10)">Back</button>
+            <button class="nextBtn" onclick="productsControl(+10)">Next</button>
+            </div>
         </main>
 
         <%- include('../partials/footer.ejs') %>
+
+            <!-- ✅ Inject user session into browser JS -->
+            <script id="user-json" type="application/json">
+        <%- JSON.stringify(user || {}) %>
+    </script>
+
+            <script defer>
+                // These values are passed from the server-side using EJS
+                let min = <%= min %>;
+                let max = <%= max %>;
+                const total = <%= products.length %>; // Total number of products
+
+                function productsControl(control) {
+                    console.log(`total: ${total}`);
+                    console.log(`min: ${min}`);
+                    console.log(`max: ${max}`);
+
+                    // Only change range if within bounds
+                    if (min + control >= 0 && max + control <= total) {
+                        min += control;
+                        max += control;
+
+                        // Redirect with updated query parameters
+                        window.location.href = `/shop?min=${min}&max=${max}`;
+                    }
+                }
+
+
+                // 🔒 DOM is ready
+                window.addEventListener("DOMContentLoaded", () => {
+                    const userEl = document.getElementById("user-json");
+                    window.user = JSON.parse(userEl?.textContent || "{}"); // assign to global window
+                    window.userId = window.user?.id;
+                });
+
+                // ✅ Function declared globally
+                window.addToCart = async function (itemId, name, price, component) {
+                    if (!window.userId) {
+                        alert("You must be logged in to add items to your cart.");
+                        return;
+                    }
+
+                    const priceFloat = parseFloat(price);
+
+                    try {
+                        const res = await fetch(`/api/users/${window.userId}/cart`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                item: {
+                                    productId: itemId,
+                                    name,
+                                    price: priceFloat,
+                                    component
+                                }
+                            }),
+                            credentials: 'include'
+                        });
+
+                        const data = await res.json();
+
+                        if (res.ok) {
+                            alert("Item added to cart!");
+                        } else {
+                            alert("Error: " + data.message);
+                        }
+
+                    } catch (err) {
+                        console.error("Add to cart failed:", err);
+                        alert("Something went wrong.");
+                    }
+                };
+            </script>
+
 </body>
-<script defer>
-    window.onload = async function () {
-        const products = await fetch("/products");
-        const data = products.json();
-
-        console.log(data);
-    }
-</script>
-
 
 </html>

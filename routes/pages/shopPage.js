@@ -7,7 +7,20 @@ const shopPage = express.Router();
 shopPage.get("/", async (req, res) => {
     try {
         const products = await Product.find({});
-        res.render("shop/index", { products });
+        
+
+        // for contolling number of products
+        const min = parseInt(req.query.min) || 0;
+        const max = parseInt(req.query.max) || 10;
+
+        // get total number of products
+        // const total = products.length();
+
+        // pass user session
+        const user = req.session.user;
+
+        res.render("shop/index", { products, min, max, user});
+
     } catch (error) {
         console.error("Error loading products:", error.message);
         res.status(500).send("Server error");

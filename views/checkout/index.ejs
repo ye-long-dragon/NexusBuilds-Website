@@ -17,34 +17,110 @@
 
         <main>
             <div class="items-wrapper">
-                <div class="checkout-wrapper">
-                    <div class="checkbox-wrapper">
-                        <label>
-                            <input type="checkbox" />
-                            <span class="checkbox"></span>
-                        </label>
-                    </div>
+                <% if (cart.length===0) { %>
+                    <p class="empty-msg">Your cart is empty.</p>
+                    <% } else { %>
+                        <% cart.forEach(item=> { %>
+                            <div class="item-wrapper">
+                                <div class="checkbox-wrapper">
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span class="checkbox"></span>
+                                    </label>
+                                </div>
 
-                    <p class="select">
-                        Select All <span>Delete</span>
-                    </p>
+                                <div class="product-wrapper">
+                                    <% if (item.imageUrl) { %>
+                                        <img src="<%= item.imageUrl %>" alt="<%= item.name %>" />
+                                        <% } else { %>
+                                            <p>Image Here</p>
+                                            <% } %>
+                                </div>
 
-                    <p class="total">
-                        Total (*#ofitem* item/s): <span>₱0</span>
-                    </p>
+                                <div class="details-wrapper">
+                                    <p class="comp-type">
+                                        <%= item.component || "Component" %>
+                                    </p>
+                                    <p class="product-name">
+                                        <%= item.name %>
+                                    </p>
+                                </div>
 
-                    <button class="checkout-btn">
-                        Checkout
-                    </button>
-                </div>
+                                <p class="price-details">
+                                    $<%= item.price %>
+                                </p>
+
+                                <div class="qty">
+                                    <label for="qty">Qty:</label>
+                                    <input type="number" id="qty" min="1" max="9" step="1"
+                                        value="<%= item.quantity || 1 %>">
+                                </div>
+
+                                <span class="material-symbols-outlined trash" onclick="deleteItem('<%= item.productId %>')" >delete</span>
+                            </div>
+                            <% }) %>
+                                <% } %>
+            </div>
+        </main>
+
+        <div class="checkout-wrapper">
+            <div class="checkbox-wrapper">
+                <label>
+                    <input type="checkbox" />
+                    <span class="checkbox" onclick="selectAll()"></span>
+                </label>
             </div>
 
+            <p class="select">
+                Select All <span>Delete</span>
+            </p>
 
-        </main>
-        <%- include("checkout-partials/checkout") %>
+            <p class="total">
+                Total (*#ofitem* item/s): <span>$0</span>
+            </p>
 
-            <%- include("../partials/footer") %>
+            <button class="checkout-btn">
+                Checkout
+            </button>
+        </div>
+
+        <%- include("../partials/footer") %>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+<script>
+    function deleteItem(itemId) {
+        console.log(itemId);
+    }
+
+    function selectAll() {
+        const selectAllCheckbox = document.querySelector('.checkout-wrapper input[type="checkbox"]');
+        const itemCheckboxes = document.querySelectorAll('.items-wrapper input[type="checkbox"]');
+        const totalPriceDisplay = document.querySelector('.total span');
+        const totalItemsDisplay = document.querySelector('.total');
+        let totalPrice = 0;
+        let totalCount = 0;
+
+        itemCheckboxes.forEach((checkbox, index) => {
+            checkbox.checked = !selectAllCheckbox.checked;
+
+            if (!selectAllCheckbox.checked) {
+                const itemWrapper = checkbox.closest('.item-wrapper');
+                const priceText = itemWrapper.querySelector('.price-details').innerText.replace('$', '');
+                const quantity = parseInt(itemWrapper.querySelector('input[type="number"]').value) || 1;
+
+                const price = parseFloat(priceText);
+                totalPrice += price * quantity;
+                totalCount++;
+            }
+        });
+
+        if (!selectAllCheckbox.checked) {
+            totalPriceDisplay.textContent = `$${totalPrice.toFixed(2)}`;
+            totalItemsDisplay.innerHTML = `Total (${totalCount} item/s): <span>$${totalPrice.toFixed(2)}</span>`;
+        } else {
+            totalPriceDisplay.textContent = '$0';
+            totalItemsDisplay.innerHTML = `Total (0 item/s): <span>$0</span>`;
+        }
+    }
+</script>
 
 </html>

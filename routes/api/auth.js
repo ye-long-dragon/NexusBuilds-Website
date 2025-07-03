@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
-import User from "../../models/User.js"; // Ensure this path is correct based on your project structure
+import unauthFailSafe from "../../middleware/unauthFailSafe.js";
+import User from "./../../models/user.js"
 
 const userRouter = express.Router();
 
@@ -31,14 +32,14 @@ userRouter.post("/users/login", async (req, res) => {
 
         // Store only non-sensitive fields in session
         req.session.user = {
-        id: user._id,
-        username: user.username,
-        fname: user.fname,
-        lname: user.lname,
-        email: user.email,
-        address: user.address,
-        phone: user.phone,
-        country: user.country
+            id: user._id,
+            username: user.username,
+            fname: user.fname,
+            lname: user.lname,
+            email: user.email,
+            address: user.address,
+            phone: user.phone,
+            country: user.country
         };
 
         res.status(200).json({
@@ -113,5 +114,86 @@ userRouter.post("/logout", async (req, res) => {
 
 });
 
+
+// add item to user cart
+// add unauthorized fail safe later
+userRouter.post("/users/:id/cart", async (req, res) => {
+    const userId = req.params.id;
+    const item = req.body.item;
+
+    try {
+        const user = await User.findById(userId);
+
+        if (!user) {
+        return res.status(404).json({ message: "User not found" });
+        }
+
+        // Check if item with same productId already exists in cart
+        const existingIndex = user.cart.findIndex(
+        (cartItem) => cartItem.productId === item.productId
+        );
+
+        if (existingIndex !== -1) {
+            // If item exists, increase quantity
+            user.cart[existingIndex].quantity += item.quantity;
+        } else {
+            // Else, add item
+            user.cart.push(item);
+        }
+
+        await user.save();
+
+        res.status(200).json({ message: "Cart updated", cart: user.cart });
+    } catch (e) {
+        console.error(e.message);
+        res.status(500).json({ message: e.message });
+    }
+});
+
+
+// GET /users/:id/cart - Retrieve all items in a user's cart
+userRouter.get("/users/:id/cart", async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const cart = user.cart;
+
+        // render cart
+        res.render("checkout/index", {cart});
+
+        // res.status(200).json({ cart: user.cart });
+    } catch (e) {
+        console.error("Error retrieving cart:", e.message);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+// delete cart with a specific id
+userRouter.delete("/users/:id/cart/:productId", async (req, res) => {
+    const userId = req.params.id;
+    const productId = req.params.productId;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Filter out the product from cart
+        user.cart = user.cart.filter(item => item.productId !== productId);
+        await user.save();
+
+        res.status(200).json({ message: "Item removed from cart", cart: user.cart });
+    } catch (e) {
+        console.error("Error deleting item:", e.message);
+        res.status(500).json({ message: "Server error" });
+    }
+});
 
 export default userRouter;
