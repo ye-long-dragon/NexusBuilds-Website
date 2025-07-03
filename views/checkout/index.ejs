@@ -29,47 +29,72 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
     <script src="/middleware/checkSession.js"></script>
 
-    <script>
-        // Get cart from localStorage
-        let cart = JSON.parse(localStorage.getItem("cart")) || { items: [], total: 0 };
-        let cartItems = cart.items;
-        console.log("Cart items:", cartItems);
+   <script>
+    let cart=null;
 
-        // Render cart items
-        function renderCartItems() {
-            const itemsContainer = document.querySelector(".items");
-            itemsContainer.innerHTML = ""; // Clear container
+    try {
+        const cartRaw = localStorage.getItem("cart");
+        
+        if (cartRaw) {
+            const parsed = JSON.parse(cartRaw);
+            console.log("Parsed cart data:", parsed);
+            if (parsed && Array.isArray(parsed.items)) {
+                cart = parsed;
+                // Ensure total is a number
+                cart.total = typeof parsed.total === 'number' ? parsed.total : 0
+                console.log("Cart successfully loaded from localStorage:", cart);
+                console.log("Cart total:", cart.total);
+            } else {
+                console.warn("Invalid cart structure in localStorage. Resetting cart.");
+                cart = { items: [], total: 0 };
+                }
+        } else {
+            console.warn("No cart data found in localStorage. Initializing empty cart.");
+            cart = { items: [], total: 0 };            
+        }
+    } catch (err) {
+        console.error("Error parsing cart from localStorage:", err);
+    }
 
-            if (!cartItems || cartItems.length === 0) {
-                itemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-                return;
-            }
+    const cartItems = cart.items;
+    console.log("Cart items to render:", cartItems);
 
-            const fragment = document.createDocumentFragment();
+    function renderCartItems() {
+        const itemsContainer = document.querySelector(".items");
+        itemsContainer.innerHTML = "";
 
-            cartItems.forEach(item => {
-                const itemElement = document.createElement("div");
-                itemElement.className = "item";
-
-                // Fallback image if none is provided
-                const imgSrc = item.image || "/img/default.jpg";
-
-                itemElement.innerHTML = `
-                    <img src="${imgSrc}" alt="${item.name}" class="item-image">
-                    <div class="item-details">
-                        <h3>${item.name}</h3>
-                        <p>Price: $${Number(item.price).toFixed(2)}</p>
-                        <p>Quantity: ${item.quantity}</p>
-                    </div>
-                `;
-                fragment.appendChild(itemElement);
-            });
-
-            itemsContainer.appendChild(fragment);
+        if (!cartItems || cartItems.length === 0) {
+            itemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+            return;
         }
 
-        document.addEventListener("DOMContentLoaded", renderCartItems);
-    </script>
+        const fragment = document.createDocumentFragment();
+
+        cartItems.forEach(item => {
+            const itemElement = document.createElement("div");
+            itemElement.className = "item";
+
+            const imgSrc = item.image || "/img/default.jpg";
+
+            itemElement.innerHTML = `
+                <img src="${imgSrc}" alt="${item.name}" class="item-image">
+                <div class="item-details">
+                    <h3>${item.name}</h3>
+                    <p>Price: $${Number(item.price).toFixed(2)}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                </div>
+            `;
+
+            fragment.appendChild(itemElement);
+        });
+
+        itemsContainer.appendChild(fragment);
+    }
+
+    document.addEventListener("DOMContentLoaded", renderCartItems);
+</script>
+
+
 </body>
 
 </html>
