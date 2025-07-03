@@ -99,10 +99,27 @@ app.post("/users/login", async (req, res) => {
 
 // post user
 app.post("/users", async (req, res) => {
-  const user = req.body;
+  try {
+    const { password, ...rest } = req.body;
 
-  const result = await User.create(user);
-  return res.status(201).json();
+    if (!password) {
+      return res.status(400).json({ message: "Password is required." });
+    }
+
+    // Hash the password before storing
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = {
+      ...rest,
+      password: hashedPassword
+    };
+
+    const result = await User.create(user);
+
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 // update user
