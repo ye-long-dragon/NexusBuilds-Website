@@ -40,7 +40,11 @@ app.use("/api", buildsRoutes);
 
 // initialize users route
 import authRouter from "./routes/api/auth.js"
-app.use("/api", authRouter)
+app.use("/api", authRouter);
+
+// initialize order route
+import orderRoute from "./routes/api/order.js"
+app.use("/api", orderRoute);
 
 // use the static middleware to serve static files
 app.use(express.static("public"));

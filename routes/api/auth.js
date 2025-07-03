@@ -57,7 +57,7 @@ userRouter.post("/users", async (req, res) => {
         const { username, email, password } = req.body;
 
         if (!password) {
-        return res.status(400).json({ message: "Password is required." });
+            return res.status(400).json({ message: "Password is required." });
         }
 
         // Hash the password before storing

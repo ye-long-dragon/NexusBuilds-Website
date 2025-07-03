@@ -25,7 +25,6 @@
                                 <div class="checkbox-wrapper">
                                     <label>
                                         <input type="checkbox" />
-                                        <span class="checkbox"></span>
                                     </label>
                                 </div>
 
@@ -77,10 +76,10 @@
             </p>
 
             <p class="total">
-                Total (*#ofitem* item/s): <span>$0</span>
+                Total (*#ofitem* item/s): <span class="currentPrice">0</span>
             </p>
 
-            <button class="checkout-btn">
+            <button class="checkout-btn" onclick="checkoutItems()">
                 Checkout
             </button>
         </div>
@@ -88,10 +87,45 @@
         <%- include("../partials/footer") %>
 </body>
 <script defer>
+    const cart = <%- JSON.stringify(cart || []) %>;
+    const userId = "<%= user._id %>";
+
+    window.checkoutItems = async () => {
+        const itemIDs = cart.map(item => item.productId);
+
+        try {
+            const res = await fetch("http://localhost:8000/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    items: itemIDs
+                })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                alert("Order placed successfully!");
+                console.log(data);
+                window.location.reload();
+            } else {
+                alert("Failed to place order: " + (data.message || "Unknown error"));
+            }
+        } catch (err) {
+            console.error("Order error:", err);
+            alert("Checkout failed.");
+        }
+    };
+
+    window.checkItem = (itemPrice) => {
+        // TODO
+    };
+
     window.deleteItem = async function (itemId) {
         try {
-            const userId = '<%= user._id %>'; // ensure this is a string
-
             const res = await fetch(`/api/users/${userId}/cart/${itemId}`, {
                 method: "DELETE"
             });
@@ -107,7 +141,7 @@
             console.error("Delete failed:", e.message);
             alert("An unexpected error occurred.");
         }
-    }
+    };
 
     function selectAll() {
         const selectAllCheckbox = document.querySelector('.checkout-wrapper input[type="checkbox"]');
@@ -140,5 +174,6 @@
         }
     }
 </script>
+
 
 </html>
