@@ -118,8 +118,8 @@ app.put("/users/:email", async (req, res) => {
           address: req.body.address,
           phone: req.body.phone,
           country: req.body.country,
-          // dateOfBirth: req.body.dateOfBirth,
-          // TODO: gender and dateofbirth
+          dateOfBirth: req.body.dateOfBirth,
+          gender: req.body.gender,
         },
       }
     );
@@ -139,6 +139,7 @@ app.post("/logout", async (req, res) => {
 
     return res.json({ message: "Logout Successful" });
   });
+
 });
 
 connect();

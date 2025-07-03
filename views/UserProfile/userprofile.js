@@ -17,60 +17,63 @@ imageInput.addEventListener("change", async () => {
 });
 
 async function updateUser() {
-  event.preventDefault();
-  console.log(document.getElementById("email").value);
-  try {
-    const result = await fetch(
-      "/users/" + document.getElementById("email").value,
-      {
-        method: "PUT", // Use PUT for updates
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fname: document.getElementById("firstname").value,
-          lname: document.getElementById("lastname").value,
-          address: document.getElementById("address").value,
-          phone: document.getElementById("phone").value,
-          country: document.getElementById("country").value,
-        }),
-      }
-    );
+  event.preventDefault
 
-    const data = await result.json();
-    console.log(data);
-
-    if (result.ok) {
-      alert("User updated successfully");
-    } else {
-      alert(data.message || "Failed to update user");
-    }
-    
-  } catch (e) {
-    alert("An error occurred while updating user", e.message);
-    console.error("Update error:", e.message);
+  const user = {
+      fname: document.getElementById("firstname").value,
+      lname: document.getElementById("lastname").value,
+      address: document.getElementById("address").value,
+      phone: document.getElementById("phone").value,
+      country: document.getElementById("country").value,
+      dateOfBirth: document.getElementById("date-of-birth").value,
+      gender: document.querySelector('input[name="gender"]:checked')?.value || ""
   }
+
+  try {
+      const res = await fetch("/users/"+document.getElementById("email").value, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(user)
+      })
+
+      if (!res.ok) {
+          const error = await res.json();
+          alert(error.message || "Registration failed.");
+          return;
+      }
+
+      alert("User registered successfully!");
+      window.location.href = "/"; // redirect to home
+
+  } catch(e) {
+      return console.log(e.message);
+  }
+
 }
 
-async function logout(event) {
-  event.preventDefault();
 
-  try {
-    const res = await fetch("/logout", {
-      method: "POST",
-      credentials: "include", // important if using cookies/session
-    });
 
-    const data = await res.json(); // ✅ correct way to read JSON response
+async function logout() {
+    event.preventDefault();
 
-    if (!res.ok) {
-      alert(data.message || "Logout Failed.");
-      return;
+    try {
+        const res = await fetch("/logout", {
+            method: "POST",
+            credentials: "include"
+        })
+        const data = res.data;
+
+        if (!res.ok) {
+            const error = await res.json();
+            alert(error.message || "Logout Failed.");
+            return;
+        }
+
+        // alert(data.message);
+        window.location.href = "/"; // redirect to home
+    } catch(e) {
+        return console.log(e.message);
     }
-
-    // ✅ redirect after logout
-    window.location.href = "/";
-  } catch (e) {
-    console.error("Logout error:", e.message);
-  }
 }
