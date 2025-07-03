@@ -1,13 +1,10 @@
 const unauthFailSafe = (req, res, next) => {
-    if (req.session.user) {
-        console.log("Authorized access attempt detected.");
-        return res.status(302).redirect("/shop"); // Redirect to shop page if user is authenticated
+    if (!req.session.user) {
+        // no authenticated user, fail with 401 Unauthorized
+        return res.redirect("/auth/login");
     }
-    else {
-        console.log("Unauthorized access attempt detected.");
-        return res.redirect("/auth/login"); // Redirect to login page
-    }
-    next(); // Proceed to the next middleware or route handler
+
+    next();
 };
 
-export default unauthFailSafe;
+export default unauthFailSafe;  
