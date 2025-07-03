@@ -1,39 +1,18 @@
-import { Schema,model } from "mongoose";
-import Payment from "./paymentOptions.js";  
+// models/build.js
+import mongoose from "mongoose";
 
-const buildSchema = new Schema({
-    name: {
-        type: String,
-    },
-    processor: {
-        Type: String
-    },
-    gpu: {
-        Type:String
-    },
-    motherboard: {
-        Type:String
-    },
-    storage: {
-        Type:String
-    },
-    ram: {
-        Type:String
-    },
-    case: {
-        Type:String
-    },
-    psu: {
-        Type:String
-    },
-    cooler: {
-        Type:String
-    },
-    additions: {
-        Type:Array
-    }
+const buildSchema = new mongoose.Schema({
+    name: { type: String },
+    processor: { type: String },
+    gpu: { type: String },
+    motherboard: { type: String },
+    storage: { type: String },
+    ram: { type: String },
+    case: { type: String },
+    psu: { type: String },
+    cooler: { type: String },
+    additions: { type: Array }
 });
 
-const Build = model('Build', buildSchema);
-
-export default Build;
+// ✅ Safely export without redefining model
+export default mongoose.models.Build || mongoose.model("Build", buildSchema);

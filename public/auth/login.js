@@ -3,7 +3,7 @@ async function login() {
     const password = document.querySelector(".pword-input").value;
 
     try {
-        const res = await fetch("/users/login", {
+        const res = await fetch("/api/users/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

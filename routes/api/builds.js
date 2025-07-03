@@ -1,5 +1,5 @@
 import express from 'express';
-import Build from '../../models/build.js'; // Assuming you have a Build model
+import Build from '../../models/Build.js'; // Ensure this path is correct based on your project structure
 
 const buildsRouter = express.Router();
 
@@ -13,5 +13,17 @@ buildsRouter.get('/builds/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+//get all builds
+buildsRouter.get('/builds', async (req, res) => {
+    try {
+        const products = await Build.find({});
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 
 export default buildsRouter;
