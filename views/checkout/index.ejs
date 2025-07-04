@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <link rel="stylesheet" href="/checkout.css">
-    <link rel="stylesheet" href="/navbar.css">
-    <link rel="stylesheet" href="/footer.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/checkout.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/footer.css" />
+    <title>Cart</title>
 </head>
 
 <body>
-
     <%- include("../partials/navbar") %>
+
 
         <main>
             <div class="items-wrapper">
@@ -84,8 +84,9 @@
             </button>
         </div>
 
-        <%- include("../partials/footer") %>
+
 </body>
+
 <script defer>
     const cart = <%- JSON.stringify(cart || []) %>;
     const userId = "<%= user._id %>";
@@ -177,3 +178,4 @@
 
 
 </html>
+

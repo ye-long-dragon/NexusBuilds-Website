@@ -123,10 +123,12 @@
 
         <%- include('../partials/footer.ejs') %>
 
+
             <!-- ✅ Inject user session into browser JS -->
             <script id="user-json" type="application/json">
         <%- JSON.stringify(user || {}) %>
     </script>
+
 
             <script defer>
                 // These values are passed from the server-side using EJS

@@ -64,11 +64,12 @@ app.use("/pcprofile", pcProfile);
 app.use("/userProfile", userProfile);
 app.use("/checkout", checkout);
 
+
 connect();
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
-});
+})
 
 app.use((req, res, next) => {
   res.send("404 not found");
