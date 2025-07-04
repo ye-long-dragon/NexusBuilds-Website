@@ -9,8 +9,6 @@ const userProfile = express.Router();
 userProfile.get('/' ,unauthFailSafe, (req, res) => {
     // Safely extract user data with defaults
     const user = req.session.user || {};
-
-    console.log('Current session user:', user);
     
     // Render the template with user data
     res.render('Userprofile/index', {

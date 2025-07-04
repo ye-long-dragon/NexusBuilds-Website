@@ -1,38 +1,38 @@
 
-    // Get the form elements
-    const signupBtn = document.querySelector(".signup-btn");
+// Get the form elements
+const signupBtn = document.querySelector(".signup-btn");
 
-    const form = document.querySelector(".sign-up-form");
+const form = document.querySelector(".sign-up-form");
 
-    const uname = document.querySelector(".uname-input");
-    const email = document.querySelector(".email-input");
-    const pword = document.querySelector(".pword-input");
-    const cpword = document.querySelector(".cpword-input");
+const uname = document.querySelector(".uname-input");
+const email = document.querySelector(".email-input");
+const pword = document.querySelector(".pword-input");
+const cpword = document.querySelector(".cpword-input");
 
-    // add show and hide functionality for password fields
-    const pwordicon = document.querySelector(".pword-eye-icon");
-    const pwordfield = document.querySelector(".pword-input");
-    function showp() {
-        if (pwordfield.type == "password") {
-            pwordfield.type = "text";
-            pwordicon.src = "/assets/eye.svg"
-        } else {
-            pwordfield.type = "password";
-            pwordicon.src = "/assets/eye-slash.svg"
-        }
+// add show and hide functionality for password fields
+const pwordicon = document.querySelector(".pword-eye-icon");
+const pwordfield = document.querySelector(".pword-input");
+function showp() {
+    if (pwordfield.type == "password") {
+        pwordfield.type = "text";
+        pwordicon.src = "/assets/eye.svg"
+    } else {
+        pwordfield.type = "password";
+        pwordicon.src = "/assets/eye-slash.svg"
     }
+}
 
-    const cpwordicon = document.querySelector(".cpword-eye-icon");
-    const cpwordfield = document.querySelector(".cpword-input");
-    function showcp() {
-        if (cpwordfield.type == "password") {
-            cpwordfield.type = "text";
-            cpwordicon.src = "/assets/eye.svg"
-        } else {
-            cpwordfield.type = "password";
-            cpwordicon.src = "/assets/eye-slash.svg"
-        }
+const cpwordicon = document.querySelector(".cpword-eye-icon");
+const cpwordfield = document.querySelector(".cpword-input");
+function showcp() {
+    if (cpwordfield.type == "password") {
+        cpwordfield.type = "text";
+        cpwordicon.src = "/assets/eye.svg"
+    } else {
+        cpwordfield.type = "password";
+        cpwordicon.src = "/assets/eye-slash.svg"
     }
+}
 
 
 signupBtn.addEventListener("click", async function (event) {
@@ -61,7 +61,13 @@ signupBtn.addEventListener("click", async function (event) {
 
     try {
         // Send POST request using axios
-        const res = await axios.post("/users", userData);
+        const res = await fetch("/api/users",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify(userData)
+        });
 
         // Check response status
         if (res.status === 201) {

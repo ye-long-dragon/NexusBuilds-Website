@@ -2,6 +2,9 @@ import Image from "./image.js"
 import { Schema,model } from "mongoose";
 
 const productSchema = new Schema({
+    // _id: {
+    //     type: String
+    // },
     name:{
         type:String,
         required:true

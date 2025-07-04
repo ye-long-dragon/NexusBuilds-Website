@@ -231,8 +231,6 @@ body {
         top: 0;
         color: white;
         font-family: inter;
-
-        height: 100vh;
     }
 
     .top .left {
@@ -310,10 +308,13 @@ body {
 
     .item {
         background-color: #313131;
-        /* width: fit-content; */
         padding: 10px;
         margin-right: 0.8rem;
         border-radius: 20px;
+    }
+
+    p {
+        text-transform: capitalize;
     }
 
     .item>div.pic {
@@ -340,7 +341,36 @@ body {
         padding: 5px;
         display: flex;
         flex-flow: row;
-        align-items: center;
+    }
+
+    .item-descr {
+        flex: 1;
+        display: flex;
+        flex-flow: column;
+        
+        justify-content: start;
+        height: 5.5rem;
+    }
+
+    .rating-wrapper {
+        padding-top: 10px;
+
+        display: flex;
+        margin-left: auto;
+
+        justify-content: start;
+        align-items: start;
+    }
+
+    .rating-star {
+        height: auto;
+        width: 1.5rem
+    }
+
+    .rating-numeric {
+        font-weight: bold;
+        color: white;
+        margin: 0.25rem;
     }
 
     .mainDescrip>div span {
@@ -400,7 +430,7 @@ body {
         display: flex;
     }
 
-    .mainDescription .bot .right {
+    .stock {
         flex-direction: row;
         display: flex;
         margin-left: auto;
@@ -422,9 +452,24 @@ body {
         font-style: normal;
     }
 
-    .mainDescription .bot .left>span>h6 {
+    .product-name {
         font-size: 20px;
         font-style: bold;
+
+        color: white
+    }
+
+    .product-price {
+        font-size: 1.8rem;
+        font-style: bold;
+
+        color: #9B9B9B
+    }
+
+    .product-component {
+        color: #949494;
+        justify-content: center;
+        font-size: 1.2rem;
     }
 
     .mainDescription .bot .left>span>p {
