@@ -2,30 +2,180 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <link rel="stylesheet" href="/checkout.css">
-    <link rel="stylesheet" href="/navbar.css">
-    <link rel="stylesheet" href="/footer.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/checkout.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/footer.css" />
+    <title>Cart</title>
 </head>
 
 <body>
-
     <%- include("../partials/navbar") %>
+
 
         <main>
             <div class="items-wrapper">
-                <%- include("checkout-partials/item") %>
+                <% if (cart.length===0) { %>
+                    <p class="empty-msg">Your cart is empty.</p>
+                    <% } else { %>
+                        <% cart.forEach(item=> { %>
+                            <div class="item-wrapper">
+                                <div class="checkbox-wrapper">
+                                    <label>
+                                        <input type="checkbox" />
+                                    </label>
+                                </div>
+
+                                <div class="product-wrapper">
+                                    <% if (item.imageUrl) { %>
+                                        <img src="<%= item.imageUrl %>" alt="<%= item.name %>" />
+                                        <% } else { %>
+                                            <p>Image Here</p>
+                                            <% } %>
+                                </div>
+
+                                <div class="details-wrapper">
+                                    <p class="comp-type">
+                                        <%= item.component || "Component" %>
+                                    </p>
+                                    <p class="product-name">
+                                        <%= item.name %>
+                                    </p>
+                                </div>
+
+                                <p class="price-details">
+                                    $<%= item.price %>
+                                </p>
+
+                                <div class="qty">
+                                    <label for="qty">Qty:</label>
+                                    <input type="number" id="qty" min="1" max="9" step="1"
+                                        value="<%= item.quantity || 1 %>">
+                                </div>
+
+                                <span class="material-symbols-outlined trash"
+                                    onclick="deleteItem('<%= item.productId %>')">delete</span>
+                            </div>
+                            <% }) %>
+                                <% } %>
+            </div>
+        </main>
+
+        <div class="checkout-wrapper">
+            <div class="checkbox-wrapper">
+                <label>
+                    <input type="checkbox" />
+                    <span class="checkbox" onclick="selectAll()"></span>
+                </label>
             </div>
 
+            <p class="select">
+                Select All <span>Delete</span>
+            </p>
 
-        </main>
-        <%- include("checkout-partials/checkout") %>
+            <p class="total">
+                Total (*#ofitem* item/s): <span class="currentPrice">0</span>
+            </p>
 
-        <%- include("../partials/footer") %>
+            <button class="checkout-btn" onclick="checkoutItems()">
+                Checkout
+            </button>
+        </div>
+
+
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
-<script src="/middleware/checkSession.js"></script>
+
+<script defer>
+    const cart = <%- JSON.stringify(cart || []) %>;
+    const userId = "<%= user._id %>";
+
+    window.checkoutItems = async () => {
+        const itemIDs = cart.map(item => item.productId);
+
+        try {
+            const res = await fetch("http://localhost:8000/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    items: itemIDs
+                })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                alert("Order placed successfully!");
+                console.log(data);
+                window.location.reload();
+            } else {
+                alert("Failed to place order: " + (data.message || "Unknown error"));
+            }
+        } catch (err) {
+            console.error("Order error:", err);
+            alert("Checkout failed.");
+        }
+    };
+
+    window.checkItem = (itemPrice) => {
+        // TODO
+    };
+
+    window.deleteItem = async function (itemId) {
+        try {
+            const res = await fetch(`/api/users/${userId}/cart/${itemId}`, {
+                method: "DELETE"
+            });
+
+            if (res.ok) {
+                alert("Item removed successfully");
+                window.location.reload();
+            } else {
+                const data = await res.json();
+                alert("Delete failed: " + data.message);
+            }
+        } catch (e) {
+            console.error("Delete failed:", e.message);
+            alert("An unexpected error occurred.");
+        }
+    };
+
+    function selectAll() {
+        const selectAllCheckbox = document.querySelector('.checkout-wrapper input[type="checkbox"]');
+        const itemCheckboxes = document.querySelectorAll('.items-wrapper input[type="checkbox"]');
+        const totalPriceDisplay = document.querySelector('.total span');
+        const totalItemsDisplay = document.querySelector('.total');
+        let totalPrice = 0;
+        let totalCount = 0;
+
+        itemCheckboxes.forEach((checkbox, index) => {
+            checkbox.checked = !selectAllCheckbox.checked;
+
+            if (!selectAllCheckbox.checked) {
+                const itemWrapper = checkbox.closest('.item-wrapper');
+                const priceText = itemWrapper.querySelector('.price-details').innerText.replace('$', '');
+                const quantity = parseInt(itemWrapper.querySelector('input[type="number"]').value) || 1;
+
+                const price = parseFloat(priceText);
+                totalPrice += price * quantity;
+                totalCount++;
+            }
+        });
+
+        if (!selectAllCheckbox.checked) {
+            totalPriceDisplay.textContent = `$${totalPrice.toFixed(2)}`;
+            totalItemsDisplay.innerHTML = `Total (${totalCount} item/s): <span>$${totalPrice.toFixed(2)}</span>`;
+        } else {
+            totalPriceDisplay.textContent = '$0';
+            totalItemsDisplay.innerHTML = `Total (0 item/s): <span>$0</span>`;
+        }
+    }
+</script>
+
+
 </html>
+

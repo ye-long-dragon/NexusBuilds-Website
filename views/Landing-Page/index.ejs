@@ -18,7 +18,7 @@
             <div class="block1">
                 <div class="sectionL">
                     <img src="https://res.cloudinary.com/dvcmmbasm/image/upload/v1751403077/build2_bcw0z4.png"
-                        alt="featured-build" onclick="redirectToBuild()">
+                        alt="featured-build" onclick="window.location.href='PcProfile/6864f50c8620042fa58f25d3'">
                 </div>
                 <div class="sectionR">
                     <div class="top">
@@ -139,7 +139,7 @@
                                 <div class="top">
                                     <div class="left">
                                         <p>Featured PC Build</p>
-                                        <h5>Glacier</h5>
+                                        <h5>Glacier Nova</h5>
                                     </div>
                                     <div class="right">
                                         <img src="assets/star.svg" alt="star" height="14px">
@@ -157,7 +157,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="btn">
+                            <div class="btn" onclick="window.location.href='/pcprofile/686640fb2150c12aa27c564d'">
                                 <p>Take a Look</p>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="btn">
+                            <div class="btn" onclick="window.location.href='/pcprofile/6864f50c8620042fa58f25d3'">
                                 <p>Take a Look</p>
                             </div>
                         </div>
@@ -218,6 +218,8 @@
         </main>
 
         <%- include('../partials/footer.ejs') %>
+
+        <script src="/scripts/buildpass.js"></script>
 </body>
 <script>
     const source = document.querySelector('.item.item-block2');
@@ -236,33 +238,6 @@
 
     console.log("Done");
 
-
-    async function redirectToBuild() {
-        const buildId = "6864f50c8620042fa58f25d3";
-
-        const res = await fetch(`/builds/${buildId}`);
-        const data = await res.json();
-
-        window.location.href = "/pcbuilder";
-    }
-
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
-<script src="/middleware/checkSession.js"></script>
-<script defer>
-    import express from 'express';
-    import checkSession from '/middleware/checkSession.js';
 
-    const app = express();
-    app.use(checkSession);
-
-    const profileButton = document.querySelector('.person-icon');
-    profileButton.addEventListener('click', () => {
-        if (profileButton.classList.contains('logged-in')) {
-            window.location.href = '/userprofile';
-        } else {
-            window.location.href = '/auth/login';
-        }
-    });
-</script>
 </html>

@@ -27,6 +27,6 @@ const pcBuildSchema = new Schema({
     } ,
 });
 
-const pcBuild = model("pcBuild", pcBuildSchema);
+const PCBuild = model("pcBuild", pcBuildSchema);
 
-export default pcBuild;
+export default PCBuild;

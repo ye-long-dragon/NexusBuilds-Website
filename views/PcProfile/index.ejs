@@ -1,28 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="../PcProfile.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/footer.css">
     <title>Document</title>
-    <link rel="stylesheet" href="/PcProfile.css">
-    <link rel="stylesheet" href="/header.css">
 </head>
-<body>
-    <%- include('../GeneralPartials/header') %>
-    <main id="main">
-        <%- include('partials/PcProfile.ejs') %>
-        
 
-    </main>
-    <%- include('../GeneralPartials/footer') %>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+        <main>
+            <div class="thumbnail">
+                <img src='<%= build.buildImg %>'>
+                <p>Build Tutorial: <a href="#">YT Link</a></p>
+
+                <!-- <pre><%= JSON.stringify(build, null, 2) %></pre> -->
+            </div>
+
+            <div class="build-details-wrapper">
+                <p class="section-title">Build Components</p>
+                <div class="build-details">
+                    <div class="build-details-c1">
+                        <div class="item-detail">
+                            <img src="/assets/processor-cart-icon.svg" alt="Processor">
+                            <p>
+                                <span>Processor</span><br>
+                                <%= build.processor %>
+                            </p>
+                            <p>₱original price</p>
+                        </div>
+                        <div class="item-detail">
+                            <img src="/assets/gpu-cart-icon.svg" alt="Graphics Card">
+                            <p>
+                                <span>Graphics Card</span><br>
+                                <%= build.gpu %>
+                            </p>
+                            <p>₱original price</p>
+                        </div>
+                        <div class="item-detail">
+                            <img src="/assets/motherboard-cart-icon.svg" alt="Motherboard">
+                            <p>
+                                <span>Motherboard</span><br>
+                                <%= build.motherboard %>
+                            </p>
+                            <p>₱original price</p>
+                        </div>
+                        <div class="item-detail">
+                            <img src="/assets/storage-cart-icon.svg" alt="Storage">
+                            <p>
+                                <span>Storage</span><br>
+                                <%= build.storage %>
+                            </p>
+                            <p>₱original price</p>
+                        </div>
+                        <div class="item-detail">
+                            <img src="/assets/ram-cart-icon.svg" alt="RAM">
+                            <p>
+                                <span>RAM</span><br>
+                                <%= build.ram %>
+                            </p>
+                            <p>₱original price</p>
+                        </div>
+                        <div class="item-detail">
+                            <img src="/assets/case-cart-icon.svg" alt="Case">
+                            <p>
+                                <span>Case</span><br>
+                                <%= build.case %>
+                            </p>
+                            <p>₱original price</p>
+                        </div>
+                    </div>
+                    <div class="build-details-c2">
+                        <div class="item-detail">
+                            <img src="/assets/power-cart-icon.svg" alt="Power Supply">
+                            <p>
+                                <span>Power Supply</span><br>
+                                <%= build.psu %>
+                            </p>
+                            <p>₱original price</p>
+                        </div>
+                        <div class="item-detail">
+                            <img src="/assets/cooler-cart-icon.svg" alt="Cooler">
+                            <p>
+                                <span>Cooler</span><br>
+                                <%= build.cooler %>
+                            </p>
+                            <p class="item-price">₱original price</p>
+                        </div>
+                        <div class="build-details-descr">
+                            <p>
+                                <%= build.name %>
+                            </p>
+
+                            <div class="descr-star-wrapper">
+                                <img src="/assets/star_fill.svg" alt="Star">
+                                <p>4.9</p>
+                            </div>
+
+                        </div>
+                        <p> <%= build.description %> </p>
+                        <div class="rate-price">
+                            <div class="rate-star-wrapper">
+                                <img src="/assets/star_hallow.svg" alt="rate">
+                            </div>
+                            <p>₱15,000.00 <span>₱18,000.00</span></p>
+                        </div>
+                        <div class="order-wrapper">
+                            <div class="hand-wrapper">
+                                <img src="/assets/hand.svg" alt="Edit">
+                            </div>
+                            <button>Get Build</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="extras">
+                    <p>Extras</p>
+                    <hr>
+
+                    <div class="item-detail">
+                        <img src="/assets/power.svg" alt="Power Supply">
+                        <p>
+                            <span>Power Supply</span><br>
+                            <%= build.psu %>
+                        </p>
+                        <p>₱original price</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+        <%- include('../partials/footer.ejs') %>
+
+            <!-- <script src="/scripts/buildpass.js"></script> -->
 
 </body>
 
-
-<script src="pcProfile.js"></script>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
-<script src="/middleware/checkSession.js"></script>
 
 </html>
